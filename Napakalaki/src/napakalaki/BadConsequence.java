@@ -72,5 +72,13 @@ public class BadConsequence
     {
         return death;
     }
+    public String toString() // ¿¿¿¿¿¿no es un método de la clase, static??????
+    {
+        return "Text = " + text + 
+                " Levels = " + Integer.toString(levels) + 
+                " Number of Visible Treasures = " + Integer.toString(nVisisbleTreasures) +
+                " Number of Hidden Treasures = " + Integer.toString(nHiddenTreasures) +
+                " Death = " + Boolean.toString(death);
+    }
 
 }
