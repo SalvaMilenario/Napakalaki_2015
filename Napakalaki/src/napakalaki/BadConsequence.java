@@ -5,17 +5,20 @@
  */
 package napakalaki;
 
+import java.util.ArrayList;
 /**
  *
  * @author xehartnort
  */
 public class BadConsequence 
 {
-    private String text; // array vacío
-    private int levels; //0
+    private String text; 
+    private int levels;
     private int nVisisbleTreasures;
     private int nHiddenTreasures;
-    private boolean death; //false
+    private boolean death;
+    private ArrayList<TreasureKind>  specificHiddenTreasures;    
+    private ArrayList<TreasureKind> specspecificVisibleTreasures;
     
     public BadConsequence(String text, int levels, int nVisible, int nHidden)
     {
@@ -24,7 +27,8 @@ public class BadConsequence
         this.nVisisbleTreasures = 0;
         this.nHiddenTreasures = nHidden;
         this.death = false;
-
+        this.specificHiddenTreasures = new ArrayList<>();
+        this.specspecificVisibleTreasures = new ArrayList<>();
     }
     public BadConsequence(String text, boolean death)
     {
@@ -33,6 +37,20 @@ public class BadConsequence
         this.nVisisbleTreasures = 0;
         this.nHiddenTreasures = 0;    
         this.death = death;
+        this.specificHiddenTreasures = new ArrayList<>();
+        this.specspecificVisibleTreasures = new ArrayList<>();
+    }
+    public BadConsequence(String text , int levels,
+                            ArrayList<TreasureKind> tVisible,
+                            ArrayList<TreasureKind> tHidden)
+    {
+        this.text = text;
+        this.levels = 0;
+        this.nVisisbleTreasures = 0;
+        this.nHiddenTreasures = 0;    
+        this.death = death;
+        this.specificHiddenTreasures = tHidden;
+        this.specspecificVisibleTreasures = tVisible;
     }
     public String getText()
     {
