@@ -9,7 +9,8 @@ package napakalaki;
  *
  * @author Salva
  */
-public class Prize {
+public class Prize 
+{
     private int levels;//numero de niveles que sube con el buen royo
     private int treasures;//numero de tesoros que consigue al vencer
     /**
@@ -22,10 +23,12 @@ public class Prize {
         this.treasures=treasures;
     }
     
-    public int getLevels(){
+    public int getLevels()
+    {
         return levels;
     }
-    public int getTreasures(){
+    public int getTreasures()
+    {
         return treasures;
     }
 }
