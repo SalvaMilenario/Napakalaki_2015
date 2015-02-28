@@ -9,4 +9,4 @@ package napakalaki;
  *
  * @author Salva
  */
-public enum TreasureKind {ARMOR, ONEHAND, BOTHHANDS, HELMET, SHOE, NECKLACE};
+public enum TreasureKind {ARMOR, ONEHAND, BOTHHANDS, HELMET, SHOE, NECKLACE};//Armadura, una mano, dos manos, zapatos, colgante

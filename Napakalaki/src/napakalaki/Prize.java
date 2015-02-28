@@ -31,4 +31,9 @@ public class Prize
     {
         return treasures;
     }
+    public String toString()
+    {
+        String prize = "Level = "+levels+" Numbers treasures = "+treasures;
+        return prize;
+    }
 }

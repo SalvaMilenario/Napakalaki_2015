@@ -79,8 +79,8 @@ public class BadConsequence
                 " Number of Visible Treasures = " + Integer.toString(nVisisbleTreasures) +
                 " Number of Hidden Treasures = " + Integer.toString(nHiddenTreasures) +
                 " Death = " + Boolean.toString(death);
-        String textoArrayHiddenTreasures = " Array Specific Hidden Treasures = ";
-        String textoArrayVisibleTreasures = " Array Specific Visible Treasures = ";
+        String textoArrayHiddenTreasures = " Array Specific Hidden Treasures: ";
+        String textoArrayVisibleTreasures = " Array Specific Visible Treasures: ";
         for (TreasureKind tk : specificHiddenTreasures) // también se puede implementar con iteradores
             textoArrayHiddenTreasures += tk.toString(); // añade al texto cada valor del array
         for (TreasureKind tk : specificVisibleTreasures)
