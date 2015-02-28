@@ -32,7 +32,7 @@ public class Monster {
     {
         return combatLevel;
     }
-    public String toString() // ¿¿¿¿¿¿no es un método de la clase, static??????
+    public String toString()
     {
         return "Name = " + name + 
                 " Combat level = " + Integer.toString(combatLevel) + 

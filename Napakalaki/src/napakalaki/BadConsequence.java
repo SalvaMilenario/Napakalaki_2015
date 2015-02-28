@@ -17,8 +17,8 @@ public class BadConsequence
     private int nVisisbleTreasures;
     private int nHiddenTreasures;
     private boolean death;
-    private ArrayList<TreasureKind>  specificHiddenTreasures;    
-    private ArrayList<TreasureKind> specspecificVisibleTreasures;
+    private ArrayList<TreasureKind> specificHiddenTreasures;    
+    private ArrayList<TreasureKind> specificVisibleTreasures;
     
     public BadConsequence(String text, int levels, int nVisible, int nHidden)
     {
@@ -28,7 +28,7 @@ public class BadConsequence
         this.nHiddenTreasures = nHidden;
         this.death = false;
         this.specificHiddenTreasures = new ArrayList<>();
-        this.specspecificVisibleTreasures = new ArrayList<>();
+        this.specificVisibleTreasures = new ArrayList<>();
     }
     public BadConsequence(String text, boolean death)
     {
@@ -38,7 +38,7 @@ public class BadConsequence
         this.nHiddenTreasures = 0;    
         this.death = death;
         this.specificHiddenTreasures = new ArrayList<>();
-        this.specspecificVisibleTreasures = new ArrayList<>();
+        this.specificVisibleTreasures = new ArrayList<>();
     }
     public BadConsequence(String text , int levels,
                             ArrayList<TreasureKind> tVisible,
@@ -50,7 +50,7 @@ public class BadConsequence
         this.nHiddenTreasures = 0;    
         this.death = death;
         this.specificHiddenTreasures = tHidden;
-        this.specspecificVisibleTreasures = tVisible;
+        this.specificVisibleTreasures = tVisible;
     }
     public String getText()
     {
@@ -72,13 +72,20 @@ public class BadConsequence
     {
         return death;
     }
-    public String toString() // ¿¿¿¿¿¿no es un método de la clase, static??????
+    public String toString()
     {
-        return "Text = " + text + 
+        String textoInicial = "Text = " + text + 
                 " Levels = " + Integer.toString(levels) + 
                 " Number of Visible Treasures = " + Integer.toString(nVisisbleTreasures) +
                 " Number of Hidden Treasures = " + Integer.toString(nHiddenTreasures) +
                 " Death = " + Boolean.toString(death);
+        String textoArrayHiddenTreasures = " Array Specific Hidden Treasures = ";
+        String textoArrayVisibleTreasures = " Array Specific Visible Treasures = ";
+        for (TreasureKind tk : specificHiddenTreasures) // también se puede implementar con iteradores
+            textoArrayHiddenTreasures += tk.toString(); // añade al texto cada valor del array
+        for (TreasureKind tk : specificVisibleTreasures)
+            textoArrayVisibleTreasures += tk.toString();
+        return textoInicial + textoArrayHiddenTreasures + textoArrayVisibleTreasures;
     }
 
 }
