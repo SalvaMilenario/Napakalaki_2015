@@ -15,8 +15,8 @@ public class PuebaNapakalaki {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ArrayList<TreasureKind> tesorosOcultos = new ArrayList<TreasureKind>();
-        ArrayList<TreasureKind> tesorosVisibles = new ArrayList<TreasureKind>();
+        ArrayList<TreasureKind> tesorosOcultos = new ArrayList<>();
+        ArrayList<TreasureKind> tesorosVisibles = new ArrayList<>();
         tesorosOcultos.add(TreasureKind.ARMOR);
         tesorosVisibles.add(TreasureKind.SHOE);
         Prize premios = new Prize(10,10);
