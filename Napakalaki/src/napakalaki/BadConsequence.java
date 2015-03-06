@@ -84,16 +84,17 @@ public class BadConsequence
         if(!specificHiddenTreasures.isEmpty())
         {
             for (TreasureKind tk : specificHiddenTreasures) // también se puede implementar con iteradores
-                textoArrayHiddenTreasures += tk.toString(); // añade al texto cada valor del array
+                textoArrayHiddenTreasures += tk.toString() + " "; // añade al texto cada valor del array
         }
         else
         {
             textoArrayHiddenTreasures += "No pierde ningún tesoro específico.";
         }
         
-        if(!specificVisibleTreasures.isEmpty()){
+        if(!specificVisibleTreasures.isEmpty())
+        {
             for (TreasureKind tk : specificVisibleTreasures)
-                textoArrayVisibleTreasures += tk.toString();
+                textoArrayVisibleTreasures += tk.toString() + " ";
         }
         else
             textoArrayVisibleTreasures += "No pierde ningún tesoro específico.";
