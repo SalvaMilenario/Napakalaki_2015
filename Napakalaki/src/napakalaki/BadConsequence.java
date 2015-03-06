@@ -24,7 +24,7 @@ public class BadConsequence
     {
         this.text = text;
         this.levels = levels;
-        this.nVisisbleTreasures = 0;
+        this.nVisisbleTreasures = nVisible;
         this.nHiddenTreasures = nHidden;
         this.death = false;
         this.specificHiddenTreasures = new ArrayList<>();
