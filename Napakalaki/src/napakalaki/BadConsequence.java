@@ -48,7 +48,7 @@ public class BadConsequence
         this.levels = 0;
         this.nVisisbleTreasures = 0;
         this.nHiddenTreasures = 0;    
-        this.death = death;
+        this.death = false;
         this.specificHiddenTreasures = tHidden;
         this.specificVisibleTreasures = tVisible;
     }
