@@ -74,13 +74,13 @@ public class BadConsequence
     }
     public String toString()
     {
-        String textoInicial = "Text = " + text + 
-                " Levels = " + Integer.toString(levels) + 
-                " Number of Visible Treasures = " + Integer.toString(nVisisbleTreasures) +
-                " Number of Hidden Treasures = " + Integer.toString(nHiddenTreasures) +
-                " Death = " + Boolean.toString(death);
-        String textoArrayHiddenTreasures = " Array Specific Hidden Treasures: ";
-        String textoArrayVisibleTreasures = " Array Specific Visible Treasures: ";
+        String textoInicial = "\n\tText = " + text + 
+                " \n\tLevels = " + Integer.toString(levels) + 
+                " \n\tNumber of Visible Treasures = " + Integer.toString(nVisisbleTreasures) +
+                " \n\tNumber of Hidden Treasures = " + Integer.toString(nHiddenTreasures) +
+                " \n\tDeath = " + Boolean.toString(death);
+        String textoArrayHiddenTreasures = " \n\tArray Specific Hidden Treasures: ";
+        String textoArrayVisibleTreasures = " \n\tArray Specific Visible Treasures: ";
         for (TreasureKind tk : specificHiddenTreasures) // también se puede implementar con iteradores
             textoArrayHiddenTreasures += tk.toString(); // añade al texto cada valor del array
         for (TreasureKind tk : specificVisibleTreasures)
