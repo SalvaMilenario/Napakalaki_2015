@@ -10,7 +10,7 @@ import java.util.Arrays;
  *
  * @author Salva & xehartnort
  */
-public class PuebaNapakalaki {
+public class PruebaNapakalaki {
 
     public static ArrayList<Monster> InitializeMonsters()
     {
@@ -35,7 +35,7 @@ public class PuebaNapakalaki {
         
         /*El sopor de Dunwich*/ 
         badConsequence = new BadConsequence("El primordial bostezo contagioso. "
-                + "tPierdes el calzado visible.", 0, 
+                + "Pierdes el calzado visible.", 0, 
                 new ArrayList(Arrays.asList(TreasureKind.SHOE)), new ArrayList());
         prize = new Prize(1,1);
         monstruos.add(new Monster("El sopor de Dunwich",2, badConsequence, prize));
@@ -160,7 +160,13 @@ public class PuebaNapakalaki {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
+        ArrayList <Monster> baraja= PruebaNapakalaki.InitializeMonsters();
+        for(Monster t : baraja)
+        {
+           System.out.println(t.toString());
+        }/*
         ArrayList<TreasureKind> tesorosOcultos = new ArrayList<>();
         ArrayList<TreasureKind> tesorosVisibles = new ArrayList<>();
         tesorosOcultos.add(TreasureKind.ARMOR);
@@ -173,7 +179,7 @@ public class PuebaNapakalaki {
         Monster bicharraco = new Monster("Bicharraco", 4, malaSuerte, premios);
         Monster danilaco = new Monster("Danilaco", 8, malRollo, premio2);
         System.out.println( bicharraco.toString() );
-        System.out.println(danilaco.toString());
+        System.out.println(danilaco.toString());*/
     }
     
 }
