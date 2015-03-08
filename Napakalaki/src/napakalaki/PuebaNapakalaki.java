@@ -11,11 +11,14 @@ import java.util.Arrays;
  * @author Salva & xehartnort
  */
 public class PuebaNapakalaki {
-
-    public static ArrayList<Monster> InitializeMonsters()
+    /**
+     *@deprecated Método encargado de inicializar la baraja de monstruos
+     *@param max Número máximo de objetos que puede poseer un jugardor
+     *@return Array de monstruos inicializados
+     */
+    public static ArrayList<Monster> InitializeMonsters(int max)
     {
         ArrayList<Monster> monstruos = new ArrayList();
-        
         BadConsequence badConsequence;
         Prize prize;
         
@@ -53,7 +56,7 @@ public class PuebaNapakalaki {
         
         /* El gorrón en el umbral */
         badConsequence = new BadConsequence("Pierdes todos tus tesoros visibles", 0,
-        Integer.MAX_VALUE,0);
+        max,0);
         prize = new Prize(3,1);
         monstruos.add(new Monster("El gorrón en el umbral",10, badConsequence, prize));
         
@@ -172,7 +175,7 @@ public class PuebaNapakalaki {
         BadConsequence malaSuerte = new BadConsequence("Genera mil bugs inesperados en tu programa, mueres.", true);
         Monster bicharraco = new Monster("Bicharraco", 4, malaSuerte, premios);
         Monster danilaco = new Monster("Danilaco", 8, malRollo, premio2);
-        System.out.println( bicharraco.toString() );
+        System.out.println(bicharraco.toString());
         System.out.println(danilaco.toString());
     }
     
