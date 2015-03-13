@@ -12,16 +12,16 @@ package napakalaki;
 public class Monster {
     private String name;
     private int combatLevel;
-    private Prize price;
+    private Prize prize;
     private BadConsequence bc;
     
     public Monster(String name, int level, 
                     BadConsequence bc, 
-                    Prize price)
+                    Prize prize)
     {
         this.name = name;
         this.combatLevel = level;
-        this.price = price;
+        this.prize = prize;
         this.bc = bc;
     }
     public String getName()
@@ -32,11 +32,19 @@ public class Monster {
     {
         return combatLevel;
     }
+    public BadConsequence getBC()
+    {
+        return bc;
+    }
+    public Prize getPrize()
+    {
+        return prize;
+    }
     public String toString()
     {
         return "Name = " + name + 
                 " \nCombat level = " + Integer.toString(combatLevel) + 
-                " \nPrize: " + price.toString() +
+                " \nPrize: " + prize.toString() +
                 " \nBad consequence: " + bc.toString();
     }
 }
