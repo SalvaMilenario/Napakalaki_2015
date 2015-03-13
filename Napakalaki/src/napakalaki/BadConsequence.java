@@ -72,6 +72,14 @@ public class BadConsequence
     {
         return death;
     }
+    public ArrayList<TreasureKind> getSpecificVisibleTreasures()
+    {
+        return specificVisibleTreasures;
+    }
+    public ArrayList<TreasureKind> getSpecificHiddenTreasures()
+    {
+        return specificHiddenTreasures;
+    }
     public String toString()
     {
         String textoInicial = "\n\tText = " + text + 
