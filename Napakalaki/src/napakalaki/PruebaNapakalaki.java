@@ -10,9 +10,9 @@ import java.util.Arrays;
  *
  * @author Salva & xehartnort
  */
-public class PuebaNapakalaki {
+public class PruebaNapakalaki {
     /**
-     *@deprecated Método encargado de inicializar la baraja de monstruos
+     *@brief Método encargado de inicializar la baraja de monstruos
      *@param max Número máximo de objetos que puede poseer un jugardor
      *@return Array de monstruos inicializados
      */
@@ -164,6 +164,40 @@ public class PuebaNapakalaki {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        ArrayList<Monster> baraja = PruebaNapakalaki.InitializeMonsters(10);
+        
+        for(Monster t : baraja)
+        {
+            if (t.getCombatLevel()>10)
+                System.out.println(t.toString());
+        }
+        
+        for(Monster t : baraja)
+        {
+            BadConsequence c = t.getBC();
+        if (!(c.getDeath())&&(c.getnHiddenTreasures()==0)&&(c.getnVisisbleTreasures()==0)&&(c.getSpecificHiddenTreasures().isEmpty())&&(c.getSpecificVisibleTreasures().isEmpty()))
+                System.out.println(t.toString());
+        }
+        for(Monster t : baraja)
+        {
+            if (t.getPrize().getLevels()==1)
+                System.out.println(t.toString());
+        }
+        for(Monster t : baraja)
+        {
+            boolean mostrar = false;
+            ArrayList<TreasureKind> v = t.getBC().getSpecificHiddenTreasures();
+            ArrayList<TreasureKind> h = t.getBC().getSpecificHiddenTreasures();
+            for (int i = 0;i<v.size();i++)
+                if((v.get(i)== TreasureKind.ONEHAND) || (v.get(i)== TreasureKind.BOTHHANDS))
+                    mostrar = true;
+            for (int i = 0;i<h.size();i++)
+               if((h.get(i)== TreasureKind.ONEHAND) || (h.get(i)== TreasureKind.BOTHHANDS))
+                    mostrar = true;
+            if(mostrar)
+                System.out.println(t.toString());
+        }
+        /*
         ArrayList<TreasureKind> tesorosOcultos = new ArrayList<>();
         ArrayList<TreasureKind> tesorosVisibles = new ArrayList<>();
         tesorosOcultos.add(TreasureKind.ARMOR);
@@ -176,7 +210,7 @@ public class PuebaNapakalaki {
         Monster bicharraco = new Monster("Bicharraco", 4, malaSuerte, premios);
         Monster danilaco = new Monster("Danilaco", 8, malRollo, premio2);
         System.out.println(bicharraco.toString());
-        System.out.println(danilaco.toString());
+        System.out.println(danilaco.toString());*/
     }
     
 }
