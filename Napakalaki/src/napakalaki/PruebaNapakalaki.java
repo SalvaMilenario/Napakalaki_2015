@@ -160,29 +160,35 @@ public class PruebaNapakalaki {
         return monstruos;
     }
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        ArrayList<Monster> baraja = PruebaNapakalaki.InitializeMonsters(10);
-        
+    public static void nivelAlto(ArrayList<Monster> baraja)
+    {
         for(Monster t : baraja)
         {
             if (t.getCombatLevel()>10)
                 System.out.println(t.toString());
         }
-        
+    }
+    
+    public static void perderNivel(ArrayList<Monster> baraja)
+    {
         for(Monster t : baraja)
         {
             BadConsequence c = t.getBC();
-        if (!(c.getDeath())&&(c.getnHiddenTreasures()==0)&&(c.getnVisisbleTreasures()==0)&&(c.getSpecificHiddenTreasures().isEmpty())&&(c.getSpecificVisibleTreasures().isEmpty()))
+            if (!(c.getDeath())&&(c.getnHiddenTreasures()==0)&&(c.getnVisisbleTreasures()==0)&&(c.getSpecificHiddenTreasures().isEmpty())&&(c.getSpecificVisibleTreasures().isEmpty()))
                 System.out.println(t.toString());
         }
+    }
+    
+    public static void ganaUnNivel(ArrayList<Monster> baraja)
+    {
         for(Monster t : baraja)
         {
             if (t.getPrize().getLevels()==1)
                 System.out.println(t.toString());
         }
+    }
+    public static void perderManos(ArrayList<Monster> baraja)
+    {
         for(Monster t : baraja)
         {
             boolean mostrar = false;
@@ -197,6 +203,20 @@ public class PruebaNapakalaki {
             if(mostrar)
                 System.out.println(t.toString());
         }
+    }
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        ArrayList<Monster> baraja = PruebaNapakalaki.InitializeMonsters(10);
+        
+        nivelAlto(baraja);
+        
+        perderNivel(baraja);
+        
+        ganaUnNivel(baraja);
+        
+        perderManos(baraja);
         /*
         ArrayList<TreasureKind> tesorosOcultos = new ArrayList<>();
         ArrayList<TreasureKind> tesorosVisibles = new ArrayList<>();
