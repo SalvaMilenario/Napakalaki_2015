@@ -19,7 +19,10 @@ public class Prize
     
     public Prize(int treasures, int levels)
     {
-        this.levels= levels;
+        if(levels <=1)
+            this.levels = 1;
+        else
+            this.levels= levels;
         this.treasures=treasures;
     }
     
