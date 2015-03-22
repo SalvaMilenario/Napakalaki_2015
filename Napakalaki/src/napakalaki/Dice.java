@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package napakalaki;
-
+import java.util.Random;
 /**
  *
  * @author Salva
@@ -13,10 +13,7 @@ public class Dice {
     
     private static final Dice instance = new Dice();
     
-    private Dice() 
-    {
-        
-    }
+    private Dice(){}
     
     public static Dice getInstance() 
     {
@@ -25,6 +22,7 @@ public class Dice {
     
     public int nextNumber()
     {
-        return 0;
+        Random release = new Random();
+        return (int)(release.nextDouble() * 6 + 1);
     }
 }
