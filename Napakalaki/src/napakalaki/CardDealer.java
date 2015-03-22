@@ -13,7 +13,7 @@ public class CardDealer {
     //    Implementación singleton
     //    Su intención consiste en garantizar que una clase sólo tenga una instancia 
     //    y proporcionar un punto de acceso global a ella.
-    private static CardDealer instance = new CardDealer(); //instance=null
+    private static final CardDealer instance = new CardDealer(); //instance=null
     private ArrayList<Treasure> usedTreasures;
     private ArrayList<Treasure> unusedTreasures;
     private ArrayList<Monster> usedMonsters;
