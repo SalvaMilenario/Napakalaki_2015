@@ -173,7 +173,7 @@ public class PruebaNapakalaki {
     {
         for(Monster t : baraja)
         {
-            BadConsequence c = t.getBC();
+            BadConsequence c = t.getBadConsequence();
             if (!(c.kills())&&(c.getNHiddenTreasures()==0)&&(c.getNVisisbleTreasures()==0)&&(c.getSpecificHiddenTreasures().isEmpty())&&(c.getSpecificVisibleTreasures().isEmpty()))
                 System.out.println(t.toString());
         }
@@ -192,8 +192,8 @@ public class PruebaNapakalaki {
         for(Monster t : baraja)
         {
             boolean mostrar = false;
-            ArrayList<TreasureKind> v = t.getBC().getSpecificHiddenTreasures();
-            ArrayList<TreasureKind> h = t.getBC().getSpecificHiddenTreasures();
+            ArrayList<TreasureKind> v = t.getBadConsequence().getSpecificHiddenTreasures();
+            ArrayList<TreasureKind> h = t.getBadConsequence().getSpecificHiddenTreasures();
             for (int i = 0;i<v.size();i++)
                 if((v.get(i)== TreasureKind.ONEHAND) || (v.get(i)== TreasureKind.BOTHHANDS))
                     mostrar = true;

@@ -7,7 +7,7 @@ package napakalaki;
 
 /**
  *
- * @author xehartnort
+ * @author xehartnort y salva
  */
 public class Monster {
     private String name;
@@ -32,7 +32,7 @@ public class Monster {
     {
         return combatLevel;
     }
-    public BadConsequence getBC()
+    public BadConsequence getBadConsequence()
     {
         return bc;
     }
