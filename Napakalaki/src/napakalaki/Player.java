@@ -67,7 +67,7 @@ public class Player {
     }
     public CombatResult combat(Monster m)
     {
-        CombatResult r;
+        CombatResult r = CombatResult.LOSEANDESCAPE;
         return r;
     }
     public void applyBadConsequence(BadConsequence bad)
@@ -118,6 +118,8 @@ public class Player {
     {
         Treasure t, z;
         Treasure[] y = new Treasure[2];
+        t = new Treasure("El tesoro de prueba 1", 2000, 0, 10, TreasureKind.SHOE);
+        z = new Treasure("El tesoro de prueba 2", 0, 10, 20, TreasureKind.ARMOR);
         y[0]=t;
         y[1]=z;
         return y;
@@ -126,6 +128,8 @@ public class Player {
     {
         Treasure t, z;
         Treasure[] y = new Treasure[2];
+        t = new Treasure("El tesoro de prueba 1", 2000, 0, 10, TreasureKind.SHOE);
+        z = new Treasure("El tesoro de prueba 2", 0, 10, 20, TreasureKind.ARMOR);
         y[0]=t;
         y[1]=z;
         return y;
