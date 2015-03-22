@@ -15,8 +15,8 @@ public class Napakalaki {
 //    y proporcionar un punto de acceso global a ella.
 
     private static final Napakalaki instance = new Napakalaki(); // instance=null
-//    private ArrayList<Player> players; 
-//    private Player currentPlayer;
+    private ArrayList<Player> players; 
+    private Player currentPlayer;
     private Monster currentMonster;
 
     // El constructor privado no permite que se genere un constructor por defecto.
@@ -28,53 +28,53 @@ public class Napakalaki {
     {
         return instance;
     }
-//    private void initPlayers(ArrayList<String> names)
-//    {
-//        for(String name : names){
-//            players.add(new Player(name));
-//        }
-//    }
+    private void initPlayers(ArrayList<String> names)
+    {
+        for(String name : names){
+            players.add(new Player(name));
+        }
+    }
     
 //    private Player nextPLayer()
 //    {
 //        
 //    }
-
+//
 //    public CombatResult combat()
 //    {
 //        
 //    }
     
-//    public void discardVisibleTreasure(Treasure t)
-//    {
-//        
-//    }
+    public void discardVisibleTreasure(Treasure t)
+    {
+        
+    }
     
-//    public void discardVisibleTreasure(Treasure t)
-//    {
-//        
-//    }
+    public void discardHiddenTreasure(Treasure t)
+    {
+        
+    }
     
 //    public boolean makeTreasureVisible(Treasure t)
 //    {
 //        
 //    }
-    
+//    
 //    public boolean buyLevels(ArrayList<Treasure> visible,
 //                                ArrayList<Treasure> hidden)
 //    {
 //        
 //    } 
 
-//    public void initGame(ArrayList<String> players)
-//    {
-//        
-//    }
+    public void initGame(ArrayList<String> players)
+    {
+        
+    }
     
-//    public Player getCurrentPlayer()
-//    {
-//        return currentPlayer;
-//    }
+    public Player getCurrentPlayer()
+    {
+        return currentPlayer;
+    }
     
     public Monster getCurrentMonster()
     {
