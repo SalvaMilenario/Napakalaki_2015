@@ -174,7 +174,7 @@ public class PruebaNapakalaki {
         for(Monster t : baraja)
         {
             BadConsequence c = t.getBC();
-            if (!(c.kills())&&(c.getnHiddenTreasures()==0)&&(c.getnVisisbleTreasures()==0)&&(c.getSpecificHiddenTreasures().isEmpty())&&(c.getSpecificVisibleTreasures().isEmpty()))
+            if (!(c.kills())&&(c.getNHiddenTreasures()==0)&&(c.getNVisisbleTreasures()==0)&&(c.getSpecificHiddenTreasures().isEmpty())&&(c.getSpecificVisibleTreasures().isEmpty()))
                 System.out.println(t.toString());
         }
     }
