@@ -14,7 +14,7 @@ public class Napakalaki {
 //    Su intención consiste en garantizar que una clase sólo tenga una instancia 
 //    y proporcionar un punto de acceso global a ella.
 
-    private static Napakalaki instance = new Napakalaki(); // instance=null
+    private static final Napakalaki instance = new Napakalaki(); // instance=null
 //    private ArrayList<Player> players; 
 //    private Player currentPlayer;
     private Monster currentMonster;
