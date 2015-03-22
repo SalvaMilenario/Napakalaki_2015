@@ -60,15 +60,15 @@ public class BadConsequence
     {
         return levels;
     }
-    public int getnVisisbleTreasures()
+    public int getNVisisbleTreasures()
     {
         return nVisisbleTreasures;
     }
-    public int getnHiddenTreasures()
+    public int getNHiddenTreasures()
     {
         return nHiddenTreasures;
     }
-    public boolean getDeath()
+    public boolean kills()
     {
         return death;
     }
@@ -80,6 +80,26 @@ public class BadConsequence
     {
         return specificHiddenTreasures;
     }
+//    public boolean isEmpty()
+//    {
+//    }
+    public void substractVisibleTreasure(Treasure t)
+    {
+        specificVisibleTreasures.remove(t.getType());
+    }    
+    public void substractHiddenTreasure(Treasure t)
+    {
+        specificHiddenTreasures.remove(t.getType());
+    }
+//    public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h)
+//    {
+//        
+//    }
+    
+    
+    
+    
+    @Override
     public String toString()
     {
         String textoInicial = "\n\tText = " + text + 
