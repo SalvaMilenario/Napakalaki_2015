@@ -14,7 +14,7 @@ public class BadConsequence
 {
     private String text; 
     private int levels;
-    private int nVisisbleTreasures;
+    private int nVisibleTreasures;
     private int nHiddenTreasures;
     private boolean death;   
     private ArrayList<TreasureKind> specificVisibleTreasures;
@@ -24,7 +24,7 @@ public class BadConsequence
     {
         this.text = text;
         this.levels = levels;
-        this.nVisisbleTreasures = nVisible;
+        this.nVisibleTreasures = nVisible;
         this.nHiddenTreasures = nHidden;
         this.death = false;
         this.specificHiddenTreasures = new ArrayList<>();
@@ -34,7 +34,7 @@ public class BadConsequence
     {
         this.text = text;
         this.levels = 0;
-        this.nVisisbleTreasures = 0;
+        this.nVisibleTreasures = 0;
         this.nHiddenTreasures = 0;    
         this.death = death;
         this.specificHiddenTreasures = new ArrayList<>();
@@ -46,47 +46,67 @@ public class BadConsequence
     {
         this.text = text;
         this.levels = 0;
-        this.nVisisbleTreasures = 0;
+        this.nVisibleTreasures = 0;
         this.nHiddenTreasures = 0;    
         this.death = false;
         this.specificHiddenTreasures = tHidden;
         this.specificVisibleTreasures = tVisible;
     }
+    
     public String getText()
     {
         return text;
     }
+    
     public int getLevels()
     {
         return levels;
     }
+    
     public int getNVisisbleTreasures()
     {
-        return nVisisbleTreasures;
+        return nVisibleTreasures;
     }
+    
     public int getNHiddenTreasures()
     {
         return nHiddenTreasures;
     }
+    
     public boolean kills()
     {
         return death;
     }
+    
     public ArrayList<TreasureKind> getSpecificVisibleTreasures()
     {
         return specificVisibleTreasures;
     }
+    
     public ArrayList<TreasureKind> getSpecificHiddenTreasures()
     {
         return specificHiddenTreasures;
     }
-//    public boolean isEmpty()
-//    {
-//    }
+    
+    public boolean isEmpty()
+    {
+        if( levels==0 &&
+            specificVisibleTreasures.isEmpty() &&
+            specificHiddenTreasures.isEmpty() &&
+            nVisibleTreasures==0 &&
+            nHiddenTreasures==0 &&
+            !death )
+           return true;
+        else 
+           return false;
+                
+    }
+    
     public void substractVisibleTreasure(Treasure t)
     {
         specificVisibleTreasures.remove(t.getType());
-    }    
+    }
+    
     public void substractHiddenTreasure(Treasure t)
     {
         specificHiddenTreasures.remove(t.getType());
@@ -96,15 +116,12 @@ public class BadConsequence
 //        
 //    }
     
-    
-    
-    
     @Override
     public String toString()
     {
         String textoInicial = "\n\tText = " + text + 
                 " \n\tLevels = " + Integer.toString(levels) + 
-                " \n\tNumber of Visible Treasures = " + Integer.toString(nVisisbleTreasures) +
+                " \n\tNumber of Visible Treasures = " + Integer.toString(nVisibleTreasures) +
                 " \n\tNumber of Hidden Treasures = " + Integer.toString(nHiddenTreasures) +
                 " \n\tDeath = " + Boolean.toString(death);
         String textoArrayHiddenTreasures = " \n\tArray Specific Hidden Treasures: ";
