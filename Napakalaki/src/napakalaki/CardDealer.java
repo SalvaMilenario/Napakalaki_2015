@@ -7,6 +7,7 @@ package napakalaki;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Arrays;
+import java.util.Collections;
 /**
  *
  * @author xehartnort
@@ -144,31 +145,34 @@ public class CardDealer {
 
     private void shuffleTreasures()
     {
-        if( !unusedTreasures.isEmpty() ){
-            Random rand = new Random();
-            int tam = unusedTreasures.size();
-            ArrayList<Treasure> barajado = new ArrayList<>(tam);
-            for(Treasure t: unusedTreasures)
-            {
-                barajado.add((int)rand.nextDouble()*tam, t);
-            }
-            unusedTreasures = barajado;
-        }
+//        if( !unusedTreasures.isEmpty() ){
+//            Random rand = new Random();
+//            int tam = unusedTreasures.size();
+//            ArrayList<Treasure> barajado = new ArrayList<>(tam);
+//            for(Treasure t: unusedTreasures)
+//            {
+//                barajado.add((int)rand.nextDouble()*tam, t);
+//            }
+//            unusedTreasures = barajado;
+//        }
+        Collections.shuffle(unusedTreasures);
     }
         
 
     private void shuffleMonsters()
     {
-        if(!unusedMonsters.isEmpty()){
-            Random rand = new Random();
-            int tam = unusedMonsters.size();
-            ArrayList<Monster> barajado = new ArrayList<>(tam);
-            for(Monster m: unusedMonsters)
-            {
-                barajado.add((int)rand.nextDouble()*tam, m);
-            }
-            unusedMonsters = barajado;    
-        }
+//        if(!unusedMonsters.isEmpty()){
+//            Random rand = new Random();
+//            int tam = unusedMonsters.size();
+//            ArrayList<Monster> barajado = new ArrayList<>(tam);
+//            for(Monster m: unusedMonsters)
+//            {
+//                barajado.add((int)rand.nextDouble()*tam, m);
+//            }
+//            unusedMonsters = barajado;    
+//        }
+        Collections.shuffle(unusedMonsters);
+        
     }
 
 //    public Treasure nextTreasure()
