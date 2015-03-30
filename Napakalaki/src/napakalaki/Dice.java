@@ -11,18 +11,23 @@ import java.util.Random;
  */
 public class Dice {
     
-    private static final Dice instance = new Dice();
+    private static Dice instance = null;
+    private Random release;
     
-    private Dice(){}
+    private Dice()
+    {
+        release = new Random();
+    }
     
     public static Dice getInstance() 
     {
+        if(instance == null)
+            instance = new Dice();
         return instance;
     }
     
     public int nextNumber()
     {
-        Random release = new Random();
-        return (int)(release.nextDouble() * 6 + 1);
+        return release.nextInt(6)+ 1;
     }
 }

@@ -24,7 +24,7 @@ public class Player {
     {
         this.pendingBadConsequence = new BadConsequence("Vacio", false);
         this.name=name;
-        bringToLive();
+        this.dead=true;
     }
     
     private void bringToLive()
