@@ -187,14 +187,14 @@ public class CardDealer {
 
     public void giveTreasureBack(Treasure t)
     {
-        unusedTreasures.add(t);
-        shuffleTreasures();
+        usedTreasures.add(t);
+        unusedTreasures.remove(t);
     }
 
     public void giveMonsterBack(Monster m)
     {
-        unusedMonsters.add(m);
-        shuffleMonsters();
+        usedMonsters.add(m);
+        unusedMonsters.remove(m);
     }
 
     public void initCards()
