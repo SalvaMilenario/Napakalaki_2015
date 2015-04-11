@@ -179,9 +179,9 @@ public class CardDealer {
         if(unusedTreasures.isEmpty())
         {
             Collections.shuffle(usedTreasures);
-            unusedTreasures = new ArrayList(usedTreasures); // no estoy muy seguro si esto es mejor que un clone()
-            usedTreasures.clear();                          // http://www.javapractices.com/topic/TopicAction.do?Id=71
-        }                                                   // aquí no lo recomiendan.
+            unusedTreasures = (ArrayList<Treasure>) usedTreasures.clone(); 
+            usedTreasures.clear();                          
+        }                                                   
         Treasure tesoro = unusedTreasures.remove(unusedTreasures.size()-1);
         usedTreasures.add(tesoro);
         return tesoro;
@@ -192,9 +192,9 @@ public class CardDealer {
         if(unusedMonsters.isEmpty())
         {
             Collections.shuffle(usedMonsters);
-            unusedMonsters = new ArrayList(usedMonsters); // no estoy muy seguro si esto es mejor que un clone()
-            usedMonsters.clear();                         // http://www.javapractices.com/topic/TopicAction.do?Id=71
-        }                                                 // aquí no lo recomiendan.
+            unusedMonsters = (ArrayList<Monster>) usedMonsters.clone();
+            usedMonsters.clear();                         
+        }                                                 
         Monster monstruo = unusedMonsters.remove(unusedMonsters.size()-1);
         usedMonsters.add(monstruo);
         return monstruo; 
