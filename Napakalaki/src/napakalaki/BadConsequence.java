@@ -10,15 +10,19 @@ import java.util.ArrayList;
  *
  * @author xehartnort
  */
+
+// Como todos los atributos de un BadConsequence 
+// permanecen inmutables a lo largo de su existencia
+// resulta interesante marcarlos como constantes (final)
 public class BadConsequence 
 {
-    private String text; 
-    private int levels;
-    private int nVisibleTreasures;
-    private int nHiddenTreasures;
-    private boolean death;   
-    private ArrayList<TreasureKind> specificVisibleTreasures;
-    private ArrayList<TreasureKind> specificHiddenTreasures; 
+    final private String text; 
+    final private int levels;
+    final private int nVisibleTreasures;
+    final private int nHiddenTreasures;
+    final private boolean death;   
+    final private ArrayList<TreasureKind> specificVisibleTreasures;
+    final private ArrayList<TreasureKind> specificHiddenTreasures; 
     
     public BadConsequence(String text, int levels, int nVisible, int nHidden)
     {
