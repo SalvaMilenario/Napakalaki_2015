@@ -19,7 +19,7 @@ public class Napakalaki {
     private Player currentPlayer;
     private Monster currentMonster;
     private int currentPlayerIndex; //índice del jugador que posee el turno
-    private boolean firstTurn = true;
+    private static boolean firstTurn = true;
     // El constructor privado no permite que se genere un constructor por defecto.
     // (con mismo modificador de acceso que la definición de la clase)
     private Napakalaki()
@@ -58,15 +58,15 @@ public class Napakalaki {
 //        
 //    }
     
-    public void discardVisibleTreasure(Treasure t)
-    {
-        
-    }
-    
-    public void discardHiddenTreasure(Treasure t)
-    {
-        
-    }
+//    public void discardVisibleTreasure(Treasure t)
+//    {
+//        
+//    }
+//    
+//    public void discardHiddenTreasure(Treasure t)
+//    {
+//        
+//    }
     
 //    public boolean makeTreasureVisible(Treasure t)
 //    {
@@ -79,10 +79,10 @@ public class Napakalaki {
 //        
 //    } 
 
-    public void initGame(ArrayList<String> players)
-    {
-        
-    }
+//    public void initGame(ArrayList<String> players)
+//    {
+//        
+//    }
     
     public Player getCurrentPlayer()
     {
