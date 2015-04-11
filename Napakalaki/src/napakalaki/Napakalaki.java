@@ -18,7 +18,8 @@ public class Napakalaki {
     private ArrayList<Player> players; 
     private Player currentPlayer;
     private Monster currentMonster;
-
+    private int currentPlayerIndex; //índice del jugador que posee el turno
+    private boolean firstTurn = true;
     // El constructor privado no permite que se genere un constructor por defecto.
     // (con mismo modificador de acceso que la definición de la clase)
     private Napakalaki()
@@ -30,15 +31,27 @@ public class Napakalaki {
     }
     private void initPlayers(ArrayList<String> names)
     {
-        for(String name : names){
-            players.add(new Player(name));
+        for(String n : names)
+        {
+            players.add(new Player(n));
         }
     }
     
-//    private Player nextPLayer()
-//    {
-//        
-//    }
+    private Player nextPLayer()
+    {
+        if(firstTurn) // Si es el primer turno
+        {
+            firstTurn=false; // el primer índice se selecciona con el dado
+            currentPlayerIndex = Dice.getInstance().nextNumber();
+        }
+        else
+        {
+            currentPlayerIndex++;                   
+            currentPlayerIndex %= players.size(); // De esta maneta se controla 
+        }                                         // que no se salga del vector
+        currentPlayer = players.get(currentPlayerIndex);
+        return currentPlayer;
+    }
 //
 //    public CombatResult combat()
 //    {
@@ -101,14 +114,14 @@ public class Napakalaki {
 //        
 //    }
         
-//    public boolean nextTurnAllowed()
-//    {
-//        
-//    }
+    public boolean nextTurnIsAllowed()
+    {
+        return currentPlayer.validState();
+    }
         
-//    public boolean endOfGame(CombatResult result)
-//    {
-//        
-//    }
+    public boolean endOfGame(CombatResult result)
+    {
+        return result==CombatResult.WINANDWINGAME;
+    }
     
 }

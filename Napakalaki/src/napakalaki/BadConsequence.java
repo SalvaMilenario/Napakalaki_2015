@@ -14,6 +14,7 @@ import java.util.ArrayList;
 // Como todos los atributos de un BadConsequence 
 // permanecen inmutables a lo largo de su existencia
 // resulta interesante marcarlos como constantes (final)
+// Una excepción son los dos ArrayList
 public class BadConsequence 
 {
     final private String text; 
@@ -21,8 +22,8 @@ public class BadConsequence
     final private int nVisibleTreasures;
     final private int nHiddenTreasures;
     final private boolean death;   
-    final private ArrayList<TreasureKind> specificVisibleTreasures;
-    final private ArrayList<TreasureKind> specificHiddenTreasures; 
+    private ArrayList<TreasureKind> specificVisibleTreasures;
+    private ArrayList<TreasureKind> specificHiddenTreasures; 
     
     public BadConsequence(String text, int levels, int nVisible, int nHidden)
     {
