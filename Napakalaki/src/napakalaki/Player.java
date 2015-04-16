@@ -213,7 +213,18 @@ public class Player {
     }
     public boolean buyLevels(ArrayList <Treasure> visible, ArrayList <Treasure> hidden)
     {
-        return true;
+        float levels = computeGoldCoinsValue(visible);
+        levels += computeGoldCoinsValue(hidden);
+        boolean canI = canIBuyLevels((int)levels);
+        if(canI)
+        {
+            incrementLevels((int)levels);
+            for (Treasure t:visible)
+                this.discardVisibleTreasure(t);
+            for (Treasure t:hidden)
+                this.discardHiddenTreasure(t);
+        }
+        return canI;
     }
     public int getCombatLevel()
     {
