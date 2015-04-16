@@ -93,24 +93,33 @@ public class Player {
         for(int i = 0;i<p.getTreasures();i++)
             hiddenTreasures.add(CardDealer.getInstance().nextTreasure());
     }
-//    public CombatResult combat(Monster m)
-//    {
-//        /* Idea de como van los combates
-//        if(getCombatLevel() > m.getCombatLevel())
-//            if(level == 9)
-//                return CombatResult.WINANDWINGAME;
-//            else
-//                return CombatResult.WIN;
-//        else if(Dice.getInstance().nextNumber()>4)
-//            return CombatResult.LOSEANDESCAPE;
-//        else if(m.getBadConsequence().kills())
-//            return CombatResult.LOSEANDDIE;
-//        else
-//            return CombatResult.LOSE;
-//        
-//        return CombatResult.LOSE;
-//        */
-//    }
+    public CombatResult combat(Monster m)
+    {
+        CombatResult combate = CombatResult.LOSEANDESCAPE;
+        if(getCombatLevel() > m.getCombatLevel())
+        {
+            applyPrize(m.getPrize());
+            if(level > 9)
+                combate = CombatResult.WINANDWINGAME;
+            else
+                combate = CombatResult.WIN;
+        }
+        else if(Dice.getInstance().nextNumber()<5)
+        {
+            if(m.getBadConsequence().kills())
+            {
+                die();
+                combate = CombatResult.LOSEANDDIE;
+            }
+            else
+            {
+                applyBadConsequence(m.getBadConsequence());
+                combate = CombatResult.LOSE;
+            }
+        }
+        discardNecklaceIfVisible();
+        return combate;
+    }
     public void applyBadConsequence(BadConsequence bad)
     {
         if(bad.getLevels()!=0)
