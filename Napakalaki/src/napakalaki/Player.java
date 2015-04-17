@@ -45,7 +45,6 @@ public class Player {
             hiddenTreasures.add(CardDealer.getInstance().nextTreasure());
         */
     }
-    
     private void incrementLevels(int l)
     {
         level = level + l;
@@ -85,6 +84,10 @@ public class Player {
         for (Treasure i : t)
             niveles = niveles + (i.getGoldCoins()) / 1000;
         return niveles;
+    }
+    public BadConsequence getPendingBadConsequence()
+    {
+        return pendingBadConsequence;
     }
 //    public void applyPrize(Prize p)
 //    {
