@@ -19,8 +19,8 @@ public class BadConsequence
 {
     final private String text; 
     final private int levels;
-    final private int nVisibleTreasures;
-    final private int nHiddenTreasures;
+    private int nVisibleTreasures;
+    private int nHiddenTreasures;
     final private boolean death;   
     private ArrayList<TreasureKind> specificVisibleTreasures;
     private ArrayList<TreasureKind> specificHiddenTreasures; 
@@ -107,19 +107,66 @@ public class BadConsequence
                 
     }
     
-    public void substractVisibleTreasure(Treasure t)
+    public void substractVisibleTreasure(Treasure t)//de un modo o de otro
     {
-        specificVisibleTreasures.remove(t.getType());
+        if(nVisibleTreasures==0)
+            specificVisibleTreasures.remove(t.getType());
+        else
+            nVisibleTreasures = (nVisibleTreasures-1) < 0 ? 0 : nVisibleTreasures-1 ;
     }
     
-    public void substractHiddenTreasure(Treasure t)
+    public void substractHiddenTreasure(Treasure t)//one way or another
     {
-        specificHiddenTreasures.remove(t.getType());
+        if(nHiddenTreasures==0)
+            specificHiddenTreasures.remove(t.getType());
+        else
+            nHiddenTreasures = (nHiddenTreasures-1) < 0 ? 0 : nHiddenTreasures-1 ;     
     }
-//    public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h)
-//    {
-//        
-//    }
+    public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h)//MAL
+    {
+        BadConsequence newBadConsequence;
+        if(nVisibleTreasures==0 && nHiddenTreasures==0)
+        { // solo tesoros especificos
+            ArrayList<TreasureKind> newVisibleTreasures = new ArrayList<>();
+            ArrayList<TreasureKind> newHiddenTreasures = new ArrayList<>();
+            boolean add = true;
+            for(Treasure t : v) // Visible a ajustar
+                if(specificVisibleTreasures.contains(t.getType())) // TODO Si está en los dos mirar casos repetidos
+                {
+                    if(specificVisibleTreasures.lastIndexOf(t) == specificVisibleTreasures.indexOf(t))
+                    {//Quiere decir que solo hau un objeto de este tipo en el array
+                        newVisibleTreasures.add(t.getType());
+                    }
+                    else if(add){// si entra aquí quiere decir que hay dos objetos ONEHAND
+                        add = false;
+                        newVisibleTreasures.add(t.getType());
+                    }
+                }          
+            add = true;                                           
+            for(Treasure t : h) // Oculto a ajustar 
+                if(specificHiddenTreasures.contains(t.getType())) // TODO Si está en los dos mirar casos repetidos
+                {
+                    if(specificHiddenTreasures.lastIndexOf(t) == specificHiddenTreasures.indexOf(t))
+                    {//Quiere decir que solo hau un objeto de este tipo en el array
+                        newHiddenTreasures.add(t.getType());
+                    }
+                    else if(add){// si entra aquí quiere decir que hay dos objetos ONEHAND
+                        add = false;
+                        newHiddenTreasures.add(t.getType());
+                    }
+                }          
+            
+            newBadConsequence = new BadConsequence(text, levels, newVisibleTreasures, newHiddenTreasures);
+        }
+        else
+        {
+           int minVisibleTreasures = nVisibleTreasures > v.size() ? v.size() : nVisibleTreasures ;
+           int minHiddenTreasures = nHiddenTreasures > v.size() ? v.size() : nHiddenTreasures ;
+           // variable  = if            "              {   "   }else{   s    "      } 
+           newBadConsequence = new BadConsequence(text, levels, minVisibleTreasures, minHiddenTreasures);
+        }
+        return newBadConsequence;
+    }
     
     @Override
     public String toString()
@@ -152,9 +199,4 @@ public class BadConsequence
         }
         return textoInicial + textoArrayHiddenTreasures + textoArrayVisibleTreasures;
     }
-    public BadConsequence adjustToFitTreasureLists(ArrayList visibleTreasures, ArrayList hiddenTreasures)
-    {
-        return this;
-    }
-
 }

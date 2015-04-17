@@ -20,7 +20,7 @@ public class Napakalaki {
     private Monster currentMonster;
     private int currentPlayerIndex; //índice del jugador que posee el turno
     private static boolean firstTurn = true;
-    private CardDealer dealer = CardDealer.getInstance();
+    final private CardDealer dealer = CardDealer.getInstance();
     // El constructor privado no permite que se genere un constructor por defecto.
     // (con mismo modificador de acceso que la definición de la clase)
     private Napakalaki()
@@ -33,9 +33,7 @@ public class Napakalaki {
     private void initPlayers(ArrayList<String> names)
     {
         for(String n : names)
-        {
             players.add(new Player(n));
-        }
     }
     
     private Player nextPLayer()
@@ -101,12 +99,12 @@ public class Napakalaki {
     
 //    public ArrayList<Treasure> getVisibleTreasures()
 //    {
-//        
+//    TODO implementar este método
 //    }
     
 //    public ArrayList<Treasure> getHiddenTreasures()
 //    {
-//        
+//    TODO implementar este método    
 //    }
     
     public boolean nextTurn()
@@ -115,7 +113,7 @@ public class Napakalaki {
             currentMonster = dealer.nextMonster();
             currentPlayer =  nextPLayer();
             if(currentPlayer.isDead()){
-                currentPlayer.initTreasures();// falta por implementar este método
+                currentPlayer.initTreasures();
             }
         }
         return nextTurnIsAllowed();
