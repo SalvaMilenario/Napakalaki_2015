@@ -152,5 +152,9 @@ public class BadConsequence
         }
         return textoInicial + textoArrayHiddenTreasures + textoArrayVisibleTreasures;
     }
+    public BadConsequence adjustToFitTreasureLists(ArrayList visibleTreasures, ArrayList hiddenTreasures)
+    {
+        return this;
+    }
 
 }

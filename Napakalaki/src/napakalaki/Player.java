@@ -32,18 +32,7 @@ public class Player {
     
     private void bringToLife()
     {
-//        this.level = 1;
-        this.dead = false;
-        /*
-        int tirada = Dice.getInstance().nextNumber(), numeroTesoros=2;
-        if(tirada==6)
-            numeroTesoros = 3;
-        else if (tirada == 1)
-            numeroTesoros = 1;
-        
-        for(int i = 0;i<numeroTesoros;i++)
-            hiddenTreasures.add(CardDealer.getInstance().nextTreasure());
-        */
+        dead = false;
     }
     private void incrementLevels(int l)
     {
@@ -55,20 +44,32 @@ public class Player {
     }
     private void setPendingBadConsequence(BadConsequence b)
     {
-        this.pendingBadConsequence = b;
+        pendingBadConsequence = b;
     }
     private void die()
     {
-        this.dead= true;
+        level=1;
+        for(Treasure t: visibleTreasures)
+            discardVisibleTreasure(t);
+        for(Treasure t: hiddenTreasures)
+            discardHiddenTreasure(t);
+        dead= true;
     }
     private void discardNecklaceIfVisible()
     {
-        
+        for(Treasure t :visibleTreasures)
+        {
+            if(t.getType()==TreasureKind.NECKLACE)
+            {
+                CardDealer.getInstance().giveTreasureBack(t);
+                visibleTreasures.remove(t);
+            }
+        }
     }
     private void dieIfNoTreasures()
     {
         if(visibleTreasures.isEmpty() && hiddenTreasures.isEmpty())
-            dead=true;
+            die();
     }
     
     private boolean canIBuyLevels(int l)
@@ -85,85 +86,155 @@ public class Player {
             niveles = niveles + (i.getGoldCoins()) / 1000;
         return niveles;
     }
-    public BadConsequence getPendingBadConsequence()
-    {
-        return pendingBadConsequence;
-    }
-//    public void applyPrize(Prize p)
-//    {
-//        
-//    }
-//    public CombatResult combat(Monster m)
-//    {
-//        /* Idea de como van los combates
-//        if(getCombatLevel() > m.getCombatLevel())
-//            if(level == 9)
-//                return CombatResult.WINANDWINGAME;
-//            else
-//                return CombatResult.WIN;
-//        else if(Dice.getInstance().nextNumber()>4)
-//            return CombatResult.LOSEANDESCAPE;
-//        else if(m.getBadConsequence().kills())
-//            return CombatResult.LOSEANDDIE;
-//        else
-//            return CombatResult.LOSE;
-//        
-//        return CombatResult.LOSE;
-//        */
-//    }
-//    public void applyBadConsequence(BadConsequence bad)
-//    {
-//        /* Idea de como aplicar mal rollos
-//        if(bad.kills())
-//            this.die();
-//        else if(bad.getLevels()!=0)
-//            this.decrementLevels(bad.getLevels());
-//        else if(bad.getNHiddenTreasures()!=0)
-//        {
-//            for (int i = 0;i<bad.getNHiddenTreasures();i++)
-//                discardHiddenTreasure(hiddenTreasures.get(i));
-//            if(bad.getNVisisbleTreasures()!=0)
-//                for (int i = 0;i<bad.getNVisisbleTreasures();i++)
-//                    discardVisibleTreasure(visibleTreasures.get(i));
-//        }
-//        else
-//        {
-//            if(!bad.getSpecificHiddenTreasures().isEmpty())
-//                for(TreasureKind b : bad.getSpecificHiddenTreasures())
-//                    for(Treasure t : hiddenTreasures)
-//                        if(t.getType()==b)
-//                            discardHiddenTreasure(t);
-//            if(!bad.getSpecificVisibleTreasures().isEmpty())
-//                for(TreasureKind b : bad.getSpecificVisibleTreasures())
-//                    for(Treasure t : visibleTreasures)
-//                        if(t.getType()==b)
-//                            discardHiddenTreasure(t);
-//        }
-//        pendingBadConsequence = new BadConsequence("Vacio", false);  
-//        */
-//    }
-//    public boolean makeTreasureVisible(Treasure t)
-//    {
-//        return true;
-//    }
-//    public boolean canMakeTreasureVisible(Treasure t)
-//    {
-//        return true;
-//    }
-//    public void discardVisibleTreasure(Treasure t)
-//    {
-//
-//    }
-//    public void discardHiddenTreasure(Treasure t)
-//    {
-//        for(Treasure T : this.hiddenTreasures)
-//            if (T.getName()==t.getName())
-//                hiddenTreasures.remove(T);
-//    }
+
 //    public boolean buyLevels(Treasure [] visible, Treasure [] hidden)
 //    {
 //        return true;
 //    }
+
+    public void applyPrize(Prize p)
+    {
+        incrementLevels(p.getLevels());
+        for(int i = 0;i<p.getTreasures();i++)
+            hiddenTreasures.add(CardDealer.getInstance().nextTreasure());
+    }
+    public CombatResult combat(Monster m)
+    {
+        CombatResult combate = CombatResult.LOSEANDESCAPE;
+        if(getCombatLevel() > m.getCombatLevel())
+        {
+            applyPrize(m.getPrize());
+            if(level > 9)
+                combate = CombatResult.WINANDWINGAME;
+            else
+                combate = CombatResult.WIN;
+        }
+        else if(Dice.getInstance().nextNumber()<5)
+        {
+            if(m.getBadConsequence().kills())
+            {
+                die();
+                combate = CombatResult.LOSEANDDIE;
+            }
+            else
+            {
+                applyBadConsequence(m.getBadConsequence());
+                combate = CombatResult.LOSE;
+            }
+        }
+        discardNecklaceIfVisible();
+        return combate;
+    }
+    public void applyBadConsequence(BadConsequence bad)
+    {
+        if(bad.getLevels()!=0)
+            decrementLevels(bad.getLevels());
+        BadConsequence b = pendingBadConsequence.adjustToFitTreasureLists(visibleTreasures, hiddenTreasures);
+        setPendingBadConsequence(b);
+    }
+    public boolean makeTreasureVisible(Treasure t)
+    {
+        boolean puedo = canMakeTreasureVisible(t);
+        if(puedo)
+        {
+            visibleTreasures.add(t);
+            hiddenTreasures.remove(t);
+        }
+        return puedo;
+    }
+    public boolean canMakeTreasureVisible(Treasure t)
+    {
+        visibleTreasures.add(t);
+        boolean valid = false;
+        boolean [] valido = new boolean[6];
+        for (int j = 0;j<6;j++)
+                valido[j]=false;
+        for(Treasure i : visibleTreasures)
+        {
+            if(t.getType()==TreasureKind.ARMOR)
+            {
+                if(valido[0])
+                    valid = false;
+                else
+                    valido[0]=true;
+            }
+            else if(t.getType()==TreasureKind.BOTHHANDS)
+            {   
+                if(valido[3]||valido[4])
+                    valid = false;
+                else
+                {
+                    valido[3]=true;
+                    valido[4]=true;
+                }
+            }
+            else if(t.getType()==TreasureKind.HELMET)
+            {
+                if(valido[1])
+                    valid = false;
+                else
+                    valido[1]=true;
+            }
+            else if(t.getType()==TreasureKind.NECKLACE)
+            {
+                if(valido[2])
+                    valid = false;
+                else
+                    valido[2]=true;
+            }
+            else if(t.getType()==TreasureKind.ONEHAND)
+            {
+                if(valido[3])
+                    if(valido[4])
+                        valid=false;
+                    else
+                        valido[4]=true;
+                else
+                    valido[3]=true;
+            }
+            else
+            {
+                if(valido[5])
+                    valid = false;
+                else
+                    valido[5]=true;
+            }
+        }
+        visibleTreasures.remove(t);
+        return valid;
+    }
+    public void discardVisibleTreasure(Treasure t)
+    {
+        visibleTreasures.remove(t);
+        if((pendingBadConsequence!=null) && (!pendingBadConsequence.isEmpty()))
+            pendingBadConsequence.substractVisibleTreasure(t);
+        CardDealer.getInstance().giveTreasureBack(t);
+        dieIfNoTreasures();
+    }
+    public void discardHiddenTreasure(Treasure t)
+    {
+        hiddenTreasures.remove(t);
+        CardDealer.getInstance().giveTreasureBack(t);
+    }
+    public boolean buyLevels(ArrayList <Treasure> visible, ArrayList <Treasure> hidden)
+    {
+        float levels = computeGoldCoinsValue(visible);
+        levels += computeGoldCoinsValue(hidden);
+        boolean canI = canIBuyLevels((int)levels);
+        if(canI)
+        {
+            incrementLevels((int)levels);
+            for (Treasure t:visible)
+                this.discardVisibleTreasure(t);
+            for (Treasure t:hidden)
+                this.discardHiddenTreasure(t);
+        }
+        return canI;
+    }
+
+    
+    
+    
     public int getCombatLevel()
     {
         int combatLevel = level, combatLevelCollar = level;
@@ -186,70 +257,19 @@ public class Player {
             return false;
         else
             return true;
-        
-        /* idea que comprueba si cumple las reglas de los tesoros visibles
-        else
-        {
-            for (int i = 0;i<6;i++)
-                valido[i]=false;
-            for(Treasure t : visibleTreasures)
-            {
-                if(t.getType()==TreasureKind.ARMOR)
-                {
-                    if(valido[0])
-                        valid = false;
-                    else
-                        valido[0]=true;
-                }
-                else if(t.getType()==TreasureKind.BOTHHANDS)
-                {   
-                    if(valido[3]||valido[4])
-                        valid = false;
-                    else
-                    {
-                        valido[3]=true;
-                        valido[4]=true;
-                    }
-                }
-                else if(t.getType()==TreasureKind.HELMET)
-                {
-                    if(valido[1])
-                        valid = false;
-                    else
-                        valido[1]=true;
-                }
-                else if(t.getType()==TreasureKind.NECKLACE)
-                {
-                    if(valido[2])
-                        valid = false;
-                    else
-                        valido[2]=true;
-                }
-                else if(t.getType()==TreasureKind.ONEHAND)
-                {
-                    if(valido[3])
-                        if(valido[4])
-                            valid=false;
-                        else
-                            valido[4]=true;
-                    else
-                        valido[3]=true;
-                }
-                else
-                {
-                    if(valido[5])
-                        valid = false;
-                    else
-                        valido[5]=true;
-                }
-            }
-        }*/
-//        return valid;
     }
-//    public boolean initTreasures()
-//    {
-//        return true;
-//    }
+    public boolean initTreasures()
+    {
+        int tirada = Dice.getInstance().nextNumber(), numeroTesoros=2;
+        if(tirada==6)
+            numeroTesoros = 3;
+        else if (tirada == 1)
+            numeroTesoros = 1;
+        
+        for(int i = 0;i<numeroTesoros;i++)
+            hiddenTreasures.add(CardDealer.getInstance().nextTreasure());
+        return true;
+    }
     public boolean isDead()
     {
         return dead;
