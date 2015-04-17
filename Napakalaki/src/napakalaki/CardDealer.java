@@ -200,6 +200,14 @@ public class CardDealer {
         return monstruo; 
     }
 
+    public void initCards() // el llamador de estos métodos es this
+    {
+        initMonsterCardDeck();
+        initTreasureCardDeck();
+        shuffleMonsters();
+        shuffleTreasures();
+    }
+
     public void giveTreasureBack(Treasure t)
     {
         usedTreasures.add(t);
@@ -210,14 +218,5 @@ public class CardDealer {
     {
         usedMonsters.add(m);
         unusedMonsters.remove(m);
-    }
-
-    public void initCards() // el llamador de estos métodos es this
-    {
-        initMonsterCardDeck();
-        initTreasureCardDeck();
-        shuffleMonsters();
-        shuffleTreasures();
-    }
-        
+    }   
 }

@@ -19,13 +19,13 @@ public class Player {
     private ArrayList <Treasure> visibleTreasures;
     private ArrayList <Treasure> hiddenTreasures;
     private BadConsequence pendingBadConsequence;
-    final private CardDealer dealer = CardDealer.getInstance();
+    final private CardDealer dealer = CardDealer.getInstance(); // no necesariamente
     
     public Player(String name)
     {
         this.level = 1;
-        this.visibleTreasures = new ArrayList();
-        this.hiddenTreasures = new ArrayList();
+        this.visibleTreasures = new ArrayList<>();
+        this.hiddenTreasures = new ArrayList<>();
         this.pendingBadConsequence = new BadConsequence("Vacio", false);
         this.name=name;
         this.dead=true;
@@ -54,7 +54,7 @@ public class Player {
             discardVisibleTreasure(t);
         for(Treasure t: hiddenTreasures)
             discardHiddenTreasure(t);
-        dead= true;
+        dead = true;
     }
     private void discardNecklaceIfVisible()
     {
@@ -106,6 +106,9 @@ public class Player {
                 combate = CombatResult.WINANDWINGAME;
             else
                 combate = CombatResult.WIN;
+            //Versión compacta de if/else
+            // combate = level > 9 ? CombatResult.WINANDWINGAME : CombatResult.WIN;
+            // variable = if(  "   ){            "           }else{       "      } 
         }
         else if(Dice.getInstance().nextNumber()<5)
         {
@@ -148,7 +151,7 @@ public class Player {
         for (int j=0;j<6;j++)
                 valido[j]=false;
         
-        for(Treasure i : visibleTreasures)//Se recomienda altamanete una implementación con switch
+        for(Treasure i : visibleTreasures)//Se recomienda altamente una implementación con switch
         {
             if(i.getType()==TreasureKind.ARMOR)
             {
@@ -249,12 +252,16 @@ public class Player {
             return combatLevelCollar;
         else
             return combatLevel;
+        // Versión compacta
+        // return collar==true ? combatLevelCollar : combatLevel;
+        //        if(    "    ){       "        }else{     "     } 
+        
     }
     public boolean validState()
     {
         return !(hiddenTreasures.size()<4 && pendingBadConsequence.isEmpty());
     }
-    public boolean initTreasures()
+    public void initTreasures()
     {
         int tirada = Dice.getInstance().nextNumber(), numeroTesoros=2;
         if(tirada==6)
@@ -265,7 +272,6 @@ public class Player {
         for(int i = 0;i<numeroTesoros;i++)
             hiddenTreasures.add(dealer.nextTreasure());
         
-        return true;
     }
     public boolean isDead()
     {

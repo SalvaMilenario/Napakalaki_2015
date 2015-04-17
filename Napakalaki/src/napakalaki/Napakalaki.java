@@ -24,7 +24,8 @@ public class Napakalaki {
     // El constructor privado no permite que se genere un constructor por defecto.
     // (con mismo modificador de acceso que la definición de la clase)
     private Napakalaki()
-    {  
+    {
+        
     }
     public static Napakalaki getInstance()
     {

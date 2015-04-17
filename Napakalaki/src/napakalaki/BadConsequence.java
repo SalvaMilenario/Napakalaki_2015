@@ -95,15 +95,12 @@ public class BadConsequence
     
     public boolean isEmpty()
     {
-        if( levels==0 &&
-            specificVisibleTreasures.isEmpty() &&
-            specificHiddenTreasures.isEmpty() &&
-            nVisibleTreasures==0 &&
-            nHiddenTreasures==0 &&
-            !death )
-           return true;
-        else 
-           return false;
+        return levels==0 &&
+                specificVisibleTreasures.isEmpty() &&
+                specificHiddenTreasures.isEmpty() &&
+                nVisibleTreasures==0 &&
+                nHiddenTreasures==0 &&
+                !death;
                 
     }
     
@@ -113,6 +110,7 @@ public class BadConsequence
             specificVisibleTreasures.remove(t.getType());
         else
             nVisibleTreasures = (nVisibleTreasures-1) < 0 ? 0 : nVisibleTreasures-1 ;
+            // variable  =        if(            "       ){ " }else{       "      } 
     }
     
     public void substractHiddenTreasure(Treasure t)//one way or another
@@ -120,8 +118,11 @@ public class BadConsequence
         if(nHiddenTreasures==0)
             specificHiddenTreasures.remove(t.getType());
         else
-            nHiddenTreasures = (nHiddenTreasures-1) < 0 ? 0 : nHiddenTreasures-1 ;     
+            nHiddenTreasures = (nHiddenTreasures-1) < 0 ? 0 : nHiddenTreasures-1 ;   
+            // variable  =        if(            "     ){ " }else{       "      } 
+           
     }
+    
     public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h)//MAL
     {
         BadConsequence newBadConsequence;
@@ -162,7 +163,7 @@ public class BadConsequence
         {
            int minVisibleTreasures = nVisibleTreasures > v.size() ? v.size() : nVisibleTreasures ;
            int minHiddenTreasures = nHiddenTreasures > v.size() ? v.size() : nHiddenTreasures ;
-           // variable  = if            "              {   "   }else{   s    "      } 
+           // variable  =        if(            "                ){   "   }else{       "      } 
            newBadConsequence = new BadConsequence(text, levels, minVisibleTreasures, minHiddenTreasures);
         }
         return newBadConsequence;
