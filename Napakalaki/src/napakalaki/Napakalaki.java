@@ -20,6 +20,7 @@ public class Napakalaki {
     private Monster currentMonster;
     private int currentPlayerIndex; //índice del jugador que posee el turno
     private static boolean firstTurn = true;
+    private CardDealer dealer = CardDealer.getInstance();
     // El constructor privado no permite que se genere un constructor por defecto.
     // (con mismo modificador de acceso que la definición de la clase)
     private Napakalaki()
@@ -58,31 +59,48 @@ public class Napakalaki {
 //        
 //    }
     
-//    public void discardVisibleTreasure(Treasure t)
-//    {
-//        
-//    }
-//    
-//    public void discardHiddenTreasure(Treasure t)
-//    {
-//        
-//    }
+    public void discardVisibleTreasure(Treasure t)
+    {
+        //(aun sin implementar)currentPlayer.discardVisibleTreasure(t); // en el diagrama pone player
+        if((currentPlayer.getPendingBadConsequence()!=null) && 
+           (!currentPlayer.getPendingBadConsequence().isEmpty()) )
+        {
+            //currentPlayer.substractVisibleTreasure(t);
+        }
+        dealer.giveTreasureBack(t);
+       // currentPlayer.dieIfNoTreasures();
+    }
+    
+    public void discardHiddenTreasure(Treasure t)
+    {
+        //(aun sin implementar)currentPlayer.discardVisibleTreasure(t); // en el diagrama pone player
+        if((currentPlayer.getPendingBadConsequence()!=null) && 
+           (!currentPlayer.getPendingBadConsequence().isEmpty()) )
+        {
+            //currentPlayer.substractVisibleTreasure(t);
+        }
+        dealer.giveTreasureBack(t);
+       // currentPlayer.dieIfNoTreasures()   
+    }
     
 //    public boolean makeTreasureVisible(Treasure t)
 //    {
-//        
+//        return currentPlayer.canMakeTreasureVisible(t);
 //    }
 //    
 //    public boolean buyLevels(ArrayList<Treasure> visible,
 //                                ArrayList<Treasure> hidden)
 //    {
-//        
+//        //return currentPlayer.buyLevels(visible, hidden);
 //    } 
 
-//    public void initGame(ArrayList<String> players)
-//    {
-//        
-//    }
+    public void initGame(ArrayList<String> players)
+    {
+        initPlayers(players);
+        dealer.initCards();
+        nextTurn();
+
+    }
     
     public Player getCurrentPlayer()
     {
@@ -94,10 +112,6 @@ public class Napakalaki {
         return currentMonster;
     }
 
-//    public boolean canMakeTreasureVisible(Treasure t)
-//    {
-//        
-//    }
     
 //    public ArrayList<Treasure> getVisibleTreasures()
 //    {
@@ -109,10 +123,17 @@ public class Napakalaki {
 //        
 //    }
     
-//    public boolean nextTurn()
-//    {
-//        
-//    }
+    public boolean nextTurn()
+    {
+        if( nextTurnIsAllowed() ){ 
+            currentMonster = dealer.nextMonster();
+            currentPlayer =  nextPLayer();
+            if(currentPlayer.isDead()){
+                //currentPlayer.initTreasures(); falta por implementar este método
+            }
+        }
+        return nextTurnIsAllowed();
+    }
         
     public boolean nextTurnIsAllowed()
     {
