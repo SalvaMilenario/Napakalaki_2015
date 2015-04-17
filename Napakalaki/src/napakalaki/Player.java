@@ -140,15 +140,15 @@ public class Player {
         }
         return canI;
     }
-    public boolean canMakeTreasureVisible(Treasure t)
+    public boolean canMakeTreasureVisible(Treasure t) 
     {
         visibleTreasures.add(t);
         boolean canI = false;
         boolean [] valido = new boolean[6];
-        for (int j = 0;j<6;j++)
+        for (int j=0;j<6;j++)
                 valido[j]=false;
         
-        for(Treasure i : visibleTreasures)
+        for(Treasure i : visibleTreasures)//Se recomienda altamanete una implementación con switch
         {
             if(i.getType()==TreasureKind.ARMOR)
             {
@@ -216,7 +216,7 @@ public class Player {
         if( pendingBadConsequence!=null && !pendingBadConsequence.isEmpty() )
             pendingBadConsequence.substractHiddenTreasure(t);
         dealer.giveTreasureBack(t);
-        dieIfNoTreasures();;
+        dieIfNoTreasures();
     }
     public boolean buyLevels(ArrayList <Treasure> visible, ArrayList <Treasure> hidden)
     {
@@ -234,9 +234,6 @@ public class Player {
         return canI;
     }
 
-    
-    
-    
     public int getCombatLevel()
     {
         int combatLevel = level, combatLevelCollar = level;
@@ -255,10 +252,7 @@ public class Player {
     }
     public boolean validState()
     {
-        if(hiddenTreasures.size()<4 && pendingBadConsequence.isEmpty())
-            return false;
-        else
-            return true;
+        return !(hiddenTreasures.size()<4 && pendingBadConsequence.isEmpty());
     }
     public boolean initTreasures()
     {
