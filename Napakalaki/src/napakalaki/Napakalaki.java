@@ -53,46 +53,32 @@ public class Napakalaki {
         currentPlayer = players.get(currentPlayerIndex);
         return currentPlayer;
     }
-//
-//    public CombatResult combat()
-//    {
-//        
-//    }
+
+    public CombatResult combat()
+    {
+        return currentPlayer.combat(currentMonster);
+    }
     
     public void discardVisibleTreasure(Treasure t)
     {
-        //(aun sin implementar)currentPlayer.discardVisibleTreasure(t); // en el diagrama pone player
-        if((currentPlayer.getPendingBadConsequence()!=null) && 
-           (!currentPlayer.getPendingBadConsequence().isEmpty()) )
-        {
-            //currentPlayer.substractVisibleTreasure(t);
-        }
-        dealer.giveTreasureBack(t);
-       // currentPlayer.dieIfNoTreasures();
+        currentPlayer.discardVisibleTreasure(t);
     }
     
     public void discardHiddenTreasure(Treasure t)
     {
-        //(aun sin implementar)currentPlayer.discardVisibleTreasure(t); // en el diagrama pone player
-        if((currentPlayer.getPendingBadConsequence()!=null) && 
-           (!currentPlayer.getPendingBadConsequence().isEmpty()) )
-        {
-            //currentPlayer.substractVisibleTreasure(t);
-        }
-        dealer.giveTreasureBack(t);
-       // currentPlayer.dieIfNoTreasures()   
+        currentPlayer.discardHiddenTreasure(t);
     }
     
-//    public boolean makeTreasureVisible(Treasure t)
-//    {
-//        return currentPlayer.canMakeTreasureVisible(t);
-//    }
-//    
-//    public boolean buyLevels(ArrayList<Treasure> visible,
-//                                ArrayList<Treasure> hidden)
-//    {
-//        //return currentPlayer.buyLevels(visible, hidden);
-//    } 
+    public boolean makeTreasureVisible(Treasure t)
+    {
+        return currentPlayer.canMakeTreasureVisible(t);
+    }
+    
+    public boolean buyLevels(ArrayList<Treasure> visible,
+                                ArrayList<Treasure> hidden)
+    {
+        return currentPlayer.buyLevels(visible, hidden);
+    } 
 
     public void initGame(ArrayList<String> players)
     {
@@ -129,7 +115,7 @@ public class Napakalaki {
             currentMonster = dealer.nextMonster();
             currentPlayer =  nextPLayer();
             if(currentPlayer.isDead()){
-                //currentPlayer.initTreasures(); falta por implementar este método
+                currentPlayer.initTreasures();// falta por implementar este método
             }
         }
         return nextTurnIsAllowed();
