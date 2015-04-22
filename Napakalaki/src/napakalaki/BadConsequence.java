@@ -104,7 +104,7 @@ public class BadConsequence
                 
     }
     
-    public void substractVisibleTreasure(Treasure t)//de un modo o de otro
+    public void substractVisibleTreasure(Treasure t)
     {
         if(nVisibleTreasures==0)
             specificVisibleTreasures.remove(t.getType());
@@ -113,7 +113,7 @@ public class BadConsequence
             // variable  =        if(            "       ){ " }else{       "      } 
     }
     
-    public void substractHiddenTreasure(Treasure t)//one way or another
+    public void substractHiddenTreasure(Treasure t)
     {
         if(nHiddenTreasures==0)
             specificHiddenTreasures.remove(t.getType());
@@ -123,46 +123,61 @@ public class BadConsequence
            
     }
     
-    public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h)//MAL
+    public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h)
     {
+//       Caso problemático -> Arreglado, ahora funciona
+//       v := ONEHAND, ONEHAND, HELMET
+//       specificVisibleTreasures := ONEHAND, HELMET
+//       Además los casos restantes también furulan bien
         BadConsequence newBadConsequence;
         if(nVisibleTreasures==0 && nHiddenTreasures==0)
         { // solo tesoros especificos
             ArrayList<TreasureKind> newVisibleTreasures = new ArrayList<>();
             ArrayList<TreasureKind> newHiddenTreasures = new ArrayList<>();
-            boolean add = true;
+            boolean onlyOneV, onlyOneSpecific, add = true;
             for(Treasure t : v) // Visible a ajustar
-                if(specificVisibleTreasures.contains(t.getType())) // TODO Si está en los dos mirar casos repetidos
+                if(specificVisibleTreasures.contains(t.getType()))
                 {
-                    if(specificVisibleTreasures.lastIndexOf(t) == specificVisibleTreasures.indexOf(t))
-                    {//Quiere decir que solo hau un objeto de este tipo en el array
+                    onlyOneV = v.lastIndexOf(t)==v.indexOf(t);
+                    onlyOneSpecific = 
+                            specificVisibleTreasures.lastIndexOf(t.getType()) ==
+                            specificVisibleTreasures.indexOf(t.getType());
+                    if(!onlyOneV && onlyOneSpecific)
+                    {
+                        if(add)
+                        {
+                            add = false;
+                            newVisibleTreasures.add(t.getType());
+                        }
+                    }else
                         newVisibleTreasures.add(t.getType());
-                    }
-                    else if(add){// si entra aquí quiere decir que hay dos objetos ONEHAND
-                        add = false;
-                        newVisibleTreasures.add(t.getType());
-                    }
-                }          
-            add = true;                                           
-            for(Treasure t : h) // Oculto a ajustar 
-                if(specificHiddenTreasures.contains(t.getType())) // TODO Si está en los dos mirar casos repetidos
+                }
+            add = true;    
+            
+            for(Treasure t : h) // Oculto a ajustar
+                if(specificHiddenTreasures.contains(t.getType()))
                 {
-                    if(specificHiddenTreasures.lastIndexOf(t) == specificHiddenTreasures.indexOf(t))
-                    {//Quiere decir que solo hau un objeto de este tipo en el array
+                    onlyOneV = h.lastIndexOf(t)==h.indexOf(t);
+                    onlyOneSpecific = 
+                            specificHiddenTreasures.lastIndexOf(t.getType()) ==
+                            specificHiddenTreasures.indexOf(t.getType());
+                    if(!onlyOneV && onlyOneSpecific)
+                    {
+                        if(add)
+                        {
+                            add = false;
+                            newHiddenTreasures.add(t.getType());
+                        }
+                    }else
                         newHiddenTreasures.add(t.getType());
-                    }
-                    else if(add){// si entra aquí quiere decir que hay dos objetos ONEHAND
-                        add = false;
-                        newHiddenTreasures.add(t.getType());
-                    }
-                }          
+                }         
             
             newBadConsequence = new BadConsequence(text, levels, newVisibleTreasures, newHiddenTreasures);
         }
         else
         {
            int minVisibleTreasures = nVisibleTreasures > v.size() ? v.size() : nVisibleTreasures ;
-           int minHiddenTreasures = nHiddenTreasures > v.size() ? v.size() : nHiddenTreasures ;
+           int minHiddenTreasures = nHiddenTreasures > h.size() ? h.size() : nHiddenTreasures ;
            // variable  =        if(            "                ){   "   }else{       "      } 
            newBadConsequence = new BadConsequence(text, levels, minVisibleTreasures, minHiddenTreasures);
         }
@@ -181,8 +196,8 @@ public class BadConsequence
         String textoArrayVisibleTreasures = " \n\tArray Specific Visible Treasures: ";
         if(!specificHiddenTreasures.isEmpty())
         {
-            for (TreasureKind tk : specificHiddenTreasures) // también se puede implementar con iteradores
-                textoArrayHiddenTreasures += (tk.toString() + " "); // añade al texto cada valor del array
+            for (TreasureKind tk : specificHiddenTreasures)
+                textoArrayHiddenTreasures += (tk.toString() + " ");
         }
         else
         {
