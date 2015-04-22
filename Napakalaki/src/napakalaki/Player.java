@@ -85,11 +85,6 @@ public class Player {
         return niveles;
     }
 
-//    public boolean buyLevels(Treasure [] visible, Treasure [] hidden)
-//    {
-//        return true;
-//    }
-
     public void applyPrize(Prize p)
     {
         incrementLevels(p.getLevels());
