@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -14,7 +14,7 @@ public class Player {
     
     final private static int MAXHIDDENTREASURES = 4;
     private boolean dead;
-    private String name;
+    final private String name;
     private int level;
     private ArrayList <Treasure> visibleTreasures;
     private ArrayList <Treasure> hiddenTreasures;
@@ -41,7 +41,7 @@ public class Player {
     }
     private void decrementLevels(int l)
     {
-        level = level - l;
+        level = level-l<0 ? 0 : level-l ;
     }
     private void setPendingBadConsequence(BadConsequence b)
     {
@@ -231,7 +231,6 @@ public class Player {
         }
         return canI;
     }
-
     public int getCombatLevel()
     {
         int combatLevel = level, combatLevelCollar = level;
@@ -283,5 +282,9 @@ public class Player {
     public ArrayList <Treasure> getHiddenTreasures()
     {
         return hiddenTreasures;
+    }
+    public String getName()
+    {
+        return name;
     }
 }
