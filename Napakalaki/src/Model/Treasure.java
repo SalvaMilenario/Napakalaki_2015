@@ -51,10 +51,10 @@ public class Treasure {
     }
     @Override
     public String toString(){
-        return "\nTesoro: " + name + 
-                "\n\tGoldBonus: " + Integer.toString(goldBonus) + 
-                "\n\tMinBonus: " + Integer.toString(minBonus) + 
-                "\n\tMaxBonus: " + Integer.toString(maxBonus) +
-                "\n\tTreasureKind: " + type;
+        return "\n\tTesoro: " + name + 
+               "\n\t\tGoldBonus: " + Integer.toString(goldBonus) + 
+               "\n\t\tMinBonus: " + Integer.toString(minBonus) + 
+               "\n\t\tMaxBonus: " + Integer.toString(maxBonus) +
+               "\n\t\tTreasureKind: " + type;
     }
 }

@@ -126,6 +126,7 @@ public class Player {
         if(bad.getLevels()!=0)
             decrementLevels(bad.getLevels());
         BadConsequence b = pendingBadConsequence.adjustToFitTreasureLists(visibleTreasures, hiddenTreasures);
+        System.out.println(b.toString());
         setPendingBadConsequence(b);
     }
     public boolean makeTreasureVisible(Treasure t)
@@ -288,30 +289,30 @@ public class Player {
     {
         String textoInicial = "\n\tName = " + name + 
                 " \n\tLevel = " + Integer.toString(level) + 
-                " \n\tPendingBadconsequence = " + pendingBadConsequence.toString() +
-                " \n\tDead = " + Boolean.toString(dead);
-        String textoHiddenTreasures = " \n\tArray Hidden Treasures: ";
-        String textoVisibleTreasures = " \n\tArray Visible Treasures: ";
+                " \n\tPendingBadconsequence: { " + pendingBadConsequence.toString() +
+                "\n\t} \n\tDead = " + Boolean.toString(dead);
+        String textoHiddenTreasures = " \n\tArray Hidden Treasures: { ";
+        String textoVisibleTreasures = " \n\tArray Visible Treasures: { ";
         if(!visibleTreasures.isEmpty())
         {
             for (Treasure t : visibleTreasures)
-                textoHiddenTreasures += (t.toString() + " ");
+                textoVisibleTreasures += (t.toString() + " ");
         }
         else
         {
-            textoHiddenTreasures += "No tiene ningún tesoro oculto.";
+            textoVisibleTreasures += "No tiene ningún tesoro visible. ";
         }
         
         if(!hiddenTreasures.isEmpty())
         {
             for (Treasure t : hiddenTreasures)
-                textoVisibleTreasures += (t.toString() + " ");
+                textoHiddenTreasures += (t.toString() + " ");
         }
         else
         {
-            textoVisibleTreasures += "No tiene ningún tesoro visible.";
+            textoHiddenTreasures += "No tiene ningún tesoro oculto. ";
         }
-        return textoInicial + textoHiddenTreasures + textoVisibleTreasures;
+        return textoInicial + textoHiddenTreasures + "}" + textoVisibleTreasures + "}";
     }
     public String getName()
     {
