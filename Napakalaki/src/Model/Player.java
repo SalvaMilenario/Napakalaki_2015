@@ -31,7 +31,7 @@ public class Player {
         this.dead=true;
     }
     
-    private void bringToLife()
+    private void bringToLive()
     {
         dead = false;
     }
@@ -258,7 +258,7 @@ public class Player {
     }
     public void initTreasures()
     {
-        bringToLife();
+        bringToLive();
         int tirada = Dice.getInstance().nextNumber(), numeroTesoros=2;
         if(tirada==6)
             numeroTesoros = 3;
