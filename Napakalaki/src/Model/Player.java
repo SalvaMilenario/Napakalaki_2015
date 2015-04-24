@@ -283,7 +283,38 @@ public class Player {
     {
         return hiddenTreasures;
     }
-    public String getName(){
+    @Override
+    public String toString()
+    {
+        String textoInicial = "\n\tName = " + name + 
+                " \n\tLevel = " + Integer.toString(level) + 
+                " \n\tPendingBadconsequence = " + pendingBadConsequence.toString() +
+                " \n\tDead = " + Boolean.toString(dead);
+        String textoHiddenTreasures = " \n\tArray Hidden Treasures: ";
+        String textoVisibleTreasures = " \n\tArray Visible Treasures: ";
+        if(!visibleTreasures.isEmpty())
+        {
+            for (Treasure t : visibleTreasures)
+                textoHiddenTreasures += (t.toString() + " ");
+        }
+        else
+        {
+            textoHiddenTreasures += "No tiene ningún tesoro oculto.";
+        }
+        
+        if(!hiddenTreasures.isEmpty())
+        {
+            for (Treasure t : hiddenTreasures)
+                textoVisibleTreasures += (t.toString() + " ");
+        }
+        else
+        {
+            textoVisibleTreasures += "No tiene ningún tesoro visible.";
+        }
+        return textoInicial + textoHiddenTreasures + textoVisibleTreasures;
+    }
+    public String getName()
+    {
         return name;
     }
 }
