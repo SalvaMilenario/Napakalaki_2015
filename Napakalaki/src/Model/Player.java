@@ -81,7 +81,7 @@ public class Player {
     {
         float niveles = 0;
         for (Treasure i : t)
-            niveles += i.getGoldCoins()/1000;
+            niveles += (float)i.getGoldCoins()/1000; // esta operación sin el casting es entera U.U
         return niveles;
     }
 
@@ -142,7 +142,7 @@ public class Player {
     public boolean canMakeTreasureVisible(Treasure t) 
     {
         visibleTreasures.add(t);
-        boolean canI = false;
+        boolean canI = true;// debe de ser inicialmente verdadero
         boolean [] valido = new boolean[6];
         for (int j=0;j<6;j++)
                 valido[j]=false;
