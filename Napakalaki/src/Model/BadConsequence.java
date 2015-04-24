@@ -100,7 +100,7 @@ public class BadConsequence
                 specificHiddenTreasures.isEmpty() &&
                 nVisibleTreasures==0 &&
                 nHiddenTreasures==0 &&
-                !death;
+                death==false;
                 
     }
     
