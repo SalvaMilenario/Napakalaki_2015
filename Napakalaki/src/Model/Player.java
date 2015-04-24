@@ -28,7 +28,7 @@ public class Player {
         this.hiddenTreasures = new ArrayList<>();
         this.pendingBadConsequence = new BadConsequence("Vacio", false);
         this.name=name;
-        this.dead=false; // según las pruebas, cuando se crean están vivos
+        this.dead=true;
     }
     
     private void bringToLife()
@@ -41,7 +41,7 @@ public class Player {
     }
     private void decrementLevels(int l)
     {
-        level = level-l<0 ? 0 : level-l ;
+        level = level-l<1 ? 1 : level-l ;
     }
     private void setPendingBadConsequence(BadConsequence b)
     {
@@ -258,6 +258,7 @@ public class Player {
     }
     public void initTreasures()
     {
+        bringToLife();
         int tirada = Dice.getInstance().nextNumber(), numeroTesoros=2;
         if(tirada==6)
             numeroTesoros = 3;
