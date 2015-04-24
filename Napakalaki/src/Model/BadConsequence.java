@@ -124,7 +124,7 @@ public class BadConsequence
     }
     
     public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h)
-    {
+    { // hay que darle aún más repasos a esta implementación
 //       Caso problemático -> Arreglado, ahora funciona
 //       v := ONEHAND, ONEHAND, HELMET
 //       specificVisibleTreasures := ONEHAND, HELMET
@@ -132,8 +132,10 @@ public class BadConsequence
         BadConsequence newBadConsequence;
         if(nVisibleTreasures==0 && nHiddenTreasures==0)
         { // solo tesoros especificos
-            ArrayList<TreasureKind> newVisibleTreasures = new ArrayList<>();
-            ArrayList<TreasureKind> newHiddenTreasures = new ArrayList<>();
+            ArrayList<TreasureKind> newVisibleTreasuresBad = new ArrayList<>();
+            ArrayList<Treasure> newVisibleTreasuresPlayer = new ArrayList<>();
+            ArrayList<TreasureKind> newHiddenTreasuresBad = new ArrayList<>();
+            ArrayList<Treasure> newHiddenTreasuresPlayer = new ArrayList<>();
             boolean onlyOneV, onlyOneSpecific, add = true;
             for(Treasure t : v) // Visible a ajustar
                 if(specificVisibleTreasures.contains(t.getType()))
@@ -147,11 +149,15 @@ public class BadConsequence
                         if(add)
                         {
                             add = false;
-                            newVisibleTreasures.add(t.getType());
+                            newVisibleTreasuresPlayer.add(t);
+                            newVisibleTreasuresBad.add(t.getType());
                         }
-                    }else
-                        newVisibleTreasures.add(t.getType());
+                    }else{
+                        newVisibleTreasuresPlayer.add(t);
+                        newVisibleTreasuresBad.add(t.getType());
+                    }
                 }
+            v = newVisibleTreasuresPlayer;
             add = true;    
             
             for(Treasure t : h) // Oculto a ajustar
@@ -166,13 +172,16 @@ public class BadConsequence
                         if(add)
                         {
                             add = false;
-                            newHiddenTreasures.add(t.getType());
+                            newHiddenTreasuresPlayer.add(t);
+                            newHiddenTreasuresBad.add(t.getType());
                         }
-                    }else
-                        newHiddenTreasures.add(t.getType());
-                }         
-            
-            newBadConsequence = new BadConsequence(text, levels, newVisibleTreasures, newHiddenTreasures);
+                    }else{
+                        newHiddenTreasuresPlayer.add(t);
+                        newHiddenTreasuresBad.add(t.getType());
+                    }
+                }
+            h = newHiddenTreasuresPlayer;
+            newBadConsequence = new BadConsequence(text, levels, newVisibleTreasuresBad, newHiddenTreasuresBad);
         }
         else
         {
