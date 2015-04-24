@@ -24,7 +24,7 @@ public class Treasure {
         this.maxBonus = max;
         this.type = t;
     }
-    
+
     public String getName()
     {
         return name;
@@ -48,5 +48,13 @@ public class Treasure {
     public TreasureKind getType()
     {
         return type;
+    }
+    @Override
+    public String toString(){
+        return "\nTesoro: " + name + 
+                "\n\tGoldBonus: " + Integer.toString(goldBonus) + 
+                "\n\tMinBonus: " + Integer.toString(minBonus) + 
+                "\n\tMaxBonus: " + Integer.toString(maxBonus) +
+                "\n\tTreasureKind: " + type;
     }
 }
