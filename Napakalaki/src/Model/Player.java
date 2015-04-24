@@ -28,7 +28,7 @@ public class Player {
         this.hiddenTreasures = new ArrayList<>();
         this.pendingBadConsequence = new BadConsequence("Vacio", false);
         this.name=name;
-        this.dead=true;
+        this.dead=false; // según las pruebas, cuando se crean están vivos
     }
     
     private void bringToLife()
