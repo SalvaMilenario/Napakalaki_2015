@@ -33,16 +33,16 @@ public class Napakalaki {
     }
     private void initPlayers(ArrayList<String> names)
     {
+        players = new ArrayList<>();
         for(String n : names)
             players.add(new Player(n));
     }
-    
-    private Player nextPLayer()
+    private Player nextPlayer()
     {
         if(firstTurn) // Si es el primer turno
         {
             firstTurn=false; // el primer índice se selecciona con el dado
-            currentPlayerIndex = Dice.getInstance().nextNumber();
+            currentPlayerIndex = Dice.getInstance().nextNumber()%players.size();
         }
         else
         {
@@ -110,9 +110,10 @@ public class Napakalaki {
     
     public boolean nextTurn()
     {
+        
         if( nextTurnIsAllowed() ){ 
             currentMonster = dealer.nextMonster();
-            currentPlayer =  nextPLayer();
+            currentPlayer =  nextPlayer();
             if(currentPlayer.isDead()){
                 currentPlayer.initTreasures();
             }
@@ -122,7 +123,8 @@ public class Napakalaki {
         
     public boolean nextTurnIsAllowed()
     {
-        return currentPlayer.validState();
+//      En la primera ejecución, currentPlayer aún es nulo
+        return currentPlayer==null ? true : currentPlayer.validState();
     }
         
     public boolean endOfGame(CombatResult result)
