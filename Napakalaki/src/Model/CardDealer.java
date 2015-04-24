@@ -34,6 +34,7 @@ public class CardDealer {
     
     private void initTreasureCardDeck()
     {
+        usedTreasures = new ArrayList<>();
         unusedTreasures = new ArrayList<>();
         unusedTreasures.add(new Treasure("¡Sí mi amo!", 0, 4, 7, TreasureKind.HELMET));
         unusedTreasures.add(new Treasure("Botas de investigación", 600, 3, 4, TreasureKind.SHOE));
@@ -71,7 +72,8 @@ public class CardDealer {
 
     private void initMonsterCardDeck()
     {
-        unusedMonsters = new ArrayList();
+        usedMonsters = new ArrayList<>();
+        unusedMonsters = new ArrayList<>();
         BadConsequence badConsequence;
         Prize prize;
         
