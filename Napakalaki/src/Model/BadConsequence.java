@@ -6,6 +6,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 /**
  *
  * @author xehartnort
@@ -157,6 +158,7 @@ public class BadConsequence
                         newVisibleTreasuresBad.add(t.getType());
                     }
                 }
+            //Una vez que conocemos el ajuste, lo asignamos a v
             v = newVisibleTreasuresPlayer;
             add = true;    
             
@@ -180,14 +182,25 @@ public class BadConsequence
                         newHiddenTreasuresBad.add(t.getType());
                     }
                 }
+            //Una vez que conocemos el ajuste, lo asignamos a h
             h = newHiddenTreasuresPlayer;
             newBadConsequence = new BadConsequence(text, levels, newVisibleTreasuresBad, newHiddenTreasuresBad);
         }
         else
         {
-           int minVisibleTreasures = nVisibleTreasures > v.size() ? nVisibleTreasures-v.size() : v.size()-nVisibleTreasures;
-           int minHiddenTreasures = nHiddenTreasures > h.size() ? nHiddenTreasures-h.size() : h.size()-nHiddenTreasures;
-           // variable  =        if(            "                ){   "   }else{       "      }
+           //Número de tesoros visibles a quitar
+           int minVisibleTreasures = nVisibleTreasures > v.size() ? v.size() : nVisibleTreasures;
+           for(int i=0;i<minVisibleTreasures;i++)
+           {
+               v.remove(i);
+           }
+           //Número de tesoros ocultos a quitar
+           int minHiddenTreasures = nHiddenTreasures > h.size() ? h.size() : nHiddenTreasures;
+           for(int i=0;i<minHiddenTreasures;i++)
+           {
+               h.remove(i);
+           }
+           //Genera un nuevo BadConsequence, con los tesoros que ha quitado
            newBadConsequence = new BadConsequence(text, levels, minVisibleTreasures, minHiddenTreasures);
         }
         return newBadConsequence;
