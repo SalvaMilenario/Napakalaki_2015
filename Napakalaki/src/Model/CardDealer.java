@@ -141,6 +141,75 @@ public class CardDealer {
         prize = new Prize(1,1);
         unusedMonsters.add(new Monster("La que redacta en las tinieblas",2, 
                 badConsequence, prize));
+ 
+        /* Los hondos */
+        badConsequence = new BadConsequence("Estos monstruos resultan bastante "
+                + "superficiales y te aburren mortalmente", true);
+        prize = new Prize(2,1);
+        unusedMonsters.add(new Monster("Los hondos",8, badConsequence, prize));
+        
+        /* Semillas Cthulhu */
+        badConsequence = new BadConsequence("Pierdes 2 niveles y 2 tesoros "
+                + "\n\tocultos", 2, 0, 2);
+        prize = new Prize(2,1);
+        unusedMonsters.add(new Monster("Semillas Cthulhu", 4, badConsequence, prize));
+        
+        /* Dameargo */
+        badConsequence = new BadConsequence("Te intentas escaquear. Pierdes una "
+                + "\n\tmano visible", 0, 
+                new ArrayList(Arrays.asList(TreasureKind.ONEHAND)), 
+                new ArrayList());
+        prize = new Prize(2,1);
+        unusedMonsters.add(new Monster("Dameargo", 1, badConsequence, prize));
+        
+        /* Pollipólipo volante */
+        badConsequence = new BadConsequence("Da mucho asquito. Pierdes 3 niveles",
+                3, 0, 0);
+        prize = new Prize(1,1);
+        unusedMonsters.add(new Monster("Pollipólipo volante", 3, badConsequence, prize));
+        
+        /* Yskhtihyssg-Goth */
+        badConsequence = new BadConsequence("No le hace gracia que pronuncien "
+                + "\n\tmal su nombre. Estas muerto", true);
+        prize = new Prize(3,1);
+        unusedMonsters.add(new Monster("Yskhtihyssg-Goth", 12, badConsequence, prize));
+        
+        /* Familia feliz */
+        badConsequence = new BadConsequence("La familia te atrapa. Estas muerto",
+                true);
+        prize = new Prize(4,1);
+        unusedMonsters.add(new Monster("Familia feliz", 1, badConsequence, prize));
+        
+        /* Roboggoth */
+        badConsequence = new BadConsequence("La quinta directiva primaria te "
+                + "\n\tobliga a perder 2 niveles y un tesoro 2 manos visible", 2, 
+                new ArrayList(Arrays.asList(TreasureKind.BOTHHANDS)),
+                new ArrayList());
+        prize = new Prize(2,1);
+        unusedMonsters.add(new Monster("Roboggoth", 8, badConsequence, prize));
+        
+        
+        /* El espia */
+        badConsequence = new BadConsequence("Te asusta en la noche. Pierdes un "
+                + "\n\tcasco visible", 0, 
+                new ArrayList(Arrays.asList(TreasureKind.HELMET)), 
+                new ArrayList());
+        prize = new Prize(1,1);
+        unusedMonsters.add(new Monster("El espia", 5, badConsequence, prize));
+        
+        /* El Lenguas */
+        badConsequence = new BadConsequence("Menudo susto te llevas. Pierdes 2 "
+                + "\n\tniveles y 5 tesoros visibles", 2, 5, 0);
+        prize = new Prize(1,1);
+        unusedMonsters.add(new Monster("El Lenguas" , 20, badConsequence, prize));
+        
+        /* Bicéfalo */
+
+        badConsequence = new BadConsequence("Te faltan manos para tanta cabeza. " +
+                         "\n\tPierdes 3 niveles y tus tesoros visibles de las manos", 3,
+                         new ArrayList(Arrays.asList(TreasureKind.ONEHAND,TreasureKind.ONEHAND,TreasureKind.BOTHHANDS)), new ArrayList());
+        prize = new Prize(1,1);
+        unusedMonsters.add(new Monster("Bicéfalo", 20, badConsequence, prize));
         
     }
 
@@ -184,7 +253,7 @@ public class CardDealer {
             unusedTreasures = (ArrayList<Treasure>) usedTreasures.clone(); 
             usedTreasures.clear();                          
         }                                                   
-        Treasure tesoro = unusedTreasures.remove(unusedTreasures.size()-1);
+        Treasure tesoro = unusedTreasures.remove(0);
         usedTreasures.add(tesoro);
         return tesoro;
     }
@@ -197,7 +266,7 @@ public class CardDealer {
             unusedMonsters = (ArrayList<Monster>) usedMonsters.clone();
             usedMonsters.clear();                         
         }                                                 
-        Monster monstruo = unusedMonsters.remove(unusedMonsters.size()-1);
+        Monster monstruo = unusedMonsters.remove(0);
         usedMonsters.add(monstruo);
         return monstruo; 
     }
