@@ -22,7 +22,7 @@ public class Napakalaki {
     private static boolean firstTurn = true;
     final private CardDealer dealer = CardDealer.getInstance();
     // El constructor privado no permite que se genere un constructor por defecto.
-    // (con mismo modificador de acceso que la definición de la clase)
+    // (con el mismo modificador de acceso que la definición de la clase)
     private Napakalaki()
     {
         
@@ -96,17 +96,6 @@ public class Napakalaki {
     {
         return currentMonster;
     }
-
-    
-//    public ArrayList<Treasure> getVisibleTreasures()
-//    {
-//    TODO implementar este método
-//    }
-    
-//    public ArrayList<Treasure> getHiddenTreasures()
-//    {
-//    TODO implementar este método    
-//    }
     
     public boolean nextTurn()
     {

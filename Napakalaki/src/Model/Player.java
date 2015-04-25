@@ -41,7 +41,10 @@ public class Player {
     }
     private void decrementLevels(int l)
     {
-        level = level-l<1 ? 1 : level-l ;
+        if(level-l <= 0){
+            this.die();
+        }else
+            level = level - l;
     }
     private void setPendingBadConsequence(BadConsequence b)
     {
@@ -70,7 +73,7 @@ public class Player {
     private void dieIfNoTreasures()
     {
         if(visibleTreasures.isEmpty() && hiddenTreasures.isEmpty())
-            die();
+            this.die();
     }
     
     private boolean canIBuyLevels(int l)
@@ -125,8 +128,7 @@ public class Player {
     {
         if(bad.getLevels()!=0)
             this.decrementLevels(bad.getLevels());
-        BadConsequence b = pendingBadConsequence.adjustToFitTreasureLists(visibleTreasures, hiddenTreasures);
-        System.out.println(b.toString());
+        BadConsequence b = bad.adjustToFitTreasureLists(visibleTreasures, hiddenTreasures); //tiene que hacer la llamada sobre bad, no sobre pending
         this.setPendingBadConsequence(b);
     }
     public boolean makeTreasureVisible(Treasure t)
