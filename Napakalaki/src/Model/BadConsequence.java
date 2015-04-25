@@ -185,9 +185,9 @@ public class BadConsequence
         }
         else
         {
-           int minVisibleTreasures = nVisibleTreasures > v.size() ? v.size() : nVisibleTreasures ;
-           int minHiddenTreasures = nHiddenTreasures > h.size() ? h.size() : nHiddenTreasures ;
-           // variable  =        if(            "                ){   "   }else{       "      } 
+           int minVisibleTreasures = nVisibleTreasures > v.size() ? nVisibleTreasures-v.size() : v.size()-nVisibleTreasures;
+           int minHiddenTreasures = nHiddenTreasures > h.size() ? nHiddenTreasures-h.size() : h.size()-nHiddenTreasures;
+           // variable  =        if(            "                ){   "   }else{       "      }
            newBadConsequence = new BadConsequence(text, levels, minVisibleTreasures, minHiddenTreasures);
         }
         return newBadConsequence;

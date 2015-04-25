@@ -81,9 +81,9 @@ public class Napakalaki {
 
     public void initGame(ArrayList<String> players)
     {
-        initPlayers(players);
+        this.initPlayers(players);
         dealer.initCards();
-        nextTurn();
+        this.nextTurn();
 
     }
     
@@ -118,7 +118,7 @@ public class Napakalaki {
                 currentPlayer.initTreasures();
             }
         }
-        return nextTurnIsAllowed();
+        return this.nextTurnIsAllowed();
     }
         
     public boolean nextTurnIsAllowed()

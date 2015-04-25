@@ -51,9 +51,9 @@ public class Player {
     {
         level=1;
         for(Treasure t: visibleTreasures)
-            discardVisibleTreasure(t);
+            this.discardVisibleTreasure(t);
         for(Treasure t: hiddenTreasures)
-            discardHiddenTreasure(t);
+            this.discardHiddenTreasure(t);
         dead = true;
     }
     private void discardNecklaceIfVisible()
@@ -87,7 +87,7 @@ public class Player {
 
     public void applyPrize(Prize p)
     {
-        incrementLevels(p.getLevels());
+        this.incrementLevels(p.getLevels());
         for(int i = 0;i<p.getTreasures();i++)
             hiddenTreasures.add(dealer.nextTreasure());
     }
@@ -96,7 +96,7 @@ public class Player {
         CombatResult combate = CombatResult.LOSEANDESCAPE;
         if(getCombatLevel() > m.getCombatLevel())
         {
-            applyPrize(m.getPrize());
+            this.applyPrize(m.getPrize());
             if(level > 9)
                 combate = CombatResult.WINANDWINGAME;
             else
@@ -109,29 +109,29 @@ public class Player {
         {
             if(m.getBadConsequence().kills())
             {
-                die();
+                this.die();
                 combate = CombatResult.LOSEANDDIE;
             }
             else
             {
-                applyBadConsequence(m.getBadConsequence());
+                this.applyBadConsequence(m.getBadConsequence());
                 combate = CombatResult.LOSE;
             }
         }
-        discardNecklaceIfVisible();
+        this.discardNecklaceIfVisible();
         return combate;
     }
     public void applyBadConsequence(BadConsequence bad)
     {
         if(bad.getLevels()!=0)
-            decrementLevels(bad.getLevels());
+            this.decrementLevels(bad.getLevels());
         BadConsequence b = pendingBadConsequence.adjustToFitTreasureLists(visibleTreasures, hiddenTreasures);
         System.out.println(b.toString());
-        setPendingBadConsequence(b);
+        this.setPendingBadConsequence(b);
     }
     public boolean makeTreasureVisible(Treasure t)
     {
-        boolean canI = canMakeTreasureVisible(t);
+        boolean canI = this.canMakeTreasureVisible(t);
         if(canI)
         {
             visibleTreasures.add(t);
@@ -207,7 +207,7 @@ public class Player {
         if( pendingBadConsequence!=null && !pendingBadConsequence.isEmpty() )
             pendingBadConsequence.substractVisibleTreasure(t);
         dealer.giveTreasureBack(t);
-        dieIfNoTreasures();
+        this.dieIfNoTreasures();
     }
     public void discardHiddenTreasure(Treasure t)
     {
@@ -215,16 +215,18 @@ public class Player {
         if( pendingBadConsequence!=null && !pendingBadConsequence.isEmpty() )
             pendingBadConsequence.substractHiddenTreasure(t);
         dealer.giveTreasureBack(t);
-        dieIfNoTreasures();
+        this.dieIfNoTreasures();
     }
     public boolean buyLevels(ArrayList <Treasure> visible, ArrayList <Treasure> hidden)
     {
-        float levels = computeGoldCoinsValue(visible);
-        levels += computeGoldCoinsValue(hidden);
-        boolean canI = canIBuyLevels((int)levels);
+        float levels = this.computeGoldCoinsValue(visible);
+        levels += this.computeGoldCoinsValue(hidden);
+        boolean canI = this.canIBuyLevels((int)levels);
         if(canI)
         {
-            incrementLevels((int)levels);
+            this.incrementLevels((int)levels);// sin el this, no modificaba el número de niveles
+                                              // moraleja, los métodos privados a partir de ahora
+                                              // los va a llamar siempre this
             for (Treasure t:visible)
                 this.discardVisibleTreasure(t);
             for (Treasure t:hidden)
@@ -254,11 +256,11 @@ public class Player {
     }
     public boolean validState()
     {
-        return !(hiddenTreasures.size()>=4 || !pendingBadConsequence.isEmpty());
+        return !(hiddenTreasures.size()>=MAXHIDDENTREASURES || !pendingBadConsequence.isEmpty());
     }
     public void initTreasures()
     {
-        bringToLive();
+        this.bringToLive();
         int tirada = Dice.getInstance().nextNumber(), numeroTesoros=2;
         if(tirada==6)
             numeroTesoros = 3;
