@@ -6,7 +6,6 @@
 package Model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 /**
  *
  * @author xehartnort
@@ -159,7 +158,6 @@ public class BadConsequence
                 }
             //Una vez que conocemos el ajuste, lo asignamos a v
             v = newVisibleTreasuresPlayer.isEmpty() ? v : newVisibleTreasuresPlayer;
-        //    v.removeAll(newVisibleTreasuresPlayer);
             add = true;    
             
             for(Treasure t : h) // Oculto a ajustar

@@ -258,7 +258,7 @@ public class Player {
     }
     public boolean validState()
     {
-        return !(hiddenTreasures.size()>=MAXHIDDENTREASURES || !pendingBadConsequence.isEmpty());
+        return hiddenTreasures.size()<=MAXHIDDENTREASURES && pendingBadConsequence.isEmpty();
     }
     public void initTreasures()
     {
