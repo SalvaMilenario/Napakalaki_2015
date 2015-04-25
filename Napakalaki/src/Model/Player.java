@@ -53,10 +53,10 @@ public class Player {
     private void die()
     {
         level=1;
-        for(Treasure t: visibleTreasures)
-            this.discardVisibleTreasure(t);
-        for(Treasure t: hiddenTreasures)
-            this.discardHiddenTreasure(t);
+        for(int i=0;i<visibleTreasures.size();i++) //peta aquií
+            this.discardVisibleTreasure(visibleTreasures.get(i));
+        for(int i=0;i<hiddenTreasures.size();i++)
+            this.discardHiddenTreasure(hiddenTreasures.get(i));
         dead = true;
     }
     private void discardNecklaceIfVisible()
