@@ -53,7 +53,7 @@ public class Player {
     private void die()
     {
         level=1;
-        for(int i=0;i<visibleTreasures.size();i++) //peta aquií
+        for(int i=0;i<visibleTreasures.size();i++)
             this.discardVisibleTreasure(visibleTreasures.get(i));
         for(int i=0;i<hiddenTreasures.size();i++)
             this.discardHiddenTreasure(hiddenTreasures.get(i));

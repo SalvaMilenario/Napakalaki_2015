@@ -124,21 +124,18 @@ public class BadConsequence
     }
     
     public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h)
-    { // hay que darle aún más repasos a esta implementación
-//       Caso problemático -> Arreglado, ahora funciona
-//       v := ONEHAND, ONEHAND, HELMET
-//       specificVisibleTreasures := ONEHAND, HELMET
-//       Además los casos restantes también furulan bien
+    {
         ArrayList<TreasureKind> newHiddenTreasuresBad = new ArrayList<>();
         ArrayList<TreasureKind> newVisibleTreasuresBad = new ArrayList<>();
+//        Se pueden dar dos casos, que el bad sea o no de tesoros específicos
         if(!specificVisibleTreasures.isEmpty() || !specificHiddenTreasures.isEmpty())
-        { // solo tesoros especificos
-            ArrayList<Treasure> newVisibleTreasuresPlayer = new ArrayList<>();
-            ArrayList<Treasure> newHiddenTreasuresPlayer = new ArrayList<>();
+        { // CASO: solo tesoros especificos
             boolean onlyOneV, onlyOneSpecific, add = true;
-            for(Treasure t : v) // Visible a ajustar
-                if(specificVisibleTreasures.contains(t.getType()))
+            for(Treasure t : v) // recorremos V, Hay que hacer lo mismo con H
+                if(specificVisibleTreasures.contains(t.getType())) // si el tesoro de v está en los tesoros especificos visible del bad
                 {
+                    // comprobamos que solo haya un tesoro de un mismo tipo en cada array
+                    // ya que puede haber dos tesoros ONEHAND
                     onlyOneV = v.lastIndexOf(t)==v.indexOf(t);
                     onlyOneSpecific = 
                             specificVisibleTreasures.lastIndexOf(t.getType()) ==
@@ -147,19 +144,14 @@ public class BadConsequence
                     {
                         if(add)
                         {
-                            add = false;
-                            newVisibleTreasuresPlayer.add(t);
-                            newVisibleTreasuresBad.add(t.getType());
-                        }
-                    }else{
-                        newVisibleTreasuresPlayer.add(t);
-                        newVisibleTreasuresBad.add(t.getType());
+                            add = false;                 
+                            newVisibleTreasuresBad.add(t.getType());            
+                        }                                                       
+                    }else{                                                                           
+                        newVisibleTreasuresBad.add(t.getType());                
                     }
                 }
-            //Una vez que conocemos el ajuste, lo asignamos a v
-            v = newVisibleTreasuresPlayer.isEmpty() ? v : newVisibleTreasuresPlayer;
             add = true;    
-            
             for(Treasure t : h) // Oculto a ajustar
                 if(specificHiddenTreasures.contains(t.getType()))
                 {
@@ -172,16 +164,12 @@ public class BadConsequence
                         if(add)
                         {
                             add = false;
-                            newHiddenTreasuresPlayer.add(t);
                             newHiddenTreasuresBad.add(t.getType());
                         }
                     }else{
-                        newHiddenTreasuresPlayer.add(t);
                         newHiddenTreasuresBad.add(t.getType());
                     }
                 }
-            //Una vez que conocemos el ajuste, lo asignamos a h
-            h = newHiddenTreasuresPlayer.isEmpty() ? h : newHiddenTreasuresPlayer;
         }
         else
         {
@@ -198,6 +186,7 @@ public class BadConsequence
                 newHiddenTreasuresBad.add(h.get(i).getType());
             }
         }
+        
         return new BadConsequence(text, levels, newVisibleTreasuresBad, newHiddenTreasuresBad);
     }
     
