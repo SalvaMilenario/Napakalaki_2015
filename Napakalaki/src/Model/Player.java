@@ -34,6 +34,7 @@ public class Player {
     private void bringToLive()
     {
         dead = false;
+        level = 1;
     }
     private void incrementLevels(int l)
     {
@@ -53,7 +54,6 @@ public class Player {
     // Esta no es la implementación del diagrama, Salva
     private void die()
     {
-        level = 1;
         for(Treasure t : visibleTreasures)
             dealer.giveTreasureBack(t);
         visibleTreasures.clear();
