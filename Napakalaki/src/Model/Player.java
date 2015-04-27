@@ -82,10 +82,10 @@ public class Player {
     }
     protected float computeGoldCoinsValue(ArrayList<Treasure> t)
     {
-        float niveles = 0;
+        float levels= 0;
         for (Treasure i : t)
-            niveles += (float)i.getGoldCoins()/1000; // esta operación sin el casting es entera U.U
-        return niveles;
+            levels += (float)i.getGoldCoins()/1000; // esta operación sin el casting es entera U.U
+        return levels;
     }
 
     public void applyPrize(Prize p)
