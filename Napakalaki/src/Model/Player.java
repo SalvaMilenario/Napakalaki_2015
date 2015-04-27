@@ -34,7 +34,6 @@ public class Player {
     private void bringToLive()
     {
         dead = false;
-        level = 1;
     }
     private void incrementLevels(int l)
     {
@@ -60,6 +59,7 @@ public class Player {
         for(Treasure t : hiddenTreasures)
             dealer.giveTreasureBack(t);
         hiddenTreasures.clear();
+        level = 1;
         dead = true;
     }
     private void discardNecklaceIfVisible()

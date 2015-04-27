@@ -170,14 +170,14 @@ public class BadConsequence
                         newHiddenTreasuresBad.add(t.getType());
                     }
                 }
-            return new BadConsequence(text, levels, newVisibleTreasuresBad, newHiddenTreasuresBad);
+            return new BadConsequence(text, 0, newVisibleTreasuresBad, newHiddenTreasuresBad);
         }
         else
         {
             //Número de tesoros visibles a quitar
             int minVisibleTreasures = nVisibleTreasures > v.size() ? v.size() : nVisibleTreasures;
             int minHiddenTreasures = nHiddenTreasures > h.size() ? h.size() : nHiddenTreasures;
-            return new BadConsequence(text, levels, minVisibleTreasures, minHiddenTreasures);
+            return new BadConsequence(text, 0, minVisibleTreasures, minHiddenTreasures);
         }
 
     }
