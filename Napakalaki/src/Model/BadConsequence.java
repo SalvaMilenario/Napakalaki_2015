@@ -118,7 +118,7 @@ public class BadConsequence
         if(nHiddenTreasures==0)
             specificHiddenTreasures.remove(t.getType());
         else
-            nHiddenTreasures = (nHiddenTreasures-1) < 0 ? 0 : nHiddenTreasures-1 ;   
+                nHiddenTreasures = (nHiddenTreasures-1) < 0 ? 0 : nHiddenTreasures-1 ;   
             // variable  =        if(            "     ){ " }else{       "      } 
            
     }
@@ -170,24 +170,16 @@ public class BadConsequence
                         newHiddenTreasuresBad.add(t.getType());
                     }
                 }
+            return new BadConsequence(text, levels, newVisibleTreasuresBad,newHiddenTreasuresBad);
         }
         else
         {
             //Número de tesoros visibles a quitar
             int minVisibleTreasures = nVisibleTreasures > v.size() ? v.size() : nVisibleTreasures;
-            for(int i=0;i<minVisibleTreasures;i++)
-            {
-                newVisibleTreasuresBad.add(v.get(i).getType());
-            }
-            //Número de tesoros ocultos a quitar
             int minHiddenTreasures = nHiddenTreasures > h.size() ? h.size() : nHiddenTreasures;
-            for(int i=0;i<minHiddenTreasures;i++)
-            {
-                newHiddenTreasuresBad.add(h.get(i).getType());
-            }
+            return new BadConsequence(text, levels, minVisibleTreasures, minHiddenTreasures);
         }
-        
-        return new BadConsequence(text, levels, newVisibleTreasuresBad, newHiddenTreasuresBad);
+
     }
     
     @Override
