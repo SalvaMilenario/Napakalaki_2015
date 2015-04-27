@@ -125,11 +125,11 @@ public class BadConsequence
     
     public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h)
     {
-        ArrayList<TreasureKind> newHiddenTreasuresBad = new ArrayList<>();
-        ArrayList<TreasureKind> newVisibleTreasuresBad = new ArrayList<>();
 //        Se pueden dar dos casos, que el bad sea o no de tesoros específicos
         if(!specificVisibleTreasures.isEmpty() || !specificHiddenTreasures.isEmpty())
         { // CASO: solo tesoros especificos
+            ArrayList<TreasureKind> newHiddenTreasuresBad = new ArrayList<>();
+            ArrayList<TreasureKind> newVisibleTreasuresBad = new ArrayList<>();
             boolean onlyOneV, onlyOneSpecific, add = true;
             for(Treasure t : v) // recorremos V, Hay que hacer lo mismo con H
                 if(specificVisibleTreasures.contains(t.getType())) // si el tesoro de v está en los tesoros especificos visible del bad
@@ -170,7 +170,7 @@ public class BadConsequence
                         newHiddenTreasuresBad.add(t.getType());
                     }
                 }
-            return new BadConsequence(text, levels, newVisibleTreasuresBad,newHiddenTreasuresBad);
+            return new BadConsequence(text, levels, newVisibleTreasuresBad, newHiddenTreasuresBad);
         }
         else
         {
