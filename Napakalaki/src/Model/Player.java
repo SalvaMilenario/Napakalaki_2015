@@ -53,19 +53,14 @@ public class Player {
     // Esta no es la implementación del diagrama, Salva
     private void die()
     {
-//        level=1;
-//        for(int i=0;i<visibleTreasures.size();i++)
-//            this.discardVisibleTreasure(visibleTreasures.get(i));
-//        for(int i=0;i<hiddenTreasures.size();i++)
-//            this.discardHiddenTreasure(hiddenTreasures.get(i));
-//        dead = true;
+        level = 1;
         for(Treasure t : visibleTreasures)
             dealer.giveTreasureBack(t);
         visibleTreasures.clear();
         for(Treasure t : hiddenTreasures)
             dealer.giveTreasureBack(t);
         hiddenTreasures.clear();
-        
+        dead = true;
     }
     private void discardNecklaceIfVisible()
     {
