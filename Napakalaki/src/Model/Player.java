@@ -294,7 +294,7 @@ public class Player {
     {
         String textoInicial = "\n\tName = " + name + 
                 " \n\tLevel = " + Integer.toString(level) + 
-                " \n\tPendingBadconsequence: { " + pendingBadConsequence.toString() +
+                " \n\tPendingBadConsequence: { " + pendingBadConsequence.toString() +
                 "\n\t} \n\tDead = " + Boolean.toString(dead);
         String textoHiddenTreasures = " \n\tArray Hidden Treasures: { ";
         String textoVisibleTreasures = " \n\tArray Visible Treasures: { ";
