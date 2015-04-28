@@ -124,7 +124,6 @@ public class Player {
                 combate = CombatResult.LOSE;
             }
         }
-        this.discardNecklaceIfVisible();
         return combate;
     }
     public void applyBadConsequence(BadConsequence bad)
