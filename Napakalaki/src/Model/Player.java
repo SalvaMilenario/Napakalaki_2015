@@ -250,14 +250,13 @@ public class Player {
             if(T.getType()==TreasureKind.NECKLACE)
                 collar = true;
         }
-        if(collar)
+        if(collar && (combatLevel != combatLevelCollar))
+        {
+            discardNecklaceIfVisible();
             return combatLevelCollar;
+        }
         else
-            return combatLevel;
-        // Versión compacta
-        // return collar==true ? combatLevelCollar : combatLevel;
-        //        if(    "    ){       "        }else{     "     } 
-        
+            return combatLevel;        
     }
     public boolean validState()
     {
