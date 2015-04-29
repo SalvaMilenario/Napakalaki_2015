@@ -130,45 +130,20 @@ public class BadConsequence
         { // CASO: solo tesoros especificos
             ArrayList<TreasureKind> newHiddenTreasuresBad = new ArrayList<>();
             ArrayList<TreasureKind> newVisibleTreasuresBad = new ArrayList<>();
-            boolean onlyOneV, onlyOneSpecific, add = true;
-            for(Treasure t : v) // recorremos V, Hay que hacer lo mismo con H
-                if(specificVisibleTreasures.contains(t.getType())) // si el tesoro de v está en los tesoros especificos visible del bad
+            
+            ArrayList<TreasureKind> copyOfspecificVisibleTreasures = (ArrayList<TreasureKind>)specificVisibleTreasures.clone();
+            ArrayList<TreasureKind> copyOfspecificHiddenTreasures = (ArrayList<TreasureKind>)specificHiddenTreasures.clone();
+            for(Treasure t : v)
+                if(copyOfspecificVisibleTreasures.contains(t.getType()))
                 {
-                    // comprobamos que solo haya un tesoro de un mismo tipo en cada array
-                    // ya que puede haber dos tesoros ONEHAND
-                    onlyOneV = v.lastIndexOf(t)==v.indexOf(t);
-                    onlyOneSpecific = 
-                            specificVisibleTreasures.lastIndexOf(t.getType()) ==
-                            specificVisibleTreasures.indexOf(t.getType());
-                    if(!onlyOneV && onlyOneSpecific)
-                    {
-                        if(add)
-                        {
-                            add = false;                 
-                            newVisibleTreasuresBad.add(t.getType());            
-                        }                                                       
-                    }else{                                                                           
-                        newVisibleTreasuresBad.add(t.getType());                
-                    }
+                    newVisibleTreasuresBad.add(t.getType());
+                    copyOfspecificVisibleTreasures.remove(t.getType());
                 }
-            add = true;    
             for(Treasure t : h) // Oculto a ajustar
-                if(specificHiddenTreasures.contains(t.getType()))
+                if(copyOfspecificHiddenTreasures.contains(t.getType()))
                 {
-                    onlyOneV = h.lastIndexOf(t)==h.indexOf(t);
-                    onlyOneSpecific = 
-                            specificHiddenTreasures.lastIndexOf(t.getType()) ==
-                            specificHiddenTreasures.indexOf(t.getType());
-                    if(!onlyOneV && onlyOneSpecific)
-                    {
-                        if(add)
-                        {
-                            add = false;
-                            newHiddenTreasuresBad.add(t.getType());
-                        }
-                    }else{
-                        newHiddenTreasuresBad.add(t.getType());
-                    }
+                    newHiddenTreasuresBad.add(t.getType());
+                    copyOfspecificHiddenTreasures.remove(t.getType());    
                 }
             return new BadConsequence(text, 0, newVisibleTreasuresBad, newHiddenTreasuresBad);
         }
