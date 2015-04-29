@@ -42,7 +42,7 @@ public class Player {
     private void decrementLevels(int l)
     {
         if(level-l <= 0){
-            this.die();
+            level=1;
         }else
             level = level - l;
     }
