@@ -124,6 +124,7 @@ public class Player {
                 combate = CombatResult.LOSE;
             }
         }
+        this.discardNecklaceIfVisible();
         return combate;
     }
     public void applyBadConsequence(BadConsequence bad)
@@ -249,11 +250,8 @@ public class Player {
             if(T.getType()==TreasureKind.NECKLACE)
                 collar = true;
         }
-        if(collar && (combatLevel != combatLevelCollar))
-        {
-            discardNecklaceIfVisible();
+        if(collar)
             return combatLevelCollar;
-        }
         else
             return combatLevel;        
     }
