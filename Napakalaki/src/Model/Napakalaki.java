@@ -49,8 +49,7 @@ public class Napakalaki {
             currentPlayerIndex++;                   
             currentPlayerIndex %= players.size(); // De esta maneta se controla 
         }                                         // que no se salga del vector
-        currentPlayer = players.get(currentPlayerIndex);
-        return currentPlayer;
+        return players.get(currentPlayerIndex);
     }
 
     public CombatResult combat()
@@ -102,7 +101,7 @@ public class Napakalaki {
         
         if( nextTurnIsAllowed() ){ 
             currentMonster = dealer.nextMonster();
-            currentPlayer =  nextPlayer();
+            currentPlayer = nextPlayer();
             if(currentPlayer.isDead()){
                 currentPlayer.initTreasures();
             }
