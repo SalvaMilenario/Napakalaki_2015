@@ -210,39 +210,18 @@ public class CardDealer {
                          new ArrayList(Arrays.asList(TreasureKind.ONEHAND,TreasureKind.ONEHAND,TreasureKind.BOTHHANDS)), new ArrayList());
         prize = new Prize(1,1);
         unusedMonsters.add(new Monster("Bicéfalo", 20, badConsequence, prize));
-        
+
     }
 
     private void shuffleTreasures()
     {
-//        if( !unusedTreasures.isEmpty() ){
-//            Random rand = new Random();
-//            int tam = unusedTreasures.size();
-//            ArrayList<Treasure> barajado = new ArrayList<>(tam);
-//            for(Treasure t: unusedTreasures)
-//            {
-//                barajado.add((int)rand.nextDouble()*tam, t);
-//            }
-//            unusedTreasures = barajado;
-//        }
         Collections.shuffle(unusedTreasures);
     }
         
 
     private void shuffleMonsters()
     {
-//        if(!unusedMonsters.isEmpty()){
-//            Random rand = new Random();
-//            int tam = unusedMonsters.size();
-//            ArrayList<Monster> barajado = new ArrayList<>(tam);
-//            for(Monster m: unusedMonsters)
-//            {
-//                barajado.add((int)rand.nextDouble()*tam, m);
-//            }
-//            unusedMonsters = barajado;    
-//        }
         Collections.shuffle(unusedMonsters);
-        
     }
 
     public Treasure nextTreasure() //Habría que probarlo para asegurarse de que funciona

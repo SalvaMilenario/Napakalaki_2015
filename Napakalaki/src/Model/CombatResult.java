@@ -8,5 +8,5 @@ package Model;
 /**
  *
  * @author xehartnort
- *///gana y gana el juego, gana, pierde, pierde y escapa, pierde y muere
+ */
 public enum CombatResult {WINANDWINGAME, WIN, LOSE, LOSEANDESCAPE, LOSEANDDIE};

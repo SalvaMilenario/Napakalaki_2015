@@ -13,9 +13,6 @@ public class Prize
 {
     private int levels;//numero de niveles que sube con el buen royo
     private int treasures;//numero de tesoros que consigue al vencer
-    /**
-     * @
-    */
     
     public Prize(int treasures, int levels)
     {

@@ -8,5 +8,5 @@ package Model;
 /**
  *
  * @author Salva
- *///Armadura, una mano, dos manos, zapatos, colgante
+ */
 public enum TreasureKind {ARMOR, ONEHAND, BOTHHANDS, HELMET, SHOE, NECKLACE};
