@@ -17,6 +17,16 @@ public class Monster implements Card{
     private int levelChangeAgainstCultistPlayer;
     public Monster(String name, int level, 
                     BadConsequence bc, 
+                    Prize prize)
+    {
+        this.name = name;
+        this.combatLevel = level;
+        this.prize = prize;
+        this.bc = bc;
+        this.levelChangeAgainstCultistPlayer=0;
+    }
+    public Monster(String name, int level, 
+                    BadConsequence bc, 
                     Prize prize,
                     int levelChangeAgainstCultistPlayer)
     {

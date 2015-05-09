@@ -9,7 +9,7 @@ package Model;
  *
  * @author xehartnort
  */
-public class Cultist implements Card{
+public class Cultist extends Player implements Card{
 //    A la espera del resto de la implementación
 //    @Override
 //    public int getBasicValue()
