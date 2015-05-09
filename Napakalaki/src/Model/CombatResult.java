@@ -9,4 +9,4 @@ package Model;
  *
  * @author xehartnort
  */
-public enum CombatResult {WINANDWINGAME, WIN, LOSE, LOSEANDESCAPE, LOSEANDDIE};
+public enum CombatResult {WINANDWINGAME, WIN, LOSE, LOSEANDESCAPE, LOSEANDDIE, LOSEANDCONVERT};
