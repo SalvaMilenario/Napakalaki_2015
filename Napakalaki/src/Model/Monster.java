@@ -9,37 +9,56 @@ package Model;
  *
  * @author xehartnort y salva
  */
-public class Monster {
+public class Monster implements Card{
     private String name;
     private int combatLevel;
     private Prize prize;
     private BadConsequence bc;
-    
+    private int levelChangeAgainstCultistPlayer;
     public Monster(String name, int level, 
                     BadConsequence bc, 
-                    Prize prize)
+                    Prize prize,
+                    int levelChangeAgainstCultistPlayer)
     {
         this.name = name;
         this.combatLevel = level;
         this.prize = prize;
         this.bc = bc;
+        this.levelChangeAgainstCultistPlayer=levelChangeAgainstCultistPlayer;
     }
+    
     public String getName()
     {
         return name;
     }
+    
     public int getCombatLevel()
     {
         return combatLevel;
     }
+    
     public BadConsequence getBadConsequence()
     {
         return bc;
     }
+    
     public Prize getPrize()
     {
         return prize;
     }
+        
+    @Override
+    public int getBasicValue()
+    {
+        return getCombatLevel();
+    }
+    
+    @Override
+    public int getSpecialValue()
+    {
+        return getCombatLevel()+levelChangeAgainstCultistPlayer;
+    }
+    
     public String toString()
     {
         return "Name = " + name + 
