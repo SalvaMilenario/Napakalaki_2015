@@ -11,51 +11,18 @@ import java.util.ArrayList;
  * @author xehartnort
  */
 
-// Como todos los atributos de un BadConsequence 
-// permanecen inmutables a lo largo de su existencia
-// resulta interesante marcarlos como constantes (final)
-// Una excepción son los dos ArrayList
-public class BadConsequence 
+public abstract class BadConsequence 
 {
-    final private String text; 
-    final private int levels;
-    private int nVisibleTreasures;
-    private int nHiddenTreasures;
-    final private boolean death;   
-    private ArrayList<TreasureKind> specificVisibleTreasures;
-    private ArrayList<TreasureKind> specificHiddenTreasures; 
+    protected String text;   // Todos tienen nombre
+    protected int levels;    // Todos tienen niveles
+    protected boolean death; // Todos tienen un valor de muerte
+    protected String textoIntroduccion = "Esto es un mal rollo con el siguiente contenido: \n"; // Estará aquí hasta las versiones finales
     
-    public BadConsequence(String text, int levels, int nVisible, int nHidden)
+    public BadConsequence(String text, int levels, boolean death)
     {
         this.text = text;
-        this.levels = levels;
-        this.nVisibleTreasures = nVisible;
-        this.nHiddenTreasures = nHidden;
-        this.death = false;
-        this.specificHiddenTreasures = new ArrayList<>();
-        this.specificVisibleTreasures = new ArrayList<>();
-    }
-    public BadConsequence(String text, boolean death)
-    {
-        this.text = text;
-        this.levels = 0;
-        this.nVisibleTreasures = 0;
-        this.nHiddenTreasures = 0;    
+        this.levels = levels;   
         this.death = death;
-        this.specificHiddenTreasures = new ArrayList<>();
-        this.specificVisibleTreasures = new ArrayList<>();
-    }
-    public BadConsequence(String text , int levels,
-                            ArrayList<TreasureKind> tVisible,
-                            ArrayList<TreasureKind> tHidden)
-    {
-        this.text = text;
-        this.levels = 0;
-        this.nVisibleTreasures = 0;
-        this.nHiddenTreasures = 0;    
-        this.death = false;
-        this.specificHiddenTreasures = tHidden;
-        this.specificVisibleTreasures = tVisible;
     }
     
     public String getText()
@@ -67,125 +34,20 @@ public class BadConsequence
     {
         return levels;
     }
-    
-    public int getNVisisbleTreasures()
-    {
-        return nVisibleTreasures;
-    }
-    
-    public int getNHiddenTreasures()
-    {
-        return nHiddenTreasures;
-    }
-    
+        
     public boolean kills()
     {
         return death;
     }
+        
+    public abstract boolean isEmpty();
     
-    public ArrayList<TreasureKind> getSpecificVisibleTreasures()
-    {
-        return specificVisibleTreasures;
-    }
+    public abstract void substractVisibleTreasure(Treasure t);
     
-    public ArrayList<TreasureKind> getSpecificHiddenTreasures()
-    {
-        return specificHiddenTreasures;
-    }
+    public abstract void substractHiddenTreasure(Treasure t);
     
-    public boolean isEmpty()
-    {
-        return levels==0 &&
-                specificVisibleTreasures.isEmpty() &&
-                specificHiddenTreasures.isEmpty() &&
-                nVisibleTreasures==0 &&
-                nHiddenTreasures==0 &&
-                death==false;
-                
-    }
-    
-    public void substractVisibleTreasure(Treasure t)
-    {
-        if(nVisibleTreasures==0)
-            specificVisibleTreasures.remove(t.getType());
-        else
-            nVisibleTreasures = (nVisibleTreasures-1) < 0 ? 0 : nVisibleTreasures-1 ;
-            // variable  =        if(            "       ){ " }else{       "      } 
-    }
-    
-    public void substractHiddenTreasure(Treasure t)
-    {
-        if(nHiddenTreasures==0)
-            specificHiddenTreasures.remove(t.getType());
-        else
-                nHiddenTreasures = (nHiddenTreasures-1) < 0 ? 0 : nHiddenTreasures-1 ;   
-            // variable  =        if(            "     ){ " }else{       "      } 
-           
-    }
-    
-    public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h)
-    {
-//        Se pueden dar dos casos, que el bad sea o no de tesoros específicos
-        if(!specificVisibleTreasures.isEmpty() || !specificHiddenTreasures.isEmpty())
-        { // CASO: solo tesoros especificos
-            ArrayList<TreasureKind> newHiddenTreasuresBad = new ArrayList<>();
-            ArrayList<TreasureKind> newVisibleTreasuresBad = new ArrayList<>();
-            
-            ArrayList<TreasureKind> copyOfspecificVisibleTreasures = (ArrayList<TreasureKind>)specificVisibleTreasures.clone();
-            ArrayList<TreasureKind> copyOfspecificHiddenTreasures = (ArrayList<TreasureKind>)specificHiddenTreasures.clone();
-            for(Treasure t : v)
-                if(copyOfspecificVisibleTreasures.contains(t.getType()))
-                {
-                    newVisibleTreasuresBad.add(t.getType());
-                    copyOfspecificVisibleTreasures.remove(t.getType());
-                }
-            for(Treasure t : h) // Oculto a ajustar
-                if(copyOfspecificHiddenTreasures.contains(t.getType()))
-                {
-                    newHiddenTreasuresBad.add(t.getType());
-                    copyOfspecificHiddenTreasures.remove(t.getType());    
-                }
-            return new BadConsequence(text, 0, newVisibleTreasuresBad, newHiddenTreasuresBad);
-        }
-        else
-        {
-            //Número de tesoros visibles a quitar
-            int minVisibleTreasures = nVisibleTreasures > v.size() ? v.size() : nVisibleTreasures;
-            int minHiddenTreasures = nHiddenTreasures > h.size() ? h.size() : nHiddenTreasures;
-            return new BadConsequence(text, 0, minVisibleTreasures, minHiddenTreasures);
-        }
-
-    }
+    public abstract BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h);
     
     @Override
-    public String toString()
-    {
-        String textoInicial = "\n\tText = " + text + 
-                " \n\tLevels = " + Integer.toString(levels) + 
-                " \n\tNumber of Visible Treasures = " + Integer.toString(nVisibleTreasures) +
-                " \n\tNumber of Hidden Treasures = " + Integer.toString(nHiddenTreasures) +
-                " \n\tDeath = " + Boolean.toString(death);
-        String textoArrayHiddenTreasures = " \n\tArray Specific Hidden Treasures: ";
-        String textoArrayVisibleTreasures = " \n\tArray Specific Visible Treasures: ";
-        if(!specificHiddenTreasures.isEmpty())
-        {
-            for (TreasureKind tk : specificHiddenTreasures)
-                textoArrayHiddenTreasures += (tk.toString() + " ");
-        }
-        else
-        {
-            textoArrayHiddenTreasures += "No pierde ningún tesoro específico.";
-        }
-        
-        if(!specificVisibleTreasures.isEmpty())
-        {
-            for (TreasureKind tk : specificVisibleTreasures)
-                textoArrayVisibleTreasures += (tk.toString() + " ");
-        }
-        else
-        {
-            textoArrayVisibleTreasures += "No pierde ningún tesoro específico.";
-        }
-        return textoInicial + textoArrayHiddenTreasures + textoArrayVisibleTreasures;
-    }
+    public abstract String toString();
 }
