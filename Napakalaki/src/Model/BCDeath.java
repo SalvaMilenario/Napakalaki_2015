@@ -11,7 +11,8 @@ import java.util.ArrayList;
  *
  * @author xehartnort
  */
-public class BCDeath extends BadConsequence{
+public class BCDeath extends BadConsequence
+{
     BCDeath(String text, boolean death)
     {
         super(text, 0, death);
@@ -43,6 +44,6 @@ public class BCDeath extends BadConsequence{
     @Override
     public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h)
     {
-        return null;
+        return this;
     }
 }

@@ -26,7 +26,7 @@ public class Player {
         this.level = 1;
         this.visibleTreasures = new ArrayList<>();
         this.hiddenTreasures = new ArrayList<>();
-        this.pendingBadConsequence = new BadConsequence("Vacio", false);
+        this.pendingBadConsequence = new BCDeath("Vacio", false);
         this.name=name;
         this.dead=true;
     }

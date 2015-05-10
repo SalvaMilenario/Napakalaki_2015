@@ -9,7 +9,8 @@ package Model;
  *
  * @author xehartnort
  */
-public interface Card {
+public interface Card
+{
     public int getBasicValue();
     public int getSpecialValue();
 }

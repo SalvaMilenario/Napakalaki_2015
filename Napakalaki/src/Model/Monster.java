@@ -9,12 +9,14 @@ package Model;
  *
  * @author xehartnort y salva
  */
-public class Monster implements Card{
+public class Monster implements Card
+{
     private String name;
     private int combatLevel;
     private Prize prize;
     private BadConsequence bc;
     private int levelChangeAgainstCultistPlayer;
+    
     public Monster(String name, int level, 
                     BadConsequence bc, 
                     Prize prize)
