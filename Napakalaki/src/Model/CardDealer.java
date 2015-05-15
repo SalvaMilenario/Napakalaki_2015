@@ -282,9 +282,12 @@ public class CardDealer {
         Collections.shuffle(unusedMonsters);
     }
 
-//    public Cultist nextCultist(){
-//        
-//    }
+    public Cultist nextCultist()
+    {
+        Cultist aDevolver = unusedCultists.get(unusedCultists.size()-1);
+        unusedCultists.remove(aDevolver);
+        return aDevolver;
+    }
 
     public Treasure nextTreasure()
     {

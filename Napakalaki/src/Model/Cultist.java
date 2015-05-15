@@ -9,11 +9,14 @@ package Model;
  *
  * @author xehartnort
  */
-public class Cultist extends Player implements Card
+public class Cultist implements Card
 {
-    public Cultist(Player p)
+    private String text;
+    private int gainedLevels;
+    public Cultist(String text, int level)
     {
-        super(p);
+        this.text = text;
+        this.gainedLevels = level;
     }
     @Override
     public int getBasicValue()
