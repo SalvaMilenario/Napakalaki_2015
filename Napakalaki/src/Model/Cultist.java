@@ -9,17 +9,21 @@ package Model;
  *
  * @author xehartnort
  */
-public class Cultist extends Player implements Card{
-//    A la espera del resto de la implementación
-//    @Override
-//    public int getBasicValue()
-//    {
-//        return gainedLevels;
-//    }
-//    
-//    @Override
-//    public int getSpecialValue()
-//    {
-//        return getBasicValue()*CultistPlayer.getTotalCultistPlayers();
-//    }
+public class Cultist extends Player implements Card
+{
+    public Cultist(Player p)
+    {
+        super(p);
+    }
+    @Override
+    public int getBasicValue()
+    {
+        return gainedLevels;
+    }
+    
+    @Override
+    public int getSpecialValue()
+    {
+        return getBasicValue()*CultistPlayer.getTotalCultistPlayers();
+    }
 }
