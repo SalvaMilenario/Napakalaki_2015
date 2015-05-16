@@ -19,7 +19,7 @@ public class Player {
     private ArrayList <Treasure> visibleTreasures;
     private ArrayList <Treasure> hiddenTreasures;
     private BadConsequence pendingBadConsequence;
-    final private CardDealer dealer = CardDealer.getInstance(); // no necesariamente
+    final private CardDealer dealer;
     
     public Player(String name)
     {
@@ -29,6 +29,18 @@ public class Player {
         this.pendingBadConsequence = new BCDeath("Vacio", false);
         this.name=name;
         this.dead=true;
+        this.dealer = CardDealer.getInstance();
+    }
+    
+    public Player(Player p)
+    {
+        this.dead = p.dead;
+        this.level = p.level;
+        this.hiddenTreasures = p.hiddenTreasures;
+        this.visibleTreasures = this.visibleTreasures;
+        this.name = p.name;
+        this.pendingBadConsequence = p.pendingBadConsequence;
+        this.dealer = CardDealer.getInstance();
     }
     
     private void bringToLive()
