@@ -16,7 +16,7 @@ public abstract class BadConsequence
     protected String text;   // Todos tienen nombre
     protected int levels;    // Todos tienen niveles
     protected boolean death; // Todos tienen un valor de muerte
-    protected String textoIntroduccion = "Esto es un mal rollo con el siguiente contenido: \n"; // Estará aquí hasta las versiones finales
+    protected String textoIntroduccion = "\n\tEsto es un mal rollo con el siguiente contenido:"; // Estará aquí hasta las versiones finales
     
     public BadConsequence(String text, int levels, boolean death)
     {
