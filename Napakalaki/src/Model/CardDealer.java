@@ -11,7 +11,8 @@ import java.util.Collections;
  *
  * @author xehartnort
  */
-public class CardDealer {
+public class CardDealer 
+{
     //    Implementación singleton
     //    Su intención consiste en garantizar que una clase sólo tenga una instancia 
     //    y proporcionar un punto de acceso global a ella.

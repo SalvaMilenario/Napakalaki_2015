@@ -11,23 +11,23 @@ package Model;
  */
 public class CultistPlayer extends Player 
 {
-    private static int totalCultistPlayer = 0;
-    Card culti;
+    private static int totalCultistPlayers = 0;
+    Card myCultistCard;
     
     public CultistPlayer(Player p, Cultist c)
     {
         super(p);
-        ++totalCultistPlayer;
-        this.culti = c;
+        this.totalCultistPlayers++;
+        this.myCultistCard = c;
     }
     @Override
     public int getCombatLevel()
     {
-        return super.getCombatLevel()+culti.getSpecialValue();
+        return super.getCombatLevel()+myCultistCard.getSpecialValue();
     }
     
     public static int getTotalCultistPlayers()
     {
-        return totalCultistPlayer;
+        return totalCultistPlayers;
     }
 }

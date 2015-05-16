@@ -9,7 +9,8 @@ package Model;
  *
  * @author xehartnort
  */
-public class Treasure implements Card{
+public class Treasure implements Card
+{
     private String name;
     private int goldBonus;
     private int minBonus;
@@ -62,7 +63,8 @@ public class Treasure implements Card{
         return type;
     }
     @Override
-    public String toString(){
+    public String toString()
+    {
         return "\n\tTesoro: " + name + 
                "\n\t\tGoldBonus: " + Integer.toString(goldBonus) + 
                "\n\t\tMinBonus: " + Integer.toString(minBonus) + 

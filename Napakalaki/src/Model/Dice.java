@@ -9,7 +9,8 @@ import java.util.Random;
  *
  * @author Salva
  */
-public class Dice {
+public class Dice 
+{
     
     private static Dice instance = null;
     private Random release;
