@@ -11,13 +11,13 @@ package Model;
  */
 public class CultistPlayer extends Player 
 {
-    private static int totalCultistPlayer = 0;
+    private static int totalCultistPlayers = 0;
     Card culti;
     
     public CultistPlayer(Player p, Cultist c)
     {
         super(p);
-        ++totalCultistPlayer;
+        ++totalCultistPlayers;
         this.culti = c;
     }
     @Override
@@ -28,6 +28,6 @@ public class CultistPlayer extends Player
     
     public static int getTotalCultistPlayers()
     {
-        return totalCultistPlayer;
+        return totalCultistPlayers;
     }
 }
