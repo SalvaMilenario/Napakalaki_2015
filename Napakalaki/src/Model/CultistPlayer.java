@@ -13,6 +13,7 @@ public class CultistPlayer extends Player
 {
     private static int totalCultistPlayers = 0;
     Card myCultistCard;
+
     
     public CultistPlayer(Player p, Cultist c)
     {
