@@ -36,8 +36,8 @@ public class Player {
     {
         this.dead = p.dead;
         this.level = p.level;
-        this.hiddenTreasures = p.hiddenTreasures;
-        this.visibleTreasures = this.visibleTreasures;
+        this.hiddenTreasures = p.hiddenTreasures; //habría que ver si este nivel de copiado es suficiente
+        this.visibleTreasures = p.visibleTreasures; //habría que ver si este nivel de copiado es suficiente
         this.name = p.name;
         this.pendingBadConsequence = p.pendingBadConsequence;
         this.dealer = CardDealer.getInstance();
