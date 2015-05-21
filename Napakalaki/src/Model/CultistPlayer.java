@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Model;
+import java.util.ArrayList;
 
 /**
  *
@@ -30,5 +31,22 @@ public class CultistPlayer extends Player
     public static int getTotalCultistPlayers()
     {
         return totalCultistPlayers;
+    }
+    @Override
+    protected boolean shouldConvert() 
+    {
+        return false;
+    }
+ 
+    @Override
+    protected int getOponentLevel(Monster m)
+    {
+        return m.getSpecialValue();
+    }
+    
+    @Override
+    protected float computeGoldCoinsValue(ArrayList<Treasure> t)
+    {
+        return super.computeGoldCoinsValue(t)*2;
     }
 }

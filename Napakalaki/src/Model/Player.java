@@ -112,7 +112,7 @@ public class Player {
     public CombatResult combat(Monster m)
     {
         CombatResult combate = CombatResult.LOSEANDESCAPE;
-        if(getCombatLevel() > m.getCombatLevel())
+        if(getCombatLevel() > getOponentLevel(m))
         {
             this.applyPrize(m.getPrize());
             if(level > 9)
@@ -125,7 +125,9 @@ public class Player {
         }
         else if(Dice.getInstance().nextNumber()<5)
         {
-            if(m.getBadConsequence().kills())
+            if(shouldConvert())
+                combate = CombatResult.LOSEANDCONVERT;
+            else if(m.getBadConsequence().kills())
             {
                 this.die();
                 combate = CombatResult.LOSEANDDIE;
@@ -333,5 +335,15 @@ public class Player {
     public String getName()
     {
         return name;
+    }
+
+    protected boolean shouldConvert() 
+    {
+        return Dice.getInstance().nextNumber()==6;
+    }
+ 
+    protected int getOponentLevel(Monster m) 
+    {
+        return m.getBasicValue();
     }
 }
