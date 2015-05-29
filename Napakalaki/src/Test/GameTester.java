@@ -8,7 +8,6 @@ import java.util.Scanner;
 import Model.CombatResult;
 import Model.Player;
 import Model.Treasure;
-import java.util.Arrays;
 
 public class GameTester {
   
