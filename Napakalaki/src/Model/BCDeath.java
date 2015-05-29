@@ -30,7 +30,7 @@ public class BCDeath extends BadConsequence
     @Override
     public boolean isEmpty()
     {
-        return death==false;
+        return !death;
     }
     
     @Override
