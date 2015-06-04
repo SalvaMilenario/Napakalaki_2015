@@ -5,6 +5,8 @@
  */
 package Model;
 
+import GUI.TreasureView;
+
 /**
  *
  * @author xehartnort
@@ -16,6 +18,7 @@ public class Treasure implements Card
     private int minBonus;
     private int maxBonus;
     private TreasureKind type;
+    private TreasureView treasureModel;
     
     public Treasure(String n, int g, int min, int max, TreasureKind t)
     {
@@ -24,6 +27,7 @@ public class Treasure implements Card
         this.minBonus = min;
         this.maxBonus = max;
         this.type = t;
+        this.treasureModel.setTreasure(this);
     }
 
     public String getName()
@@ -35,27 +39,17 @@ public class Treasure implements Card
     {
         return goldBonus;
     }
-
-    public int getMinBonus()
-    {
-        return minBonus;
-    }
-
-    public int getMaxBonus()
-    {
-        return maxBonus;
-    }
     
     @Override
     public int getBasicValue()
     {
-        return getMinBonus();
+        return minBonus;
     }
     
     @Override
     public int getSpecialValue()
     {
-        return getMaxBonus();
+        return maxBonus;
     }
     
     public TreasureKind getType()

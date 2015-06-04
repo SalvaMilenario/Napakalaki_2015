@@ -5,6 +5,8 @@
  */
 package Model;
 
+import GUI.PrizeView;
+
 /**
  *
  * @author Salva
@@ -13,6 +15,7 @@ public class Prize
 {
     private int levels;//numero de niveles que sube con el buen royo
     private int treasures;//numero de tesoros que consigue al vencer
+    private PrizeView prizeModel;
     
     public Prize(int treasures, int levels)
     {
@@ -21,6 +24,7 @@ public class Prize
         else
             this.levels= levels;
         this.treasures=treasures;
+        prizeModel.setPrize(this);
     }
     
     public int getLevels()

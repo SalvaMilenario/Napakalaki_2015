@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Model;
+import GUI.PlayerView;
 import java.util.ArrayList;
 
 /**
@@ -20,6 +21,7 @@ public class Player {
     private ArrayList <Treasure> hiddenTreasures;
     private BadConsequence pendingBadConsequence;
     final private CardDealer dealer;
+    private PlayerView playerModel;
     
     public Player(String name)
     {
@@ -30,6 +32,7 @@ public class Player {
         this.name=name;
         this.dead=true;
         this.dealer = CardDealer.getInstance();
+        this.playerModel.setPlayer(this);
     }
     
     public Player(Player p)
@@ -259,8 +262,8 @@ public class Player {
         boolean collar=false;
         for (Treasure T : visibleTreasures)
         {
-            combatLevel += T.getMinBonus();
-            combatLevelCollar += T.getMaxBonus();
+            combatLevel += T.getBasicValue();
+            combatLevelCollar += T.getSpecialValue();
             if(T.getType()==TreasureKind.NECKLACE)
                 collar = true;
         }
@@ -335,6 +338,11 @@ public class Player {
     public String getName()
     {
         return name;
+    }
+    
+    public int getLevel()
+    {
+        return level;
     }
 
     protected boolean shouldConvert() 

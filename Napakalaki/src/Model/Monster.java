@@ -5,6 +5,8 @@
  */
 package Model;
 
+import GUI.MonsterView;
+
 /**
  *
  * @author xehartnort y salva
@@ -16,7 +18,8 @@ public class Monster implements Card
     private Prize prize;
     private BadConsequence bc;
     private int levelChangeAgainstCultistPlayer;
-    
+    private MonsterView monsterModel;
+            
     public Monster(String name, int level, 
                     BadConsequence bc, 
                     Prize prize)
@@ -26,6 +29,7 @@ public class Monster implements Card
         this.prize = prize;
         this.bc = bc;
         this.levelChangeAgainstCultistPlayer=0;
+        this.monsterModel.setMonster(this);
     }
     public Monster(String name, int level, 
                     BadConsequence bc, 
