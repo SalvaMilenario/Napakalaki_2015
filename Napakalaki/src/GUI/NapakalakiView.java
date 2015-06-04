@@ -34,21 +34,47 @@ public class NapakalakiView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        monsterView1 = new GUI.MonsterView();
+        playerView1 = new GUI.PlayerView();
+        combat = new javax.swing.JButton();
+        nextTurn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        exit = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 608, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 382, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+        getContentPane().add(monsterView1);
+        monsterView1.setBounds(540, 10, 221, 366);
+        getContentPane().add(playerView1);
+        playerView1.setBounds(10, 10, 530, 366);
+
+        combat.setText("Meet the monster");
+        getContentPane().add(combat);
+        combat.setBounds(10, 390, 120, 31);
+
+        nextTurn.setText("Next Turn");
+        getContentPane().add(nextTurn);
+        nextTurn.setBounds(140, 390, 90, 31);
+
+        jButton1.setText("Combat");
+        getContentPane().add(jButton1);
+        jButton1.setBounds(240, 390, 70, 31);
+
+        exit.setText("Exit");
+        exit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitMouseClicked(evt);
+            }
+        });
+        getContentPane().add(exit);
+        exit.setBounds(690, 390, 69, 31);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_exitMouseClicked
 
     /**
      * @param args the command line arguments
@@ -58,5 +84,11 @@ public class NapakalakiView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton combat;
+    private javax.swing.JButton exit;
+    private javax.swing.JButton jButton1;
+    private GUI.MonsterView monsterView1;
+    private javax.swing.JButton nextTurn;
+    private GUI.PlayerView playerView1;
     // End of variables declaration//GEN-END:variables
 }

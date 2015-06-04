@@ -18,7 +18,7 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
 
     private ArrayList<String> names = new ArrayList(3); // almacen nombre de los jugadores
     /**
-     * Creates new form PlayerNamesCaptura
+     * Creates new form PlayerNamesCapture
      */
     public PlayerNamesCapture(Frame parent, boolean modal) {
         super(parent, modal);
@@ -179,7 +179,7 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
             Player3_name.setText("");
     }//GEN-LAST:event_Player3_nameMouseClicked
 
-
+    
     public ArrayList<String> getNames(){ //sustitudo método main
         this.setVisible(true);
         return names;
