@@ -5,6 +5,7 @@
  */
 package Model;
 
+import GUI.BadConsequenceView;
 import java.util.ArrayList;
 /**
  *
@@ -17,6 +18,7 @@ public abstract class BadConsequence
     protected int levels;    // Todos tienen niveles
     protected boolean death; // Todos tienen un valor de muerte
     protected String textoIntroduccion = "\n\tEsto es un mal rollo con el siguiente contenido:"; // Estará aquí hasta las versiones finales
+    protected BadConsequenceView badConsequenceModel;
     
     public BadConsequence(String text, int levels, boolean death)
     {
