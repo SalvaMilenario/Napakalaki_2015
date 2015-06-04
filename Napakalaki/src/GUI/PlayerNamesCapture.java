@@ -16,14 +16,14 @@ import java.util.ArrayList;
  */
 public class PlayerNamesCapture extends javax.swing.JDialog {
 
-    private ArrayList<String> names; // almacen nombre de los jugadores
+    private ArrayList<String> names = new ArrayList(3); // almacen nombre de los jugadores
     /**
      * Creates new form PlayerNamesCaptura
      */
     public PlayerNamesCapture(Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.addWindowListener( new WindowAdapter(){
+        this.addWindowListener( new WindowAdapter(){ //Clase anónima
             @Override
             public void windowClosing (WindowEvent e){
                 System.exit(0);
@@ -40,29 +40,159 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Player1 = new javax.swing.JLabel();
+        Player2 = new javax.swing.JLabel();
+        Player3 = new javax.swing.JLabel();
+        Player1_name = new javax.swing.JTextField();
+        Player2_name = new javax.swing.JTextField();
+        Player3_name = new javax.swing.JTextField();
+        Cancel = new javax.swing.JButton();
+        Play = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        Player1.setText("Player1");
+
+        Player2.setText("Player2");
+
+        Player3.setText("Player3");
+
+        Player1_name.setText("Introduce un nombre");
+        Player1_name.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Player1_nameMouseClicked(evt);
+            }
+        });
+
+        Player2_name.setText("Introduce un nombre");
+        Player2_name.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Player2_nameMouseClicked(evt);
+            }
+        });
+
+        Player3_name.setText("Introduce un nombre");
+        Player3_name.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Player3_nameMouseClicked(evt);
+            }
+        });
+        Player3_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Player3_nameActionPerformed(evt);
+            }
+        });
+
+        Cancel.setText("Cancel");
+        Cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelActionPerformed(evt);
+            }
+        });
+
+        Play.setText("Play!");
+        Play.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PlayActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(122, 122, 122)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Player2)
+                        .addGap(18, 18, 18)
+                        .addComponent(Player2_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Player1)
+                        .addGap(18, 18, 18)
+                        .addComponent(Player1_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Player3)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Cancel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Play))
+                            .addComponent(Player3_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(751, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Player1)
+                    .addComponent(Player1_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Player2)
+                    .addComponent(Player2_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Player3)
+                    .addComponent(Player3_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Cancel)
+                    .addComponent(Play))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public ArrayList<String> getNames(){
+    private void Player3_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Player3_nameActionPerformed
+        if ( "Introduce un nombre".equals(Player3_name.getText()) )
+            Player3_name.setText("");
+    }//GEN-LAST:event_Player3_nameActionPerformed
+
+    private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_CancelActionPerformed
+
+    private void PlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayActionPerformed
+        names.add(Player1_name.getText());
+        names.add(Player2_name.getText());
+        names.add(Player3_name.getText());
+        this.dispose(); // Devuelve el control a la clase 
+    }//GEN-LAST:event_PlayActionPerformed
+
+    private void Player1_nameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Player1_nameMouseClicked
+        if ( "Introduce un nombre".equals(Player1_name.getText()) )
+            Player1_name.setText("");
+    }//GEN-LAST:event_Player1_nameMouseClicked
+
+    private void Player2_nameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Player2_nameMouseClicked
+        if ( "Introduce un nombre".equals(Player2_name.getText()) )
+            Player2_name.setText("");
+    }//GEN-LAST:event_Player2_nameMouseClicked
+
+    private void Player3_nameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Player3_nameMouseClicked
+        if ( "Introduce un nombre".equals(Player3_name.getText()) )
+            Player3_name.setText("");
+    }//GEN-LAST:event_Player3_nameMouseClicked
+
+
+    public ArrayList<String> getNames(){ //sustitudo método main
         this.setVisible(true);
         return names;
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Cancel;
+    private javax.swing.JButton Play;
+    private javax.swing.JLabel Player1;
+    private javax.swing.JTextField Player1_name;
+    private javax.swing.JLabel Player2;
+    private javax.swing.JTextField Player2_name;
+    private javax.swing.JLabel Player3;
+    private javax.swing.JTextField Player3_name;
     // End of variables declaration//GEN-END:variables
 }
