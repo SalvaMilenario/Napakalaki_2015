@@ -25,6 +25,7 @@ public abstract class BadConsequence
         this.text = text;
         this.levels = levels;   
         this.death = death;
+        this.badConsequenceModel = new BadConsequenceView();
     }
     
     public String getText()
