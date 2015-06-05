@@ -23,6 +23,7 @@ public class NapakalakiView extends javax.swing.JFrame {
     
     public void setNapakalaki(Napakalaki model){
         this.napakalakiModel=model;
+        this.playerView1.setNapakalaki(model);
     }
 
     /**

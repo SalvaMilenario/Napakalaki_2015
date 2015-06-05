@@ -5,8 +5,10 @@
  */
 package GUI;
 
+import Model.Napakalaki;
 import Model.Player;
 import Model.Treasure;
+import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
@@ -15,7 +17,9 @@ import javax.swing.JPanel;
  * @author xehartnort
  */
 public class PlayerView extends javax.swing.JPanel {
-
+    
+    private Napakalaki napakalakiModel;
+    
     Player playerModel;
     
     /**
@@ -36,6 +40,27 @@ public class PlayerView extends javax.swing.JPanel {
         fillTreasurePanel (hiddenTreasures, playerModel.getHiddenTreasures());
         repaint();
         revalidate();
+    }
+    
+    public void setNapakalaki(Napakalaki n)
+    {
+        this.napakalakiModel = n;
+    }
+    
+    public ArrayList<Treasure> getSelectedTreasures(JPanel aPanel) 
+    {
+        // Se recorren los tesoros que contiene el panel,
+        // almacenando en un vector aquellos que están seleccionados.
+        // Finalmente se devuelve dicho vector.
+        TreasureView tv;
+        ArrayList<Treasure> output = new ArrayList();
+        for (Component c : aPanel.getComponents()) 
+        {
+            tv = (TreasureView) c;
+            if (tv.isSelected())
+                output.add(tv.getTreasure());
+        }
+        return output;
     }
     
     public void fillTreasurePanel (JPanel aPanel, ArrayList<Treasure> aList) {
@@ -100,6 +125,11 @@ public class PlayerView extends javax.swing.JPanel {
         buyLevels.setText("Buy Levels");
 
         jButton2.setText("Make Visible");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Discard Treasures");
 
@@ -151,6 +181,13 @@ public class PlayerView extends javax.swing.JPanel {
                 .addGap(13, 13, 13))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ArrayList<Treasure> selHidden = getSelectedTreasures (hiddenTreasures);
+        for (Treasure t : selHidden)
+            napakalakiModel.makeTreasureVisible(t);
+        setPlayer(napakalakiModel.getCurrentPlayer());
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

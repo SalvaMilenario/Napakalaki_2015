@@ -58,28 +58,32 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
         Player3.setText("Player3");
 
         Player1_name.setText("Introduce un nombre");
-        Player1_name.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Player1_nameMouseClicked(evt);
+        Player1_name.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                Player1_nameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                Player1_nameFocusLost(evt);
             }
         });
 
         Player2_name.setText("Introduce un nombre");
-        Player2_name.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Player2_nameMouseClicked(evt);
+        Player2_name.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                Player2_nameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                Player2_nameFocusLost(evt);
             }
         });
 
         Player3_name.setText("Introduce un nombre");
-        Player3_name.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Player3_nameMouseClicked(evt);
+        Player3_name.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                Player3_nameFocusGained(evt);
             }
-        });
-        Player3_name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Player3_nameActionPerformed(evt);
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                Player3_nameFocusLost(evt);
             }
         });
 
@@ -102,7 +106,7 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(122, 122, 122)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Player2)
@@ -121,12 +125,12 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(Play))
                             .addComponent(Player3_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(751, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Player1)
                     .addComponent(Player1_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -142,16 +146,11 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cancel)
                     .addComponent(Play))
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Player3_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Player3_nameActionPerformed
-        if ( "Introduce un nombre".equals(Player3_name.getText()) )
-            Player3_name.setText("");
-    }//GEN-LAST:event_Player3_nameActionPerformed
 
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
         System.exit(0);
@@ -164,20 +163,32 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
         this.dispose(); // Devuelve el control a la clase 
     }//GEN-LAST:event_PlayActionPerformed
 
-    private void Player1_nameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Player1_nameMouseClicked
-        if ( "Introduce un nombre".equals(Player1_name.getText()) )
-            Player1_name.setText("");
-    }//GEN-LAST:event_Player1_nameMouseClicked
+    private void Player1_nameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Player1_nameFocusGained
+        this.Player1_name.setText("");
+    }//GEN-LAST:event_Player1_nameFocusGained
 
-    private void Player2_nameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Player2_nameMouseClicked
-        if ( "Introduce un nombre".equals(Player2_name.getText()) )
-            Player2_name.setText("");
-    }//GEN-LAST:event_Player2_nameMouseClicked
+    private void Player1_nameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Player1_nameFocusLost
+        if(this.Player1_name.getText().isEmpty())
+            this.Player1_name.setText("Introduce un nombre");
+    }//GEN-LAST:event_Player1_nameFocusLost
 
-    private void Player3_nameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Player3_nameMouseClicked
-        if ( "Introduce un nombre".equals(Player3_name.getText()) )
-            Player3_name.setText("");
-    }//GEN-LAST:event_Player3_nameMouseClicked
+    private void Player2_nameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Player2_nameFocusGained
+        this.Player2_name.setText("");
+    }//GEN-LAST:event_Player2_nameFocusGained
+
+    private void Player2_nameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Player2_nameFocusLost
+        if(this.Player2_name.getText().isEmpty())
+            this.Player2_name.setText("Introduce un nombre");
+    }//GEN-LAST:event_Player2_nameFocusLost
+
+    private void Player3_nameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Player3_nameFocusGained
+        this.Player3_name.setText("");
+    }//GEN-LAST:event_Player3_nameFocusGained
+
+    private void Player3_nameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Player3_nameFocusLost
+        if(this.Player3_name.getText().isEmpty())
+            this.Player3_name.setText("Introduce un nombre");
+    }//GEN-LAST:event_Player3_nameFocusLost
 
     
     public ArrayList<String> getNames(){ //sustitudo método main

@@ -6,13 +6,14 @@
 package GUI;
 
 import Model.Treasure;
+import java.awt.Color;
 
 /**
  *
  * @author xehartnort
  */
 public class TreasureView extends javax.swing.JFrame {
-
+    private boolean selected = false;
     private Treasure treasureModel;
     /**
      * Creates new form TreasureView
@@ -30,6 +31,15 @@ public class TreasureView extends javax.swing.JFrame {
         this.repaint();   
     }
     
+    public boolean isSelected ()
+    {
+        return selected;
+    }
+    
+    public Treasure getTreasure()
+    {
+        return treasureModel;
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,6 +57,12 @@ public class TreasureView extends javax.swing.JFrame {
         type = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         coins.setText("coins");
 
@@ -92,6 +108,17 @@ public class TreasureView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        selected = !selected;
+        Color c;
+        if(selected)
+            c = Color.gray;//Color Gris
+        else 
+            c = new Color(240,240,240);//Color original
+        this.setBackground(c);//Cambio el color
+        this.repaint();
+    }//GEN-LAST:event_formMouseClicked
 
     /**
      * @param args the command line arguments
