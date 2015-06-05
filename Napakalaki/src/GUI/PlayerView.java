@@ -123,6 +123,11 @@ public class PlayerView extends javax.swing.JPanel {
         combatLevel.setText("combatLevel");
 
         buyLevels.setText("Buy Levels");
+        buyLevels.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buyLevelsActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Make Visible");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -132,6 +137,11 @@ public class PlayerView extends javax.swing.JPanel {
         });
 
         jButton3.setText("Discard Treasures");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -188,6 +198,23 @@ public class PlayerView extends javax.swing.JPanel {
             napakalakiModel.makeTreasureVisible(t);
         setPlayer(napakalakiModel.getCurrentPlayer());
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void buyLevelsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyLevelsActionPerformed
+        ArrayList<Treasure> selHidden = getSelectedTreasures(hiddenTreasures);
+        ArrayList<Treasure> selVisible = getSelectedTreasures(visibleTreasures);
+        napakalakiModel.buyLevels(selVisible, selHidden);
+        setPlayer(napakalakiModel.getCurrentPlayer());
+    }//GEN-LAST:event_buyLevelsActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        ArrayList<Treasure> selHidden = getSelectedTreasures(hiddenTreasures);
+        ArrayList<Treasure> selVisible = getSelectedTreasures(visibleTreasures);
+        for (Treasure t : selHidden)
+            napakalakiModel.discardHiddenTreasure(t);
+        for (Treasure t : selVisible)
+            napakalakiModel.discardVisibleTreasure(t);
+        setPlayer(napakalakiModel.getCurrentPlayer());
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
