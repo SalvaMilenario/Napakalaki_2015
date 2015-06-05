@@ -32,6 +32,7 @@ public class Player {
         this.name=name;
         this.dead=true;
         this.dealer = CardDealer.getInstance();
+        this.playerModel = new PlayerView();
         this.playerModel.setPlayer(this);
     }
     

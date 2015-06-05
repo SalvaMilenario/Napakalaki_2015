@@ -24,7 +24,8 @@ public class Prize
         else
             this.levels= levels;
         this.treasures=treasures;
-        prizeModel.setPrize(this);
+        this.prizeModel = new PrizeView();
+        this.prizeModel.setPrize(this);
     }
     
     public int getLevels()

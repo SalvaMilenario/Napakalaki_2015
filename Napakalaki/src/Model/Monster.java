@@ -29,6 +29,7 @@ public class Monster implements Card
         this.prize = prize;
         this.bc = bc;
         this.levelChangeAgainstCultistPlayer=0;
+        this.monsterModel = new MonsterView();
         this.monsterModel.setMonster(this);
     }
     public Monster(String name, int level, 
@@ -41,6 +42,8 @@ public class Monster implements Card
         this.prize = prize;
         this.bc = bc;
         this.levelChangeAgainstCultistPlayer=levelChangeAgainstCultistPlayer;
+        this.monsterModel = new MonsterView();
+        this.monsterModel.setMonster(this);
     }
     
     public String getName()

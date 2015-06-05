@@ -27,6 +27,7 @@ public class Treasure implements Card
         this.minBonus = min;
         this.maxBonus = max;
         this.type = t;
+        this.treasureModel = new TreasureView();
         this.treasureModel.setTreasure(this);
     }
 
