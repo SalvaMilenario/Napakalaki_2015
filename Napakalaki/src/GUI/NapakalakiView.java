@@ -42,23 +42,13 @@ public class NapakalakiView extends javax.swing.JFrame {
         exit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
-        getContentPane().add(monsterView1);
-        monsterView1.setBounds(540, 10, 221, 366);
-        getContentPane().add(playerView1);
-        playerView1.setBounds(10, 10, 530, 366);
+        setMaximumSize(new java.awt.Dimension(2000000000, 2147483647));
 
         combat.setText("Meet the monster");
-        getContentPane().add(combat);
-        combat.setBounds(10, 390, 120, 31);
 
         nextTurn.setText("Next Turn");
-        getContentPane().add(nextTurn);
-        nextTurn.setBounds(140, 390, 90, 31);
 
         jButton1.setText("Combat");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(240, 390, 70, 31);
 
         exit.setText("Exit");
         exit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -66,8 +56,41 @@ public class NapakalakiView extends javax.swing.JFrame {
                 exitMouseClicked(evt);
             }
         });
-        getContentPane().add(exit);
-        exit.setBounds(690, 390, 69, 31);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(playerView1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(monsterView1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(combat, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(nextTurn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(380, 380, 380)
+                        .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(playerView1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(monsterView1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(combat)
+                    .addComponent(nextTurn)
+                    .addComponent(jButton1)
+                    .addComponent(exit)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
