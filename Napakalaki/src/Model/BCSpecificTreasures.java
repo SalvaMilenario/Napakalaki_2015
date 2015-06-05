@@ -13,13 +13,14 @@ import java.util.ArrayList;
 public class BCSpecificTreasures extends BadConsequence
 {
     private ArrayList<TreasureKind> specificVisibleTreasures;
-    private ArrayList<TreasureKind> specificHiddenTreasures; 
+    private ArrayList<TreasureKind> specificHiddenTreasures;
     
     public BCSpecificTreasures(String text , int levels,
                             ArrayList<TreasureKind> tVisible,
                             ArrayList<TreasureKind> tHidden)
     {
         super(text, levels, false);
+        this.badConsequenceModel.setBadConsequence(this);
         this.specificHiddenTreasures = tHidden;
         this.specificVisibleTreasures = tVisible;
     }

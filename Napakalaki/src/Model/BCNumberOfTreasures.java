@@ -19,6 +19,7 @@ public class BCNumberOfTreasures extends BadConsequence
     public BCNumberOfTreasures(String text, int levels, int nVisible, int nHidden)
     {
         super(text, levels, false);
+        this.badConsequenceModel.setBadConsequence(this);
         this.nVisibleTreasures = nVisible;
         this.nHiddenTreasures = nHidden;
     }

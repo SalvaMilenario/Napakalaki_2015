@@ -16,6 +16,8 @@ public class BCDeath extends BadConsequence
     BCDeath(String text, boolean death)
     {
         super(text, 0, death);
+        this.badConsequenceModel.setBadConsequence(this);
+
     }
     @Override
     public void substractVisibleTreasure(Treasure t)
