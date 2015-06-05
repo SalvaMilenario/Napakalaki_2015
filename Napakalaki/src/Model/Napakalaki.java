@@ -59,13 +59,8 @@ public class Napakalaki {
         {
             Player newCultist = new CultistPlayer(currentPlayer,dealer.nextCultist());
             for(Player p : players)
-            {
                 if(p == currentPlayer)
-                {
-                    p = newCultist;
-                    break;
-                }    
-            }
+                    p = newCultist; 
             currentPlayer = newCultist;
         }
         return resultadoCombate;

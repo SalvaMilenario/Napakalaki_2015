@@ -5,7 +5,9 @@
  */
 package GUI;
 
+import Model.CombatResult;
 import Model.Napakalaki;
+import javax.swing.JOptionPane;
         
 /**
  *
@@ -19,6 +21,8 @@ public class NapakalakiView extends javax.swing.JFrame {
      */
     public NapakalakiView() {
         initComponents();
+        monsterView1.setVisible(false);
+        monsterView1.setEnabled(false);
     }
     
     public void setNapakalaki(Napakalaki model){
@@ -46,10 +50,25 @@ public class NapakalakiView extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(2000000000, 2147483647));
 
         combat.setText("Meet the monster");
+        combat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combatActionPerformed(evt);
+            }
+        });
 
         nextTurn.setText("Next Turn");
+        nextTurn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextTurnActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Combat");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         exit.setText("Exit");
         exit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -99,6 +118,46 @@ public class NapakalakiView extends javax.swing.JFrame {
     private void exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMouseClicked
         System.exit(0);
     }//GEN-LAST:event_exitMouseClicked
+
+    private void combatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combatActionPerformed
+        monsterView1.setVisible(true);
+        monsterView1.setEnabled(true);
+    }//GEN-LAST:event_combatActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        CombatResult c=null;
+        if (monsterView1.isVisible())
+            c =this.napakalakiModel.combat();
+        switch (c)
+        {
+            case WINANDWINGAME:
+                JOptionPane.showMessageDialog(null,"¡¡¡ H A S   G A N A D O   L A   P A R T I D A !!!");
+                break;
+            case WIN:
+                JOptionPane.showMessageDialog(null,"Ganaste el combate");
+                break;
+            case LOSE:
+                JOptionPane.showMessageDialog(null,"Has perdido el combate, te toca cumplir el mal rollo");
+                break;
+            case LOSEANDESCAPE:
+                JOptionPane.showMessageDialog(null,"Perdiste el combate pero has logrado escapar");
+                break;
+            case LOSEANDDIE:
+                JOptionPane.showMessageDialog(null,"Perdiste el combate y además estás muerto");
+                break;
+            case LOSEANDCONVERT:
+                JOptionPane.showMessageDialog(null,"Perdiste el combate pero te combiertes en sectario");
+                break;
+            default:
+                JOptionPane.showMessageDialog(null,"No has visto al monstruo");
+        }         
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void nextTurnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextTurnActionPerformed
+        boolean sePuede = napakalakiModel.nextTurn();
+        if(!sePuede)
+            JOptionPane.showMessageDialog(null,"Imposible pasar de turno, revisa condiciones");
+    }//GEN-LAST:event_nextTurnActionPerformed
 
     /**
      * @param args the command line arguments
