@@ -10,6 +10,7 @@ import Model.Player;
 import Model.Treasure;
 import java.awt.Component;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -36,10 +37,10 @@ public class PlayerView extends javax.swing.JPanel {
         level.setText("Lv. "+Integer.toString(playerModel.getLevel()));
         combatLevel.setText("Combat Lv. "+Integer.toString(playerModel.getCombatLevel()));
         // A continuación se actualizan sus tesoros
-        fillTreasurePanel (visibleTreasures, playerModel.getVisibleTreasures());
-        fillTreasurePanel (hiddenTreasures, playerModel.getHiddenTreasures());
-        repaint();
-        revalidate();
+        this.fillTreasurePanel (visibleTreasures, playerModel.getVisibleTreasures());
+        this.fillTreasurePanel (hiddenTreasures, playerModel.getHiddenTreasures());
+        this.repaint();
+        this.revalidate();
     }
     
     public void setNapakalaki(Napakalaki n)
@@ -94,7 +95,7 @@ public class PlayerView extends javax.swing.JPanel {
         dead = new javax.swing.JLabel();
         combatLevel = new javax.swing.JLabel();
         buyLevels = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        makeVisible = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Player", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
@@ -129,10 +130,10 @@ public class PlayerView extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("Make Visible");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        makeVisible.setText("Make Visible");
+        makeVisible.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                makeVisibleActionPerformed(evt);
             }
         });
 
@@ -151,7 +152,7 @@ public class PlayerView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3)
-                    .addComponent(jButton2)
+                    .addComponent(makeVisible)
                     .addComponent(buyLevels)
                     .addComponent(dead)
                     .addComponent(combatLevel)
@@ -185,19 +186,23 @@ public class PlayerView extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(buyLevels)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
+                        .addComponent(makeVisible)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3)))
                 .addGap(13, 13, 13))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ArrayList<Treasure> selHidden = getSelectedTreasures (hiddenTreasures);
+    private void makeVisibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeVisibleActionPerformed
+        ArrayList<Treasure> selHidden = getSelectedTreasures(hiddenTreasures);
         for (Treasure t : selHidden)
-            napakalakiModel.makeTreasureVisible(t);
-        setPlayer(napakalakiModel.getCurrentPlayer());
-    }//GEN-LAST:event_jButton2ActionPerformed
+        {
+            if(!napakalakiModel.getCurrentPlayer().makeTreasureVisible(t))
+                JOptionPane.showMessageDialog(null,"No se puede hacer visible a "+t.getName());
+        }
+        this.setPlayer(napakalakiModel.getCurrentPlayer());
+        this.visibleTreasures.repaint();
+    }//GEN-LAST:event_makeVisibleActionPerformed
 
     private void buyLevelsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyLevelsActionPerformed
         ArrayList<Treasure> selHidden = getSelectedTreasures(hiddenTreasures);
@@ -222,9 +227,9 @@ public class PlayerView extends javax.swing.JPanel {
     private javax.swing.JLabel combatLevel;
     private javax.swing.JLabel dead;
     private javax.swing.JPanel hiddenTreasures;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel level;
+    private javax.swing.JButton makeVisible;
     private javax.swing.JLabel name;
     private javax.swing.JPanel visibleTreasures;
     // End of variables declaration//GEN-END:variables

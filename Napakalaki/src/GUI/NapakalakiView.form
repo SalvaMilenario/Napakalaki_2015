@@ -35,11 +35,11 @@
                       <Component id="monsterView1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="combat" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="meetMonster" min="-2" pref="120" max="-2" attributes="0"/>
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                       <Component id="nextTurn" min="-2" pref="90" max="-2" attributes="0"/>
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="70" max="-2" attributes="0"/>
+                      <Component id="combat" min="-2" pref="70" max="-2" attributes="0"/>
                       <EmptySpace min="380" pref="380" max="-2" attributes="0"/>
                       <Component id="exit" min="-2" pref="69" max="-2" attributes="0"/>
                   </Group>
@@ -57,9 +57,9 @@
               </Group>
               <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="combat" min="-2" max="-2" attributes="0"/>
+                  <Component id="meetMonster" min="-2" max="-2" attributes="0"/>
                   <Component id="nextTurn" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <Component id="combat" min="-2" max="-2" attributes="0"/>
                   <Component id="exit" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -71,12 +71,12 @@
     </Component>
     <Component class="GUI.PlayerView" name="playerView1">
     </Component>
-    <Component class="javax.swing.JButton" name="combat">
+    <Component class="javax.swing.JButton" name="meetMonster">
       <Properties>
         <Property name="text" type="java.lang.String" value="Meet the monster"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combatActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="meetMonsterActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="nextTurn">
@@ -87,12 +87,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nextTurnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="combat">
       <Properties>
         <Property name="text" type="java.lang.String" value="Combat"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combatActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="exit">
