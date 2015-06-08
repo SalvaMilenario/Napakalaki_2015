@@ -80,14 +80,15 @@ public class Player {
     }
     private void discardNecklaceIfVisible()
     {
+        ArrayList <Treasure> ar = new ArrayList<>();
         for(Treasure t :visibleTreasures)
         {
             if(t.getType()==TreasureKind.NECKLACE)
-            {
                 dealer.giveTreasureBack(t);
-                visibleTreasures.remove(t);
-            }
+            else
+                ar.add(t);
         }
+        this.visibleTreasures = ar;
     }
     private void dieIfNoTreasures()
     {

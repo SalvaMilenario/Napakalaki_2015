@@ -28,7 +28,26 @@ public class TreasureView extends javax.swing.JPanel {
         this.name.setText(treasureModel.getName());
         this.coins.setText(Integer.toString(treasureModel.getGoldCoins())+" €"); 
         this.maxBonus.setText(Integer.toString(treasureModel.getSpecialValue())); 
-        this.minBonus.setText(Integer.toString(treasureModel.getBasicValue()));  
+        this.minBonus.setText(Integer.toString(treasureModel.getBasicValue()));
+        switch (t.getType())
+        {
+            case ARMOR:
+                this.type.setText("Armadura");
+                break;
+            case ONEHAND:
+                this.type.setText("Una mano");
+                break;
+            case BOTHHANDS:
+                this.type.setText("De dos Manos");
+                break;
+            case HELMET:
+                this.type.setText("Casco");
+                break;
+            case SHOE:
+                this.type.setText("Calzado");
+                break;
+            case NECKLACE:
+        }
         this.repaint();   
     }
     

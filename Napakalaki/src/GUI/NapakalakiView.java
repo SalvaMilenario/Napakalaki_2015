@@ -21,13 +21,13 @@ public class NapakalakiView extends javax.swing.JFrame {
      */
     public NapakalakiView() {
         initComponents();
-        monsterView1.setVisible(false);
-        monsterView1.setEnabled(false);
+        monster.setVisible(false);
+        monster.setEnabled(false);
     }
     
     public void setNapakalaki(Napakalaki model){
         this.napakalakiModel=model;
-        this.playerView1.setNapakalaki(model);
+        this.player.setNapakalaki(model);
     }
 
     /**
@@ -39,8 +39,8 @@ public class NapakalakiView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        monsterView1 = new GUI.MonsterView();
-        playerView1 = new GUI.PlayerView();
+        monster = new GUI.MonsterView();
+        player = new GUI.PlayerView();
         meetMonster = new javax.swing.JButton();
         nextTurn = new javax.swing.JButton();
         combat = new javax.swing.JButton();
@@ -85,9 +85,9 @@ public class NapakalakiView extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(playerView1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(player, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(monsterView1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(monster, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(meetMonster, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
@@ -102,8 +102,8 @@ public class NapakalakiView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(playerView1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(monsterView1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(player, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(monster, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(meetMonster)
@@ -120,13 +120,16 @@ public class NapakalakiView extends javax.swing.JFrame {
     }//GEN-LAST:event_exitMouseClicked
 
     private void meetMonsterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meetMonsterActionPerformed
-        monsterView1.setVisible(true);
-        monsterView1.setEnabled(true);
+        this.player.setBotones(false, false, false);
+        monster.setMonster(this.napakalakiModel.getCurrentMonster());
+        monster.setVisible(true);
+        monster.setEnabled(true);
+        this.combat.setEnabled(true);
     }//GEN-LAST:event_meetMonsterActionPerformed
 
     private void combatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combatActionPerformed
         CombatResult c=null;
-        if (monsterView1.isVisible())
+        if (monster.isVisible())
             c =this.napakalakiModel.combat();
         switch (c)
         {
@@ -150,7 +153,10 @@ public class NapakalakiView extends javax.swing.JFrame {
                 break;
             default:
                 JOptionPane.showMessageDialog(null,"No has visto al monstruo");
-        }         
+        }
+        this.player.setBotones(false, true, true);
+        this.player.setPlayer(napakalakiModel.getCurrentPlayer());
+        this.nextTurn.setEnabled(true);
     }//GEN-LAST:event_combatActionPerformed
 
     private void nextTurnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextTurnActionPerformed
@@ -159,8 +165,10 @@ public class NapakalakiView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Imposible pasar de turno, revisa condiciones");
         else
         {
-            this.playerView1.setPlayer(napakalakiModel.getCurrentPlayer());
-            this.monsterView1.setVisible(false);
+            this.player.setPlayer(napakalakiModel.getCurrentPlayer());
+            this.monster.setVisible(false);
+            this.nextTurn.setEnabled(false);
+            this.player.setBotones(true, true, true); 
         }
     }//GEN-LAST:event_nextTurnActionPerformed
 
@@ -169,15 +177,17 @@ public class NapakalakiView extends javax.swing.JFrame {
      */
     public void showView() {
         this.setVisible(true);
-        this.playerView1.setPlayer(napakalakiModel.getCurrentPlayer());
+        this.nextTurn.setEnabled(false);
+        this.player.setPlayer(napakalakiModel.getCurrentPlayer());
+        this.combat.setEnabled(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton combat;
     private javax.swing.JButton exit;
     private javax.swing.JButton meetMonster;
-    private GUI.MonsterView monsterView1;
+    private GUI.MonsterView monster;
     private javax.swing.JButton nextTurn;
-    private GUI.PlayerView playerView1;
+    private GUI.PlayerView player;
     // End of variables declaration//GEN-END:variables
 }
