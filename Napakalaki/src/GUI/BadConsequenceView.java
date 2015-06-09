@@ -53,8 +53,8 @@ public class BadConsequenceView extends javax.swing.JPanel {
 //            TODO I really dont know what should i do here, am i mad?
 //            this.specificVisibleTreasures = ((BCSpecificTreasures)badConsequenceModel).getSpecificVisibleTreasures();
 //            fillTreasurePanel (specificHiddenTreasures, ((BCSpecificTreasures)badConsequenceModel).getSpecificHiddenTreasures());
-        }
-        else if ( badConsequenceModel instanceof BCDeath )
+        }//para la muerte
+        else
             this.death.setVisible(true);
     }
 
