@@ -125,7 +125,6 @@ public class NapakalakiView extends javax.swing.JFrame {
         monster.setVisible(true);
         monster.setEnabled(true);
         this.combat.setEnabled(true);
-        this.meetMonster.setEnabled(false);
     }//GEN-LAST:event_meetMonsterActionPerformed
 
     private void combatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combatActionPerformed
@@ -136,7 +135,6 @@ public class NapakalakiView extends javax.swing.JFrame {
         {
             case WINANDWINGAME:
                 JOptionPane.showMessageDialog(null,"¡¡¡ H A S   G A N A D O   L A   P A R T I D A !!!");
-                System.exit(0);
                 break;
             case WIN:
                 JOptionPane.showMessageDialog(null,"Ganaste el combate");
@@ -159,7 +157,6 @@ public class NapakalakiView extends javax.swing.JFrame {
         this.player.setBotones(false, true, true);
         this.player.setPlayer(napakalakiModel.getCurrentPlayer());
         this.nextTurn.setEnabled(true);
-        this.combat.setEnabled(false);
     }//GEN-LAST:event_combatActionPerformed
 
     private void nextTurnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextTurnActionPerformed
@@ -173,8 +170,6 @@ public class NapakalakiView extends javax.swing.JFrame {
             this.nextTurn.setEnabled(false);
             this.player.setBotones(true, true, true); 
         }
-        this.combat.setEnabled(false);
-        this.meetMonster.setEnabled(true);
     }//GEN-LAST:event_nextTurnActionPerformed
 
     /**

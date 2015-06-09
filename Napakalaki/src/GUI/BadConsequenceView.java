@@ -5,7 +5,6 @@
  */
 package GUI;
 
-import Model.BCDeath;
 import Model.BCNumberOfTreasures;
 import Model.BCSpecificTreasures;
 import Model.BadConsequence;
@@ -29,8 +28,7 @@ public class BadConsequenceView extends javax.swing.JPanel {
         this.badConsequenceModel = b;
         this.text.setText(badConsequenceModel.getText());
         this.levels.setText(Integer.toString(badConsequenceModel.getLevels()));
-        this.death.setVisible(false);
-        this.death.setText("Mata");
+
         this.specificVisibleTreasures.setEnabled(false);
         this.specificHiddenTreasures.setEnabled(false);
         this.nVisibleTreasures.setEnabled(false);
@@ -53,9 +51,7 @@ public class BadConsequenceView extends javax.swing.JPanel {
 //            TODO I really dont know what should i do here, am i mad?
 //            this.specificVisibleTreasures = ((BCSpecificTreasures)badConsequenceModel).getSpecificVisibleTreasures();
 //            fillTreasurePanel (specificHiddenTreasures, ((BCSpecificTreasures)badConsequenceModel).getSpecificHiddenTreasures());
-        }//para la muerte
-        else
-            this.death.setVisible(true);
+        }
     }
 
 //        public void fillTreasurePanel (JPanel aPanel, ArrayList<TreasureKind> aList) {
