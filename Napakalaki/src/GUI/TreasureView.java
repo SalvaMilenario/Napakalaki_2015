@@ -47,6 +47,7 @@ public class TreasureView extends javax.swing.JPanel {
                 this.type.setText("Calzado");
                 break;
             case NECKLACE:
+                this.type.setText("Collar");
         }
         this.repaint();   
     }
