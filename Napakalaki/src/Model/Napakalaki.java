@@ -58,10 +58,11 @@ public class Napakalaki {
         if(resultadoCombate==CombatResult.LOSEANDCONVERT)
         {
             Player newCultist = new CultistPlayer(currentPlayer,dealer.nextCultist());
-            for(Player p : players)
-                if(p == currentPlayer)
-                    p = newCultist; 
-            currentPlayer = newCultist;
+            for(int i =0; i< players.size(); i++)
+                if(players.get(i) == currentPlayer){
+                    players.set(i, newCultist);
+                    currentPlayer = newCultist;
+                }
         }
         return resultadoCombate;
     }
@@ -107,15 +108,15 @@ public class Napakalaki {
     
     public boolean nextTurn()
     {
-        
-        if( nextTurnIsAllowed() ){ 
+        boolean next = nextTurnIsAllowed();
+        if(next){ 
             currentMonster = dealer.nextMonster();
             currentPlayer = nextPlayer();
             if(currentPlayer.isDead()){
                 currentPlayer.initTreasures();
             }
         }
-        return this.nextTurnIsAllowed();
+        return next;
     }
         
     public boolean nextTurnIsAllowed()

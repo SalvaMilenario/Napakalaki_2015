@@ -37,12 +37,13 @@ public class PlayerView extends javax.swing.JPanel {
         dead.setText(playerModel.isDead()==true ? "Muerto" : "Vivo");
         level.setText("Lvl. "+Integer.toString(playerModel.getLevel()));
         combatLevel.setText("Combat Lvl. "+Integer.toString(playerModel.getCombatLevel()));
-        cultist.setVisible(false);
-        cultist.setEnabled(false);
         if(playerModel instanceof CultistPlayer){
             cultist.setVisible(true);
             cultist.setEnabled(true);
             cultist.setText( ((CultistPlayer)playerModel).getCardText() );
+        }else{
+            cultist.setVisible(false);
+            cultist.setEnabled(false);
         }
         // A continuación se actualizan sus tesoros
         this.fillTreasurePanel (visibleTreasures, playerModel.getVisibleTreasures());

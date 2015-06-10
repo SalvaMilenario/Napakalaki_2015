@@ -349,7 +349,10 @@ public class Player {
 
     protected boolean shouldConvert() 
     {
-        return Dice.getInstance().nextNumber("Dado para convertirse en sectáreo","Si sacas un 6 te vuelves sectáreo")==6;
+        if ( !(this instanceof CultistPlayer) )
+            return Dice.getInstance().nextNumber("Dado para convertirse en sectáreo","Si sacas un 6 te vuelves sectáreo")<=6;
+        else 
+            return false;
     }
  
     protected int getOponentLevel(Monster m) 

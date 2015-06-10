@@ -140,6 +140,7 @@ public class NapakalakiView extends javax.swing.JFrame {
         {
             case WINANDWINGAME:
                 JOptionPane.showMessageDialog(null,"¡¡¡ H A S   G A N A D O   L A   P A R T I D A !!!");
+                System.exit(0);
                 break;
             case WIN:
                 JOptionPane.showMessageDialog(null,"Ganaste el combate");
