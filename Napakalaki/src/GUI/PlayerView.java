@@ -34,7 +34,7 @@ public class PlayerView extends javax.swing.JPanel {
     public void setPlayer (Player p) {
         playerModel = p;
         name.setText(playerModel.getName());
-        dead.setText("Death? "+Boolean.toString(playerModel.isDead()));
+        dead.setText(playerModel.isDead()==true ? "Muerto" : "Vivo");
         level.setText("Lvl. "+Integer.toString(playerModel.getLevel()));
         combatLevel.setText("Combat Lvl. "+Integer.toString(playerModel.getCombatLevel()));
         cultist.setVisible(false);
