@@ -24,6 +24,10 @@ public class Cultist implements Card
         return gainedLevels;
     }
     
+    public String getText(){
+        return text;
+    }
+    
     @Override
     public int getSpecialValue()
     {

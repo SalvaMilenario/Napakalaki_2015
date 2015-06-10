@@ -128,7 +128,8 @@ public class Player {
             // combate = level > 9 ? CombatResult.WINANDWINGAME : CombatResult.WIN;
             // variable = if(  "   ){            "           }else{       "      } 
         }
-        else if(Dice.getInstance().nextNumber()<5)
+        else if(Dice.getInstance().nextNumber("Dado para combate",
+                "Si sacas más o igual de 5, escapas. De lo contrario o bien mueres o bien te haces sectareo")<5)
         {
             if(shouldConvert())
                 combate = CombatResult.LOSEANDCONVERT;
@@ -281,7 +282,7 @@ public class Player {
     public void initTreasures()
     {
         this.bringToLive();
-        int tirada = Dice.getInstance().nextNumber(), numeroTesoros=2;
+        int tirada = Dice.getInstance().nextNumber("Dado para tesoros iniciales", "Si sacas un 6 consigues 3 tesoros, si sacas un 1 consigues 1 tesoro, sino por defecto recives 2"), numeroTesoros=2;
         if(tirada==6)
             numeroTesoros = 3;
         else if (tirada == 1)
@@ -289,7 +290,6 @@ public class Player {
         
         for(int i = 0;i<numeroTesoros;i++)
             hiddenTreasures.add(dealer.nextTreasure());
-        
     }
     public boolean isDead()
     {
@@ -349,7 +349,7 @@ public class Player {
 
     protected boolean shouldConvert() 
     {
-        return Dice.getInstance().nextNumber()==6;
+        return Dice.getInstance().nextNumber("Dado para convertirse en sectáreo","Si sacas un 6 te vuelves sectáreo")==6;
     }
  
     protected int getOponentLevel(Monster m) 

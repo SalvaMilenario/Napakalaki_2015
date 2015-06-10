@@ -49,4 +49,8 @@ public class CultistPlayer extends Player
     {
         return super.computeGoldCoinsValue(t)*2;
     }
+
+    public String getCardText() {
+        return ((Cultist)myCultistCard).getText();
+    }
 }

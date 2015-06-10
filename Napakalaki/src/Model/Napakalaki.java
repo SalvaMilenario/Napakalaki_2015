@@ -42,7 +42,7 @@ public class Napakalaki {
         if(firstTurn) // Si es el primer turno
         {
             firstTurn=false; // el primer índice se selecciona con el dado
-            currentPlayerIndex = Dice.getInstance().nextNumber()%players.size();
+            currentPlayerIndex = Dice.getInstance().nextNumber("Dado para elegir primer jugador","Lo que saques módulo 3, indicará el primer jugador")%players.size();
         }
         else
         {

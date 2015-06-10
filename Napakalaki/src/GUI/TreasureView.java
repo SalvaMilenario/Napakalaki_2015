@@ -27,8 +27,8 @@ public class TreasureView extends javax.swing.JPanel {
         this.treasureModel = t;
         this.name.setText(treasureModel.getName());
         this.coins.setText(Integer.toString(treasureModel.getGoldCoins())+" €"); 
-        this.maxBonus.setText(Integer.toString(treasureModel.getSpecialValue())); 
-        this.minBonus.setText(Integer.toString(treasureModel.getBasicValue()));
+        this.maxBonus.setText("Max lvl. "+Integer.toString(treasureModel.getSpecialValue())); 
+        this.minBonus.setText("Min lvl. "+Integer.toString(treasureModel.getBasicValue()));
         switch (t.getType())
         {
             case ARMOR:
@@ -38,7 +38,7 @@ public class TreasureView extends javax.swing.JPanel {
                 this.type.setText("Una mano");
                 break;
             case BOTHHANDS:
-                this.type.setText("De dos Manos");
+                this.type.setText("Dos manos");
                 break;
             case HELMET:
                 this.type.setText("Casco");
@@ -47,6 +47,7 @@ public class TreasureView extends javax.swing.JPanel {
                 this.type.setText("Calzado");
                 break;
             case NECKLACE:
+                this.type.setText("Collar");
         }
         this.repaint();   
     }
@@ -82,15 +83,19 @@ public class TreasureView extends javax.swing.JPanel {
             }
         });
 
+        coins.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         coins.setText("Coins");
 
+        maxBonus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         maxBonus.setText("Level max.");
 
+        minBonus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         minBonus.setText("Level min.");
 
         name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         name.setText("Name");
 
+        type.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         type.setText("Type");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -98,30 +103,28 @@ public class TreasureView extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(name)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(minBonus)
-                        .addComponent(maxBonus)
-                        .addComponent(coins)
-                        .addComponent(type)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                    .addComponent(coins)
+                    .addComponent(maxBonus, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(minBonus)
+                    .addComponent(type))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(9, 9, 9)
+                .addContainerGap()
                 .addComponent(name)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(coins)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(maxBonus)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(minBonus)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(type)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(type))
         );
     }// </editor-fold>//GEN-END:initComponents
 

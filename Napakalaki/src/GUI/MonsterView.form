@@ -33,17 +33,19 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="name" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="combatLevel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="combatLevelCultist" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="name" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="prize" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="badconsequence" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="badConsequence" alignment="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="prize" alignment="0" max="32767" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -52,9 +54,9 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
               <Component id="name" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="combatLevel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="combatLevelCultist" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -62,7 +64,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="prize" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="badconsequence" min="-2" max="-2" attributes="0"/>
+              <Component id="badConsequence" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -81,12 +83,12 @@
     </Component>
     <Component class="GUI.PrizeView" name="prize">
     </Component>
-    <Component class="GUI.BadConsequenceView" name="badconsequence">
-    </Component>
     <Component class="javax.swing.JLabel" name="combatLevelCultist">
       <Properties>
         <Property name="text" type="java.lang.String" value="CombatLevelCultist"/>
       </Properties>
+    </Component>
+    <Component class="GUI.BadConsequenceView" name="badConsequence">
     </Component>
   </SubComponents>
 </Form>

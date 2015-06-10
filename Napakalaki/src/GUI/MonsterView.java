@@ -26,7 +26,7 @@ public class MonsterView extends javax.swing.JPanel {
         this.combatLevel.setText("Lv. "+Integer.toString(m.getBasicValue()));
         this.combatLevelCultist.setText("Lv.C "+Integer.toString(m.getSpecialValue()));
         this.prize.setPrize(monsterModel.getPrize());
-        this.badconsequence.setBadConsequence(monsterModel.getBadConsequence());
+        this.badConsequence.setBadConsequence(monsterModel.getBadConsequence());
         this.repaint();
     }
     
@@ -44,8 +44,8 @@ public class MonsterView extends javax.swing.JPanel {
         name = new javax.swing.JLabel();
         combatLevel = new javax.swing.JLabel();
         prize = new GUI.PrizeView();
-        badconsequence = new GUI.BadConsequenceView();
         combatLevelCultist = new javax.swing.JLabel();
+        badConsequence = new GUI.BadConsequenceView();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Monster", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
 
@@ -62,37 +62,38 @@ public class MonsterView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(name)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(combatLevel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(combatLevelCultist))
-                    .addComponent(name)
-                    .addComponent(prize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(badconsequence, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(badConsequence, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(prize, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
                 .addComponent(name)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(combatLevel)
                     .addComponent(combatLevelCultist))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(prize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(badconsequence, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(badConsequence, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private GUI.BadConsequenceView badConsequence;
     private GUI.BadConsequenceView badConsequenceView1;
     private GUI.BadConsequenceView badConsequenceView2;
-    private GUI.BadConsequenceView badconsequence;
     private javax.swing.JLabel combatLevel;
     private javax.swing.JLabel combatLevelCultist;
     private javax.swing.JLabel name;

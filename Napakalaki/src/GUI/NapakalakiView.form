@@ -3,9 +3,6 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[2000000000, 2147483647]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -26,51 +23,48 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="player" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="monster" min="-2" max="-2" attributes="0"/>
+                      <Component id="meetMonster" min="-2" pref="200" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="nextTurn" min="-2" pref="200" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="combat" min="-2" pref="200" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="meetMonster" min="-2" pref="120" max="-2" attributes="0"/>
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="nextTurn" min="-2" pref="90" max="-2" attributes="0"/>
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="combat" min="-2" pref="70" max="-2" attributes="0"/>
-                      <EmptySpace min="380" pref="380" max="-2" attributes="0"/>
-                      <Component id="exit" min="-2" pref="69" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="player" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace pref="12" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="monster" max="32767" attributes="0"/>
+                  <Component id="exit" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="player" min="-2" pref="366" max="-2" attributes="0"/>
-                  <Component id="monster" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="player" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="monster" alignment="3" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="meetMonster" min="-2" max="-2" attributes="0"/>
-                  <Component id="nextTurn" min="-2" max="-2" attributes="0"/>
-                  <Component id="combat" min="-2" max="-2" attributes="0"/>
-                  <Component id="exit" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="13" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="meetMonster" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nextTurn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="combat" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="exit" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="GUI.MonsterView" name="monster">
-    </Component>
-    <Component class="GUI.PlayerView" name="player">
-    </Component>
     <Component class="javax.swing.JButton" name="meetMonster">
       <Properties>
         <Property name="text" type="java.lang.String" value="Meet the monster"/>
@@ -81,7 +75,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="nextTurn">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Next Turn"/>
+        <Property name="text" type="java.lang.String" value="Next turn"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nextTurnActionPerformed"/>
@@ -102,6 +96,10 @@
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="exitMouseClicked"/>
       </Events>
+    </Component>
+    <Component class="GUI.MonsterView" name="monster">
+    </Component>
+    <Component class="GUI.PlayerView" name="player">
     </Component>
   </SubComponents>
 </Form>
