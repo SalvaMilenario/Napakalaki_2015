@@ -37,12 +37,12 @@ public class CardDealer
     private void initCultistCardDeck()
     {
         unusedCultists = new ArrayList<>();
-        unusedCultists.add(new Cultist("+1 por cada sectario en juego."+" No puedes dejar de ser sectario.", 1));
-        unusedCultists.add(new Cultist("+2 por cada sectario en juego."+" No puedes dejar de ser sectario.", 2));
-        unusedCultists.add(new Cultist("+1 por cada sectario en juego."+" No puedes dejar de ser sectario.", 1));
-        unusedCultists.add(new Cultist("+2 por cada sectario en juego."+" No puedes dejar de ser sectario.", 2));
-        unusedCultists.add(new Cultist("+1 por cada sectario en juego."+" No puedes dejar de ser sectario.", 1));
-        unusedCultists.add(new Cultist("+1 por cada sectario en juego."+" No puedes dejar de ser sectario.", 1));
+        unusedCultists.add(new Cultist("+1 por cada sectario en juego."+"\n No puedes dejar de ser sectario.", 1));
+        unusedCultists.add(new Cultist("+2 por cada sectario en juego."+"\n No puedes dejar de ser sectario.", 2));
+        unusedCultists.add(new Cultist("+1 por cada sectario en juego."+"\n No puedes dejar de ser sectario.", 1));
+        unusedCultists.add(new Cultist("+2 por cada sectario en juego."+"\n No puedes dejar de ser sectario.", 2));
+        unusedCultists.add(new Cultist("+1 por cada sectario en juego."+"\n No puedes dejar de ser sectario.", 1));
+        unusedCultists.add(new Cultist("+1 por cada sectario en juego."+"\n No puedes dejar de ser sectario.", 1));
     }
     
     private void initTreasureCardDeck()
