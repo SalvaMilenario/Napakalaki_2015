@@ -307,7 +307,7 @@ public class Player {
     {
         return hiddenTreasures;
     }
-    @Override
+    
     public String toString()
     {
         String textoInicial = "\n\tName = " + name + 
